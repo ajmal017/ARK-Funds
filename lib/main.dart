@@ -1,3 +1,5 @@
+import 'package:arkfundsapp/widgets/custom_list_view.dart';
+import 'package:arkfundsapp/widgets/intoduction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import './dummy_data.dart';
@@ -30,82 +32,33 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('ARK - Funds'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  '${DateFormat.yMMMd().format(DateTime.now()).toString()}',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.black,
-                  ),
-                ),
-                Text(
-                  'Total Market Value',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Color.fromRGBO(0x7d, 0x7d, 0x7d, 1),
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  '\$49.954 B',
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.black,
-                  ),
-                ),
-                Text(
-                  '\$1.457 B',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0xff2c815d),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Flexible(
+          Introduction(150),
+          Container(
+            width: double.infinity,
+            color: Colors.grey[350],
             child: Text(
               'ACTIVELY MANAGED INNOVATION  ETFs',
               style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.black,
-                  backgroundColor: Colors.grey[350]),
+                fontSize: 13,
+                color: Colors.black,
+              ),
             ),
           ),
-          Flexible(
-            child: ListView.builder(
-              itemBuilder: (ctx, index) {
-                return ListTile(
-                  title: Text(
-                    DUMMY_CATEGORIES[index].title,
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  subtitle: Text(
-                    DUMMY_CATEGORIES[index].subtitle,
-                    style: TextStyle(fontSize: 13),
-                  ),
-                  trailing: Row(
-                    children: [
-                      Text(
-                        '\$${DUMMY_CATEGORIES[index].amount}',
-                        style: TextStyle(fontSize: 17),
-                      ),
-                      IconButton(
-                          icon: Icon(Icons.arrow_forward_ios),
-                          onPressed: () {}),
-                    ],
-                  ),
-                );
-              },
-              itemCount: DUMMY_CATEGORIES.length,
+          CustomListView(DUMMY_CATEGORIES1, 300),
+          Container(
+            width: double.infinity,
+            color: Colors.grey[350],
+            child: Text(
+              'INDEXED INNOVATION  ETFs',
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.black,
+              ),
             ),
-          )
+          ),
+          CustomListView(DUMMY_CATEGORIES2, 120),
         ],
       ),
     );

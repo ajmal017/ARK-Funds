@@ -1,6 +1,6 @@
 import './models/category.dart';
 
-final DUMMY_CATEGORIES = [
+final DUMMY_CATEGORIES1 = [
   Category(
     title: 'ARK Innovation ETF',
     subtitle: 'ARKK',
@@ -25,5 +25,18 @@ final DUMMY_CATEGORIES = [
     title: 'Fintech Innovation ETF',
     subtitle: 'ARKF',
     amount: 1.56,
+  ),
+];
+
+final DUMMY_CATEGORIES2 = [
+  Category(
+    title: 'The 3D Printing ETF',
+    subtitle: 'PRINT',
+    amount: 132,
+  ),
+  Category(
+    title: 'Israel Innovation Technology ETF',
+    subtitle: 'IZRL',
+    amount: 76,
   ),
 ];
