@@ -1,7 +1,8 @@
-import 'package:arkfundsapp/widgets/custom_list_view.dart';
-import 'package:arkfundsapp/widgets/intoduction.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
+import './screens/bottom_tab_screen.dart';
+import './widgets/custom_list_view.dart';
+import './widgets/intoduction.dart';
 import './dummy_data.dart';
 
 void main() => runApp(ArkFundsLAndingPage());
@@ -31,36 +32,40 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('ARK - Funds'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Introduction(150),
-          Container(
-            width: double.infinity,
-            color: Colors.grey[350],
-            child: Text(
-              'ACTIVELY MANAGED INNOVATION  ETFs',
-              style: TextStyle(
-                fontSize: 13,
-                color: Colors.black,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Introduction(150),
+            Container(
+              width: double.infinity,
+              color: Colors.grey[350],
+              child: Text(
+                'ACTIVELY MANAGED INNOVATION  ETFs',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
-          CustomListView(DUMMY_CATEGORIES1, 300),
-          Container(
-            width: double.infinity,
-            color: Colors.grey[350],
-            child: Text(
-              'INDEXED INNOVATION  ETFs',
-              style: TextStyle(
-                fontSize: 13,
-                color: Colors.black,
+            CustomListView(DUMMY_CATEGORIES1, 300),
+            Container(
+              width: double.infinity,
+              color: Colors.grey[350],
+              child: Text(
+                'INDEXED INNOVATION  ETFs',
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
-          CustomListView(DUMMY_CATEGORIES2, 120),
-        ],
+            CustomListView(DUMMY_CATEGORIES2, 120),
+          ],
+        ),
       ),
+      bottomNavigationBar: BottomTabBar(),
     );
   }
 }
