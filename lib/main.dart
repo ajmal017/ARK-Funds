@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-
-import './screens/bottom_tab_screen.dart';
-import './widgets/custom_list_view.dart';
-import './widgets/intoduction.dart';
-import './dummy_data.dart';
+import 'package:arkfundsapp/screens/label1.dart';
+import 'package:arkfundsapp/screens/label2.dart';
+import 'package:arkfundsapp/screens/label3.dart';
+import 'package:arkfundsapp/screens/label4.dart';
+// import './screens/bottom_tab_screen.dart';
+// import './widgets/custom_list_view.dart';
+// import './widgets/intoduction.dart';
+// import './dummy_data.dart';
 
 void main() => runApp(ArkFundsLAndingPage());
 
@@ -15,57 +18,79 @@ class ArkFundsLAndingPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: MyHomePage(),
+      home: BottomTabBar(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class BottomTabBar extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _BottomTabBarState createState() => _BottomTabBarState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _BottomTabBarState extends State<BottomTabBar> {
+  List<Map<String, Object>> _pages;
+  int _selectedPageIndex = 0;
+
+  void _selectPage(int index) {
+    setState(() {
+      _selectedPageIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    _pages = [
+      {'page': MyHomePage(), 'title': 'ARK - Funds'},
+      {'page': LabelTwo(), 'title': 'Label 2'},
+      {'page': LabelThree(), 'title': 'Label 3'},
+      {'page': LabelFour(), 'title': 'Label 4'},
+    ];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ARK - Funds'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Introduction(150),
-            Container(
-              width: double.infinity,
-              color: Colors.grey[350],
-              child: Text(
-                'ACTIVELY MANAGED INNOVATION  ETFs',
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            CustomListView(DUMMY_CATEGORIES1, 300),
-            Container(
-              width: double.infinity,
-              color: Colors.grey[350],
-              child: Text(
-                'INDEXED INNOVATION  ETFs',
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-            CustomListView(DUMMY_CATEGORIES2, 120),
+        appBar: AppBar(
+          title: Text(_pages[_selectedPageIndex]['title']),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.notification_important),
+              onPressed: null,
+            )
           ],
         ),
-      ),
-      bottomNavigationBar: BottomTabBar(),
-    );
+        body: _pages[_selectedPageIndex]['page'],
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: _selectPage,
+          backgroundColor: Colors.grey[300],
+          unselectedItemColor: Colors.white,
+          selectedItemColor: Colors.blueGrey,
+          currentIndex: _selectedPageIndex,
+          type: BottomNavigationBarType.shifting,
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(Icons.circle),
+              title: Text('Label 1'),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(Icons.circle),
+              title: Text('Label 2'),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(Icons.circle),
+              title: Text('Label 3'),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Theme.of(context).primaryColor,
+              icon: Icon(Icons.circle),
+              title: Text('Label 4'),
+            ),
+          ],
+        ));
   }
 }
