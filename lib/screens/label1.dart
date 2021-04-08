@@ -12,6 +12,7 @@ class LabelOne extends StatefulWidget {
 class _LabelOneState extends State<LabelOne> {
   Widget selectContainer(String text) {
     return Container(
+      decoration: BoxDecoration(color: Color.fromRGBO(247, 247, 247, 1)),
       padding: EdgeInsets.only(
         left: 20,
         right: 8,
@@ -22,7 +23,6 @@ class _LabelOneState extends State<LabelOne> {
       //   left: 16,
       // ),
       width: double.infinity,
-      color: Colors.grey[100],
       child: Text(
         text,
         style: TextStyle(

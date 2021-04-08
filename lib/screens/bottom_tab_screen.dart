@@ -36,33 +36,34 @@ class _BottomTabBarState extends State<BottomTabBar> {
     return Scaffold(
         appBar: AppBar(
           title: Text(_pages[_selectedPageIndex]['title']),
+          backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
         ),
         body: _pages[_selectedPageIndex]['page'],
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selectPage,
-          backgroundColor: Colors.grey[300],
+          backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
           unselectedItemColor: Colors.white,
           selectedItemColor: Colors.blueGrey,
           currentIndex: _selectedPageIndex,
           type: BottomNavigationBarType.shifting,
           items: [
             BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
               icon: Icon(Icons.circle),
               title: Text(_pages[_selectedPageIndex]['title']),
             ),
             BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
               icon: Icon(Icons.circle),
               title: Text(_pages[_selectedPageIndex]['title']),
             ),
             BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
               icon: Icon(Icons.circle),
               title: Text(_pages[_selectedPageIndex]['title']),
             ),
             BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
               icon: Icon(Icons.circle),
               title: Text(_pages[_selectedPageIndex]['title']),
             ),
