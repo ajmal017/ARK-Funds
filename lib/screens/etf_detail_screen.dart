@@ -16,6 +16,7 @@ class _EtfDetailScreenState extends State<EtfDetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(etfTitle),
+        backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: Container(
         child: Column(

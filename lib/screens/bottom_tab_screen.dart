@@ -33,6 +33,16 @@ class _BottomTabBarState extends State<BottomTabBar> {
 
   @override
   Widget build(BuildContext context) {
+    Widget buildContainer() {
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: Colors.blueGrey,
+        ),
+        child: Icon(Icons.circle),
+      );
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: Text(_pages[_selectedPageIndex]['title']),
@@ -41,7 +51,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
         body: _pages[_selectedPageIndex]['page'],
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selectPage,
-          backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
+          backgroundColor: Color.fromRGBO(247, 247, 247, 1),
           unselectedItemColor: Colors.white,
           selectedItemColor: Colors.blueGrey,
           currentIndex: _selectedPageIndex,
@@ -49,22 +59,22 @@ class _BottomTabBarState extends State<BottomTabBar> {
           items: [
             BottomNavigationBarItem(
               backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
-              icon: Icon(Icons.circle),
+              icon: buildContainer(),
               title: Text(_pages[_selectedPageIndex]['title']),
             ),
             BottomNavigationBarItem(
               backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
-              icon: Icon(Icons.circle),
+              icon: buildContainer(),
               title: Text(_pages[_selectedPageIndex]['title']),
             ),
             BottomNavigationBarItem(
               backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
-              icon: Icon(Icons.circle),
+              icon: buildContainer(),
               title: Text(_pages[_selectedPageIndex]['title']),
             ),
             BottomNavigationBarItem(
               backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
-              icon: Icon(Icons.circle),
+              icon: buildContainer(),
               title: Text(_pages[_selectedPageIndex]['title']),
             ),
           ],

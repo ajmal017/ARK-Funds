@@ -10,6 +10,7 @@ class DetailFundDescription extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(etfTitle),
+        backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: Container(
           child:
