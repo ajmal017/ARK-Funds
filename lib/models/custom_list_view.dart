@@ -8,8 +8,9 @@ class CustomListView extends StatelessWidget {
 
   CustomListView(this.dummyList, this.flexInput);
 
-  void selectEtf(BuildContext context,String title) {
-    Navigator.of(context).pushNamed(EtfDetailScreen.routeName,arguments: title);
+  void selectEtf(BuildContext context, String title) {
+    Navigator.of(context)
+        .pushNamed(EtfDetailScreen.routeName, arguments: title);
   }
 
   @override
@@ -17,45 +18,65 @@ class CustomListView extends StatelessWidget {
     return SizedBox(
       height: flexInput,
       child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         itemBuilder: (ctx, index) {
-          return Card(
-              child:Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(left: 20,),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          dummyList[index].title,
-                          style:
-                              TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          dummyList[index].subtitle,
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          '\$${dummyList[index].amount}',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.arrow_forward_ios),
-                          onPressed: () => selectEtf(context,dummyList[index].title),
-                        ),
-                      ],
-                    ),
-                  ],
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              InkWell(
+                onTap: () => selectEtf(context, dummyList[index].title),
+                child: Container(
+                  margin: EdgeInsets.zero,
+                  width: double.infinity,
+                  padding: EdgeInsets.only(
+                    left: 20,
+                    right: 16,
+                    top: 8,
+                    bottom: 8,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.65,
+                            child: Text(
+                              dummyList[index].title,
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                              maxLines: 2,
+                            ),
+                          ),
+                          Text(
+                            dummyList[index].subtitle,
+                            style: TextStyle(fontSize: 13),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            '\$${dummyList[index].amount}',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              )
-            
+              ),
+              Divider(
+                indent: 20,
+                height: 5,
+                thickness: 0.5,
+                color: Colors.grey,
+              ),
+            ],
           );
         },
         itemCount: dummyList.length,

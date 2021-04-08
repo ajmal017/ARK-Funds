@@ -12,10 +12,15 @@ class LabelOne extends StatefulWidget {
 class _LabelOneState extends State<LabelOne> {
   Widget selectContainer(String text) {
     return Container(
-      padding: EdgeInsets.all(8),
-      margin: EdgeInsets.only(
-        left: 16,
+      padding: EdgeInsets.only(
+        left: 20,
+        right: 8,
+        top: 8,
+        bottom: 8,
       ),
+      // margin: EdgeInsets.only(
+      //   left: 16,
+      // ),
       width: double.infinity,
       color: Colors.grey[100],
       child: Text(
@@ -34,11 +39,11 @@ class _LabelOneState extends State<LabelOne> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Introduction(150),
+          Introduction(200),
           selectContainer('ACTIVELY MANAGED INNOVATION  ETFs'),
-          CustomListView(DUMMY_CATEGORIES1, 280),
+          CustomListView(DUMMY_CATEGORIES1, 285),
           selectContainer('INDEXED INNOVATION  ETFs'),
-          CustomListView(DUMMY_CATEGORIES2, 120),
+          CustomListView(DUMMY_CATEGORIES2, 135),
         ],
       ),
     );

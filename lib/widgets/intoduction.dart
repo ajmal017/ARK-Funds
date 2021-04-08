@@ -9,7 +9,7 @@ class Introduction extends StatelessWidget {
     return Container(
       height: flexInput,
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 21),
+      padding: const EdgeInsets.symmetric(vertical: 40),
       child: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
