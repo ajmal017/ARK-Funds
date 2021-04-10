@@ -2,6 +2,7 @@ import 'package:arkfundsapp/screens/arkk_performance.dart';
 import 'package:arkfundsapp/screens/fund_details_screen.dart';
 import 'package:arkfundsapp/screens/fund_documents.dart';
 import 'package:arkfundsapp/screens/holdings.dart';
+import 'package:arkfundsapp/screens/holdings_detail_screen.dart';
 import 'package:arkfundsapp/screens/nav_and_market_price_screen.dart';
 import 'package:arkfundsapp/screens/premium_discount.dart';
 
@@ -53,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Holdings.routeName: (ctx) => Holdings(),
         PremiumDiscount.routeName: (ctx) => PremiumDiscount(),
         FundDocuments.routeName: (ctx) => FundDocuments(),
+        HoldingsDetailScreen.routeName: (ctx) => HoldingsDetailScreen(),
       },
       onGenerateRoute: (settings) {
         return MaterialPageRoute(

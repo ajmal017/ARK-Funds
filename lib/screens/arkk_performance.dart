@@ -86,28 +86,32 @@ class ArkkPerformance extends StatelessWidget {
               Container(
                 color: Color.fromRGBO(247, 247, 247, 1),
                 padding: EdgeInsets.all(14),
-                child: Row(
+                child: Column(
                   children: [
-                    Text(
-                      '*Annualized',
-                      style: TextStyle(
-                        fontSize: 17,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    Spacer(),
-                    TextButton(
-                      onPressed: () => Navigator.of(ctx).pop(),
-                      child: Text(
-                        'Done',
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: Colors.blue,
+                    Row(
+                      children: [
+                        Text(
+                          '*Annualized',
+                          style: TextStyle(
+                            fontSize: 17,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                      ),
-                    ),
-                    Divider(
-                      thickness: 1,
+                        Spacer(),
+                        TextButton(
+                          onPressed: () => Navigator.of(ctx).pop(),
+                          child: Text(
+                            'Done',
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.blue,
+                            ),
+                          ),
+                        ),
+                        Divider(
+                          thickness: 1,
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -189,48 +193,3 @@ class ArkkPerformance extends StatelessWidget {
     );
   }
 }
-
-// SingleChildScrollView(
-//             child: Column(
-//               children: [
-//                 Container(
-//                   color: Color.fromRGBO(247, 247, 247, 1),
-//                   padding: EdgeInsets.all(20),
-//                   child: Row(
-//                     children: [
-//                       Center(
-//                         child: Text(
-//                           '*Annualized',
-//                           style: TextStyle(
-//                             fontSize: 17,
-//                           ),
-//                         ),
-//                       ),
-//                       Spacer(),
-//                       TextButton(
-//                         onPressed: () => Navigator.of(ctx).pop(),
-//                         child: Text(
-//                           'Done',
-//                           style: TextStyle(
-//                             fontSize: 17,
-//                             color: Colors.blue,
-//                           ),
-//                         ),
-//                       ),
-//                       Divider(),
-//                     ],
-//                   ),
-//                 ),
-//                 Container(
-//                   padding: EdgeInsets.all(20),
-//                   width: mWidth,
-//                   height: mHeight * 0.8,
-//                   child: Text(
-//                     Annualized[0],
-//                     textAlign: TextAlign.left,
-//                     style: TextStyle(fontSize: 18),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),

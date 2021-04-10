@@ -20,33 +20,41 @@ class FundDetailsScreen extends StatelessWidget {
       ),
       body: ListView.builder(
         itemBuilder: (ctx, index) => Container(
-          margin: EdgeInsets.all(10),
-          padding: EdgeInsets.only(
-            top: 16,
-            bottom: 8,
+          margin: EdgeInsets.only(
+            top: 12,
+            left: 12,
+            right: 12,
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
+          padding: EdgeInsets.only(
+            top: 12,
+            left: 10,
+            right: 10,
+          ),
+          child: Column(
             children: [
-              Text(
-                Dummy_fund_details[index]['title'],
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Spacer(),
-              Text(
-                Dummy_fund_details[index]['detail'],
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    Dummy_fund_details[index]['title'],
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Spacer(),
+                  Text(
+                    Dummy_fund_details[index]['detail'],
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
               ),
               Divider(
                 thickness: 0.5,
-                height: 4,
                 color: Colors.grey,
               ),
             ],

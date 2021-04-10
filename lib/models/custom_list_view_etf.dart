@@ -34,28 +34,32 @@ class CustomListViewEtf extends StatelessWidget {
           onTap: () => Navigator.of(context).pushNamed(navigators[index],
               arguments: {'id': id, 'title': DUMMY_CATEGORIES3[index]}),
           child: Container(
-            margin: EdgeInsets.all(10),
             padding: EdgeInsets.only(
-              top: 8,
-              bottom: 4,
+              top: 16,
+              left: 16,
+              right: 16,
             ),
-            child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
+            child: Column(
               children: [
-                Text(
-                  DUMMY_CATEGORIES3[index],
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      DUMMY_CATEGORIES3[index],
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios),
+                  ],
                 ),
-                Spacer(),
-                Icon(Icons.arrow_forward_ios),
                 Divider(
-                  thickness: 2,
-                  color: Colors.black,
+                  thickness: 1,
+                  color: Colors.grey,
                 ),
               ],
             ),
