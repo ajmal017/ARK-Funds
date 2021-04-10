@@ -8,9 +8,9 @@ class CustomListView extends StatelessWidget {
 
   CustomListView(this.dummyList, this.flexInput);
 
-  void selectEtf(BuildContext context, String title) {
+  void selectEtf(BuildContext context, String id) {
     Navigator.of(context)
-        .pushNamed(EtfDetailScreen.routeName, arguments: title);
+        .pushNamed(EtfDetailScreen.routeName, arguments: id);
   }
 
   @override
@@ -25,7 +25,7 @@ class CustomListView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               InkWell(
-                onTap: () => selectEtf(context, dummyList[index].title),
+                onTap: () => selectEtf(context, dummyList[index].id),
                 child: Container(
                   margin: EdgeInsets.zero,
                   width: double.infinity,
@@ -72,7 +72,7 @@ class CustomListView extends StatelessWidget {
               ),
               Divider(
                 indent: 20,
-                height: 5,
+                height: 3,
                 thickness: 0.5,
                 color: Colors.grey,
               ),

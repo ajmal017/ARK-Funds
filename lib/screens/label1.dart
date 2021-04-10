@@ -19,9 +19,6 @@ class _LabelOneState extends State<LabelOne> {
         top: 8,
         bottom: 8,
       ),
-      // margin: EdgeInsets.only(
-      //   left: 16,
-      // ),
       width: double.infinity,
       child: Text(
         text,
@@ -35,15 +32,15 @@ class _LabelOneState extends State<LabelOne> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Introduction(200),
+          Introduction(160),
           selectContainer('ACTIVELY MANAGED INNOVATION  ETFs'),
-          CustomListView(DUMMY_CATEGORIES1, 285),
+          CustomListView(DUMMY_CATEGORIES1, 275),
           selectContainer('INDEXED INNOVATION  ETFs'),
-          CustomListView(DUMMY_CATEGORIES2, 135),
+          CustomListView(DUMMY_CATEGORIES2, 125),
         ],
       ),
     );

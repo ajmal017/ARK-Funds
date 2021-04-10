@@ -10,7 +10,7 @@ class Introduction extends StatelessWidget {
       height: flexInput,
       width: double.infinity,
       decoration: BoxDecoration(color: Color.fromRGBO(247, 247, 247, 1)),
-      padding: const EdgeInsets.symmetric(vertical: 40),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
