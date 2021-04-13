@@ -1,9 +1,10 @@
-import 'package:arkfundsapp/models/holdings_model.dart';
-import 'package:arkfundsapp/models/holdings_model_graph.dart';
+import '../models/holdings_model.dart';
+import '../models/holdings_model_graph.dart';
+import '../screens/search_bar.dart';
+import '../dummy_data.dart';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import '../dummy_data.dart';
 
 class Holdings extends StatelessWidget {
   final date = DateFormat.yMMMd().format(DateTime.now()).toString();
@@ -35,6 +36,7 @@ class Holdings extends StatelessWidget {
           ),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               padding: EdgeInsets.all(20),
@@ -45,7 +47,7 @@ class Holdings extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.width * 0.9,
+              height: MediaQuery.of(context).size.height * 0.75,
               child: TabBarView(
                 children: [
                   HoldingsModel(

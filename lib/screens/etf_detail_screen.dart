@@ -32,7 +32,7 @@ class _EtfDetailScreenState extends State<EtfDetailScreen> {
             ),
             SizedBox(
               height: 400,
-              child: CustomListViewEtf(selectedEtf.id),
+              child: CustomListViewEtf(selectedEtf.id,selectedEtf.subtitle),
             ),
           ],
         ),

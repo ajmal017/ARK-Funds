@@ -161,7 +161,7 @@ const Nav_And_Market_Price = const [
   },
 ];
 
-const Arkk_Performance = const [
+const Performance = const [
   {
     'title': '3 MONTHS',
     'values': ['37.44%', '37.55%']
@@ -193,7 +193,7 @@ const Annualized = const [
       'represents past performance and current returns may be lower or higher. The ' +
       'investment return and principal will fluctuate so that an investor’s shares when ' +
       'redeemed may be worth more or less than the original cost. The Fund’s most recent ' +
-      'month-end performance can be found in the fund material section.\n\n Returns for less ' +
+      'month-end performance can be found in the fund material section.\n\nReturns for less ' +
       'than one year are not annualized. Net asset value (\"NAV\") returns are based on the ' +
       'dollar value of a single share of the ETF, calculated using the value of the underlying ' +
       'assets of the ETF minus its liabilities, divided by the number of shares outstanding.' +
@@ -241,19 +241,19 @@ final HoldingsData = [
 
 const HoldingDataAttributes = const [
   {
-    'title':'Weight',
-    'value':'10.90%',
+    'title': 'Weight',
+    'value': '10.90%',
   },
   {
-    'title':'Shares Held',
-    'value':'3,675,965',
+    'title': 'Shares Held',
+    'value': '3,675,965',
   },
   {
-    'title':'Market Price',
-    'value':'\$640.39',
+    'title': 'Market Price',
+    'value': '\$640.39',
   },
   {
-    'title':'Market Value',
-    'value':'\$2,354,051,226.35',
+    'title': 'Market Value',
+    'value': '\$2,354,051,226.35',
   },
 ];

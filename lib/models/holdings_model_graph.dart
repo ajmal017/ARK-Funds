@@ -53,7 +53,7 @@ class HoldingsModelGraph extends StatelessWidget {
                       ),
                       Spacer(),
                       SizedBox(
-                        height: 20,
+                        height: 15,
                         width: MediaQuery.of(context).size.width * 0.35,
                         child: Container(
                           decoration: BoxDecoration(
@@ -62,18 +62,18 @@ class HoldingsModelGraph extends StatelessWidget {
                               width: 1.0,
                             ),
                             color: Color.fromRGBO(220, 220, 220, 1),
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(5),
                           ),
                           alignment: Alignment.centerLeft,
                           child: SizedBox(
-                            height: 20,
+                            height: 15,
                             width: MediaQuery.of(context).size.width *
                                 0.35 *
                                 (dummyList[index].amount / 100),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.blue,
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                             ),
                           ),

@@ -9,8 +9,7 @@ class CustomListView extends StatelessWidget {
   CustomListView(this.dummyList, this.flexInput);
 
   void selectEtf(BuildContext context, String id) {
-    Navigator.of(context)
-        .pushNamed(EtfDetailScreen.routeName, arguments: id);
+    Navigator.of(context).pushNamed(EtfDetailScreen.routeName, arguments: id);
   }
 
   @override
@@ -60,7 +59,7 @@ class CustomListView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            '\$${dummyList[index].amount}',
+                            '\$${dummyList[index].amount} B',
                             style: TextStyle(fontSize: 17),
                           ),
                           Icon(Icons.arrow_forward_ios),

@@ -1,4 +1,4 @@
-import 'package:arkfundsapp/screens/arkk_performance.dart';
+import 'package:arkfundsapp/screens/performance.dart';
 import 'package:arkfundsapp/screens/fund_details_screen.dart';
 import 'package:arkfundsapp/screens/fund_documents.dart';
 import 'package:arkfundsapp/screens/holdings.dart';
@@ -8,6 +8,10 @@ import 'package:arkfundsapp/screens/premium_discount.dart';
 import 'package:flutter/material.dart';
 
 class CustomListViewEtf extends StatelessWidget {
+  final String id;
+  final String ticker;
+  CustomListViewEtf(this.id, this.ticker);
+
   final navigators = [
     FundDetailsScreen.routeName,
     NavAndMarketPrice.routeName,
@@ -16,16 +20,16 @@ class CustomListViewEtf extends StatelessWidget {
     PremiumDiscount.routeName,
     FundDocuments.routeName,
   ];
+
   final DUMMY_CATEGORIES3 = [
     'Fund Details',
     'NAV and Market Price',
-    'ARKK Performance',
+    'Performance',
     'Holdings',
     'Premium / Discount',
     'Fund Documents',
   ];
-  final String id;
-  CustomListViewEtf(this.id);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -46,7 +50,9 @@ class CustomListViewEtf extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      DUMMY_CATEGORIES3[index],
+                      DUMMY_CATEGORIES3[index] == 'Performance'
+                          ? ticker + ' Performance'
+                          : DUMMY_CATEGORIES3[index],
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -58,7 +64,7 @@ class CustomListViewEtf extends StatelessWidget {
                   ],
                 ),
                 Divider(
-                  thickness: 1,
+                  thickness: 0.5,
                   color: Colors.grey,
                 ),
               ],

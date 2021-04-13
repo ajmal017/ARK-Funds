@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../dummy_data.dart';
 
 class ArkkPerformance extends StatelessWidget {
-  static const routeName = '/arkk-peformance';
+  static const routeName = '/peformance';
 
   Widget buildCont(String title, String value) {
     return Container(
@@ -71,8 +71,6 @@ class ArkkPerformance extends StatelessWidget {
   }
 
   void buildAnnualized(BuildContext ctx) {
-    double mWidth = MediaQuery.of(ctx).size.width;
-    double mHeight = MediaQuery.of(ctx).size.height;
     showModalBottomSheet(
       isScrollControlled: true,
       elevation: 4,
@@ -80,52 +78,67 @@ class ArkkPerformance extends StatelessWidget {
       builder: (_) {
         return GestureDetector(
           onTap: () {},
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                color: Color.fromRGBO(247, 247, 247, 1),
-                padding: EdgeInsets.all(14),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          '*Annualized',
-                          style: TextStyle(
-                            fontSize: 17,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Spacer(),
-                        TextButton(
-                          onPressed: () => Navigator.of(ctx).pop(),
-                          child: Text(
-                            'Done',
+          child: Container(
+            height: MediaQuery.of(ctx).size.height * 0.9,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25),
+                topRight: Radius.circular(25),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(247, 247, 247, 1),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                    ),
+                  ),
+                  padding: EdgeInsets.all(14),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            '*Annualized',
                             style: TextStyle(
                               fontSize: 17,
-                              color: Colors.blue,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          Spacer(),
+                          TextButton(
+                            onPressed: () => Navigator.of(ctx).pop(),
+                            child: Text(
+                              'Done',
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.blue,
+                              ),
                             ),
                           ),
-                        ),
-                        Divider(
-                          thickness: 1,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(20),
-                  child: Text(
-                    Annualized[0],
-                    style: TextStyle(fontSize: 18),
+                        ],
+                      ),
+                      Divider(
+                        thickness: 1,
+                      ),
+                    ],
                   ),
                 ),
-              )
-            ],
+                Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    child: Text(
+                      Annualized[0],
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
           behavior: HitTestBehavior.opaque,
         );
@@ -173,12 +186,13 @@ class ArkkPerformance extends StatelessWidget {
           Expanded(
             child: ListView.builder(
               itemBuilder: (ctx, index) => Container(
-                child: buildContainer(Arkk_Performance[index]),
+                child: buildContainer(Performance[index]),
               ),
-              itemCount: Arkk_Performance.length,
+              itemCount: Performance.length,
             ),
           ),
           Container(
+            padding: EdgeInsets.all(8),
             decoration: BoxDecoration(color: Color.fromRGBO(247, 247, 247, 1)),
             child: TextButton(
               onPressed: () => buildAnnualized(context),

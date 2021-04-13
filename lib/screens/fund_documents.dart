@@ -33,27 +33,36 @@ class FundDocuments extends StatelessWidget {
         onTap: null,
         child: ListView.builder(
           itemBuilder: (ctx, index) => Container(
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.only(
-              top: 16,
-              bottom: 8,
+            margin: EdgeInsets.only(
+              top: 12,
+              left: 12,
+              right: 12,
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
+            padding: EdgeInsets.only(
+              top: 12,
+              left: 10,
+              right: 10,
+            ),
+            child: Column(
               children: [
-                Text(
-                  fund_documents[index],
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      fund_documents[index],
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios),
+                  ],
                 ),
-                Spacer(),
-                Icon(Icons.arrow_forward_ios),
                 Divider(
                   thickness: 0.5,
-                  height: 4,
+                  //height: 4,
                   color: Colors.grey,
                 ),
               ],

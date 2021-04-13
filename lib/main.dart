@@ -1,4 +1,4 @@
-import 'package:arkfundsapp/screens/arkk_performance.dart';
+import 'package:arkfundsapp/screens/performance.dart';
 import 'package:arkfundsapp/screens/fund_details_screen.dart';
 import 'package:arkfundsapp/screens/fund_documents.dart';
 import 'package:arkfundsapp/screens/holdings.dart';
@@ -8,7 +8,6 @@ import 'package:arkfundsapp/screens/premium_discount.dart';
 
 import './screens/bottom_tab_screen.dart';
 import './screens/etf_detail_screen.dart';
-import './screens/label1.dart';
 import './screens/detail_fund_description.dart';
 
 import 'package:flutter/material.dart';
