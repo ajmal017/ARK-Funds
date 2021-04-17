@@ -69,7 +69,7 @@ class HoldingsModelGraph extends StatelessWidget {
                             height: 15,
                             width: MediaQuery.of(context).size.width *
                                 0.35 *
-                                (dummyList[index].amount / 100),
+                                (double.parse(dummyList[index].amount) / 100),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.blue,

@@ -4,7 +4,7 @@ class Category {
   final String id;
   final String title;
   final String subtitle;
-  final double amount;
+  final String amount;
 
   Category({
     @required this.id,

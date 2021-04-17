@@ -27,12 +27,15 @@ class CustomListView extends StatelessWidget {
                 onTap: () => selectEtf(context, dummyList[index].id),
                 child: Container(
                   margin: EdgeInsets.zero,
-                  width: double.infinity,
+                  width: MediaQuery.of(context).size.width * 0.9,
                   padding: EdgeInsets.only(
-                    left: 20,
-                    right: 16,
+                    left: 12,
+                    right: 8,
                     top: 8,
-                    bottom: 8,
+                    bottom: 12,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,12 +44,15 @@ class CustomListView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.65,
+                            width: MediaQuery.of(context).size.width * 0.5,
                             child: Text(
                               dummyList[index].title,
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                               maxLines: 2,
+                              // overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           Text(
@@ -59,7 +65,7 @@ class CustomListView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            '\$${dummyList[index].amount} B',
+                            '\$' + dummyList[index].amount,
                             style: TextStyle(fontSize: 17),
                           ),
                           Icon(Icons.arrow_forward_ios),
@@ -70,7 +76,7 @@ class CustomListView extends StatelessWidget {
                 ),
               ),
               Divider(
-                indent: 20,
+                indent: 12,
                 height: 3,
                 thickness: 0.5,
                 color: Colors.grey,

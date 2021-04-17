@@ -1,35 +1,106 @@
 import './models/category.dart';
 
+final Daily_trades1 = [
+  Category(
+    id: 'd1',
+    title: 'ACCOLADE INC',
+    subtitle: 'ACCD',
+    amount: '2,626',
+  ),
+  Category(
+    id: 'd2',
+    title: 'CODEXIS INC',
+    subtitle: 'CDXS',
+    amount: '44,373',
+  ),
+  Category(
+    id: 'd3',
+    title: 'IONIS PHARMACEUTICAL',
+    subtitle: 'IONS',
+    amount: '46,225',
+  ),
+];
+
+final Daily_trades2 = [
+  Category(
+    id: 'd4',
+    title: '3D SYSTEMS CORP',
+    subtitle: 'DDD',
+    amount: '141,254',
+  ),
+  Category(
+    id: 'd5',
+    title: 'UNITY SOFTWARE INC',
+    subtitle: 'U',
+    amount: '187,300',
+  ),
+  Category(
+    id: 'd6',
+    title: 'IONIS PHARMACEUTICAL ',
+    subtitle: 'IONS',
+    amount: '46,225',
+  ),
+  Category(
+    id: 'd7',
+    title: 'ONE',
+    subtitle: 'AONE',
+    amount: '17,570',
+  ),
+];
+
+const DailyTradeItemList = const [
+  {
+    'title': 'Direction',
+    'detail': 'Buy',
+  },
+  {
+    'title': 'CUSIP',
+    'detail': '00437E102',
+  },
+  {
+    'title': 'Shares',
+    'detail': '2,626',
+  },
+  {
+    'title': 'Value',
+    'detail': '\$2,626.00',
+  },
+  {
+    'title': '% of ETF',
+    'detail': '0.0011',
+  },
+];
+
 final DUMMY_CATEGORIES1 = [
   Category(
     id: 'c1',
     title: 'ARK Innovation ETF',
     subtitle: 'ARKK',
-    amount: 17.68,
+    amount: '17.68 B',
   ),
   Category(
     id: 'c2',
     title: 'Autonomous Technology ETF',
     subtitle: 'ARKQ',
-    amount: 1.70,
+    amount: '1.70 B',
   ),
   Category(
     id: 'c3',
     title: 'Next generation Internet ETF',
     subtitle: 'ARKW',
-    amount: 5.27,
+    amount: '5.27 B',
   ),
   Category(
     id: 'c4',
     title: 'Genomic Revolution ETF',
     subtitle: 'ARKG',
-    amount: 7.67,
+    amount: '7.67 B',
   ),
   Category(
     id: 'c5',
     title: 'Fintech Innovation ETF',
     subtitle: 'ARKF',
-    amount: 1.56,
+    amount: '1.56 B',
   ),
 ];
 
@@ -38,13 +109,13 @@ final DUMMY_CATEGORIES2 = [
     id: 'c6',
     title: 'The 3D Printing ETF',
     subtitle: 'PRINT',
-    amount: 132,
+    amount: '132 M',
   ),
   Category(
     id: 'c7',
     title: 'Israel Innovation Technology ETF',
     subtitle: 'IZRL',
-    amount: 76,
+    amount: '76 M',
   ),
 ];
 
@@ -211,31 +282,31 @@ final HoldingsData = [
     id: 'h1',
     title: 'TESLA INC',
     subtitle: 'TSLA',
-    amount: 10.90,
+    amount: '10.90',
   ),
   Category(
     id: 'h2',
     title: 'SQUARE INC - A',
     subtitle: 'SQ',
-    amount: 6.17,
+    amount: '6.17',
   ),
   Category(
     id: 'h3',
     title: 'TELADOC HEALTH INC',
     subtitle: 'TDOC',
-    amount: 6.15,
+    amount: '6.15',
   ),
   Category(
     id: 'h4',
     title: 'ROKU INC',
     subtitle: 'ROKU',
-    amount: 5.46,
+    amount: '5.46',
   ),
   Category(
     id: 'h5',
     title: 'ZILLOW GROUP INC - C',
     subtitle: 'Z',
-    amount: 3.64,
+    amount: '3.64',
   ),
 ];
 
@@ -257,3 +328,121 @@ const HoldingDataAttributes = const [
     'value': '\$2,354,051,226.35',
   },
 ];
+
+final DataMarket = {
+  {
+    'date': DateTime.parse('2021-03-15'),
+    'market': 128.88,
+    'NAV': 128.86,
+  },
+  {
+    'date': DateTime.parse('2021-03-16'),
+    'market': 128.08,
+    'NAV': 128.02,
+  },
+  {
+    'date': DateTime.parse('2021-03-17'),
+    'market': 127.52,
+    'NAV': 127.46,
+  },
+  {
+    'date': DateTime.parse('2021-03-18'),
+    'market': 120.07,
+    'NAV': 120.02,
+  },
+  {
+    'date': DateTime.parse('2021-03-19'),
+    'market': 122.36,
+    'NAV': 122.36,
+  },
+  {
+    'date': DateTime.parse('2021-03-20'),
+    'market': 124.74,
+    'NAV': 124.72,
+  },
+  {
+    'date': DateTime.parse('2021-03-21'),
+    'market': 121.75,
+    'NAV': 121.70,
+  },
+  {
+    'date': DateTime.parse('2021-03-22'),
+    'market': 114.84,
+    'NAV': 114.78,
+  },
+  {
+    'date': DateTime.parse('2021-03-23'),
+    'market': 114.42,
+    'NAV': 114.17,
+  },
+  {
+    'date': DateTime.parse('2021-03-24'),
+    'market': 113.97,
+    'NAV': 113.95,
+  },
+  {
+    'date': DateTime.parse('2021-03-25'),
+    'market': 111.22,
+    'NAV': 111.17,
+  },
+  {
+    'date': DateTime.parse('2021-03-26'),
+    'market': 114.42,
+    'NAV': 114.28,
+  },
+  {
+    'date': DateTime.parse('2021-03-27'),
+    'market': 119.95,
+    'NAV': 119.49,
+  },
+  {
+    'date': DateTime.parse('2021-03-28'),
+    'market': 120.92,
+    'NAV': 120.85,
+  },
+  {
+    'date': DateTime.parse('2021-03-29'),
+    'market': 121.93,
+    'NAV': 121.64,
+  },
+  {
+    'date': DateTime.parse('2021-03-30'),
+    'market': 123.83,
+    'NAV': 123.68,
+  },
+  {
+    'date': DateTime.parse('2021-03-31'),
+    'market': 121.11,
+    'NAV': 120.82,
+  },
+  {
+    'date': DateTime.parse('2021-04-01'),
+    'market': 124.14,
+    'NAV': 124.04,
+  },
+  {
+    'date': DateTime.parse('2021-04-02'),
+    'market': 123.26,
+    'NAV': 123.17,
+  },
+  {
+    'date': DateTime.parse('2021-04-03'),
+    'market': 122.48,
+    'NAV': 122.47,
+  },
+  {
+    'date': DateTime.parse('2021-04-04'),
+    'market': 127.56,
+    'NAV': 127.44,
+  },
+  {
+    'date': DateTime.parse('2021-04-05'),
+    'market': 124.87,
+    'NAV': 124.78,
+  },
+  {
+    'date': DateTime.parse('2021-04-06'),
+    'market': 126.62,
+    'NAV': 126.54,
+  },
+};

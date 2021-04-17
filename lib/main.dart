@@ -1,3 +1,5 @@
+import 'package:arkfundsapp/screens/daily_trade_item.dart';
+import 'package:arkfundsapp/screens/daily_trades.dart';
 import 'package:arkfundsapp/screens/performance.dart';
 import 'package:arkfundsapp/screens/fund_details_screen.dart';
 import 'package:arkfundsapp/screens/fund_documents.dart';
@@ -38,6 +40,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'ARK - Funds',
+      // home: Scaffold(
+      //   appBar: AppBar(
+      //     title: Text('ARK - Funds'),
+      //     actions: [IconButton(icon: Icon(Icons.search), onPressed: null)],
+      //   ),
+      // ),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.grey,
@@ -54,6 +62,8 @@ class _MyHomePageState extends State<MyHomePage> {
         PremiumDiscount.routeName: (ctx) => PremiumDiscount(),
         FundDocuments.routeName: (ctx) => FundDocuments(),
         HoldingsDetailScreen.routeName: (ctx) => HoldingsDetailScreen(),
+        DailyTrades.routeName: (ctx) => DailyTrades(),
+        DailyTradeItem.routeName: (ctx) => DailyTradeItem(),
       },
       onGenerateRoute: (settings) {
         return MaterialPageRoute(

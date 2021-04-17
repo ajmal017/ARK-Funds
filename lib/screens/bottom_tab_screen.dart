@@ -47,6 +47,12 @@ class _BottomTabBarState extends State<BottomTabBar> {
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title']),
         backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search_outlined),
+            onPressed: null,
+          )
+        ],
       ),
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
