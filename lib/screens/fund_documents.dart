@@ -59,7 +59,10 @@ class FundDocuments extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                    Icon(Icons.arrow_forward_ios),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: Color.fromRGBO(0, 0, 0, 0.5),
+                    ),
                   ],
                 ),
                 Divider(

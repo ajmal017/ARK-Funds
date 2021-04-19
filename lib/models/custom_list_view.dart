@@ -68,7 +68,10 @@ class CustomListView extends StatelessWidget {
                             '\$' + dummyList[index].amount,
                             style: TextStyle(fontSize: 17),
                           ),
-                          Icon(Icons.arrow_forward_ios),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color.fromRGBO(0, 0, 0, 0.5),
+                          ),
                         ],
                       ),
                     ],

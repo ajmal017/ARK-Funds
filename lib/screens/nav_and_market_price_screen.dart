@@ -13,7 +13,10 @@ class NavAndMarketPrice extends StatefulWidget {
 
 class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
   DateTime _fromSelectedDate = DateTime(
-      DateTime.now().year, DateTime.now().month - 1, DateTime.now().day);
+    DateTime.now().year,
+    DateTime.now().month - 1,
+    DateTime.now().day,
+  );
   DateTime _toSelectedDate = DateTime.now();
   void _presentDatePicker(BuildContext context, String dateType) {
     showDatePicker(
@@ -40,7 +43,10 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
     setState(() {
       _toSelectedDate = DateTime.now();
       _fromSelectedDate = DateTime(
-          DateTime.now().year, DateTime.now().month - 1, DateTime.now().day);
+        DateTime.now().year,
+        DateTime.now().month - 1,
+        DateTime.now().day,
+      );
     });
   }
 
@@ -48,7 +54,10 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
     setState(() {
       _toSelectedDate = DateTime.now();
       _fromSelectedDate = DateTime(
-          DateTime.now().year, DateTime.now().month - 3, DateTime.now().day);
+        DateTime.now().year,
+        DateTime.now().month - 3,
+        DateTime.now().day,
+      );
     });
   }
 
@@ -56,7 +65,10 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
     setState(() {
       _toSelectedDate = DateTime.now();
       _fromSelectedDate = DateTime(
-          DateTime.now().year, DateTime.now().month - 6, DateTime.now().day);
+        DateTime.now().year,
+        DateTime.now().month - 6,
+        DateTime.now().day,
+      );
     });
   }
 
@@ -71,7 +83,10 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
     setState(() {
       _toSelectedDate = DateTime.now();
       _fromSelectedDate = DateTime(
-          DateTime.now().year - 1, DateTime.now().month, DateTime.now().day);
+        DateTime.now().year - 1,
+        DateTime.now().month,
+        DateTime.now().day,
+      );
     });
   }
 
@@ -158,7 +173,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     child: Text(
                       _fromSelectedDate == null
                           ? 'from'
-                          : "from : ${DateFormat.yMMMd().format(_fromSelectedDate).toString()}",
+                          : "${DateFormat.yMMMd().format(_fromSelectedDate).toString()}",
                     ),
                   ),
                   Icon(Icons.arrow_forward),
@@ -167,7 +182,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     child: Text(
                       _toSelectedDate == null
                           ? 'to'
-                          : "to : ${DateFormat.yMMMd().format(_toSelectedDate).toString()}",
+                          : "${DateFormat.yMMMd().format(_toSelectedDate).toString()}",
                     ),
                   ),
                 ],
