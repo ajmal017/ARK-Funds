@@ -32,7 +32,9 @@ class DailyTrades extends StatelessWidget {
                     ),
                     Spacer(),
                     Text(
-                      DateFormat('dd/MM/yyyy').format(DateTime.now()).toString(),
+                      DateFormat('dd/MM/yyyy')
+                          .format(DateTime.now())
+                          .toString(),
                       style: TextStyle(
                         color: Colors.black38,
                         fontSize: 18,
@@ -44,12 +46,12 @@ class DailyTrades extends StatelessWidget {
             ),
             DailyTradesCLV(
               Daily_trades1,
-              255,
+              295,
               'ARKG - GENOMIC REVOLUTION ETF',
             ),
             DailyTradesCLV(
               Daily_trades2,
-              340,
+              365,
               'ARKQ - AUTONOMOUS TECHNOLOGY & ROBOTICS ETF*',
             ),
           ],
