@@ -49,86 +49,93 @@ class _LabelOneState extends State<LabelOne> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        decoration: BoxDecoration(color: Color(0xFFF2F2F7)),
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Introduction(300),
-                Positioned(
-                  left: MediaQuery.of(context).size.width * 0.075,
-                  bottom: -7,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.85,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
-                      ),
-                    ),
-                    child: Column(
-                      children: [
-                        selectContainer(
-                          'ARK\'s Active ETFs',
-                          'Actively Managed Innovation ETFs',
-                        ),
-                        Divider(
-                          thickness: 0.5,
-                          color: Colors.grey,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('ARK - Funds'),
+        actions: [IconButton(icon: Icon(Icons.search), onPressed: null)],
+        backgroundColor: Color.fromRGBO(247, 247, 247, 1),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(color: Color(0xFFF2F2F7)),
+          child: Column(
+            children: [
+              Stack(
                 children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.85,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(12),
-                        bottomRight: Radius.circular(12),
+                  Introduction(300),
+                  Positioned(
+                    left: MediaQuery.of(context).size.width * 0.075,
+                    bottom: -7,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.85,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12),
+                          topRight: Radius.circular(12),
+                        ),
                       ),
-                    ),
-                    child: CustomListView(DUMMY_CATEGORIES1, 335),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.85,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      children: [
-                        selectContainer(
-                          'ARK\'s Index ETFs',
-                          'Indexed Innovation ETFs',
-                        ),
-                        Divider(
-                          thickness: 0.5,
-                          color: Colors.grey,
-                        ),
-                        CustomListView(DUMMY_CATEGORIES2, 137),
-                      ],
+                      child: Column(
+                        children: [
+                          selectContainer(
+                            'ARK\'s Active ETFs',
+                            'Actively Managed Innovation ETFs',
+                          ),
+                          Divider(
+                            thickness: 0.5,
+                            color: Colors.grey,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-          ],
+              Container(
+                child: Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.85,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(12),
+                          bottomRight: Radius.circular(12),
+                        ),
+                      ),
+                      child: CustomListView(DUMMY_CATEGORIES1, 335),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.85,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        children: [
+                          selectContainer(
+                            'ARK\'s Index ETFs',
+                            'Indexed Innovation ETFs',
+                          ),
+                          Divider(
+                            thickness: 0.5,
+                            color: Colors.grey,
+                          ),
+                          CustomListView(DUMMY_CATEGORIES2, 137),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
         ),
       ),
     );

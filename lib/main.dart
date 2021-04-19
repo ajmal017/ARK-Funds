@@ -1,5 +1,6 @@
 import 'package:arkfundsapp/screens/daily_trade_item.dart';
 import 'package:arkfundsapp/screens/daily_trades.dart';
+import 'package:arkfundsapp/screens/label1.dart';
 import 'package:arkfundsapp/screens/performance.dart';
 import 'package:arkfundsapp/screens/fund_details_screen.dart';
 import 'package:arkfundsapp/screens/fund_documents.dart';
@@ -52,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => BottomTabBar(),
+        '/': (ctx) => LabelOne(),
         EtfDetailScreen.routeName: (ctx) => EtfDetailScreen(),
         DetailFundDescription.routeName: (ctx) => DetailFundDescription(),
         FundDetailsScreen.routeName: (ctx) => FundDetailsScreen(),
