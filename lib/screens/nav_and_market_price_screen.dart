@@ -12,8 +12,9 @@ class NavAndMarketPrice extends StatefulWidget {
 }
 
 class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
-  DateTime _selectedDate;
-  void _presentDatePicker(BuildContext context) {
+  DateTime _fromSelectedDate;
+  DateTime _toSelectedDate;
+  void _presentDatePicker(BuildContext context, String dateType) {
     showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -24,10 +25,14 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         return;
       }
       setState(() {
-        _selectedDate = pickedDate;
+        if(dateType == "from") {
+          _fromSelectedDate = pickedDate;
+        } else {
+          _toSelectedDate = pickedDate;
+        }
       });
     });
-    print(_selectedDate);
+    print(_fromSelectedDate);
   }
 
   @override
@@ -102,20 +107,20 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
               child: Row(
                 children: [
                   FlatButton(
-                    onPressed: () => _presentDatePicker(context),
+                    onPressed: () => _presentDatePicker(context,"from"),
                     child: Text(
-                      _selectedDate == null
+                      _fromSelectedDate == null
                           ? 'from'
-                          : "from : ${DateFormat.yMd().format(_selectedDate).toString()}",
+                          : "from : ${DateFormat.yMd().format(_fromSelectedDate).toString()}",
                     ),
                   ),
                   Icon(Icons.arrow_forward),
                   FlatButton(
-                    onPressed: () => _presentDatePicker(context),
+                    onPressed: () => _presentDatePicker(context,"to"),
                     child: Text(
-                      _selectedDate == null
+                      _toSelectedDate == null
                           ? 'to'
-                          : "to : ${DateFormat.yMd().format(_selectedDate).toString()}",
+                          : "to : ${DateFormat.yMd().format(_toSelectedDate).toString()}",
                     ),
                   ),
                 ],
