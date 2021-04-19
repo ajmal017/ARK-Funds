@@ -32,6 +32,8 @@ class FundDocuments extends StatelessWidget {
       body: InkWell(
         onTap: null,
         child: ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           itemBuilder: (ctx, index) => Container(
             margin: EdgeInsets.only(
               top: 12,

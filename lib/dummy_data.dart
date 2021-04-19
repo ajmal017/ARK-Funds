@@ -446,3 +446,123 @@ final DataMarket = {
     'NAV': 126.54,
   },
 };
+
+const PremiumDiscountData = const [
+  {
+    'title': 'As of Date',
+    'detail': '3/24/2021',
+  },
+  {
+    'title': 'NAV',
+    'detail': '\$114.84',
+  },
+  {
+    'title': '4PM Mid-Point',
+    'detail': '\$114.36',
+  },
+  {
+    'title': 'Difference',
+    'detail': '\$0.07',
+  },
+  {
+    'title': 'Premium/Discount',
+    'detail': '0.06%',
+  },
+];
+
+final PremiumDiscountChartData = {
+  {
+    'date': DateTime.parse('2021-04-01'),
+    'value': -0.06,
+  },
+  {
+    'date': DateTime.parse('2021-04-05'),
+    'value': 0.01,
+  },
+  {
+    'date': DateTime.parse('2021-04-06'),
+    'value': 0.08,
+  },
+  {
+    'date': DateTime.parse('2021-04-07'),
+    'value': 0.00,
+  },
+  {
+    'date': DateTime.parse('2021-04-08'),
+    'value': 0.00,
+  },
+  {
+    'date': DateTime.parse('2021-04-09'),
+    'value': -0.05,
+  },
+  {
+    'date': DateTime.parse('2021-04-12'),
+    'value': -0.05,
+  },
+  {
+    'date': DateTime.parse('2021-04-13'),
+    'value': 0.11,
+  },
+  {
+    'date': DateTime.parse('2021-04-14'),
+    'value': 0.06,
+  },
+  {
+    'date': DateTime.parse('2021-04-15'),
+    'value': 0.02,
+  },
+  {
+    'date': DateTime.parse('2021-04-16'),
+    'value': 0.00,
+  },
+};
+
+const HistoricalData = const [
+  {
+    'title': 'Greatest Premium',
+    'detail': '0.13% (2/8/2021)',
+  },
+  {
+    'title': 'Greatest Discount',
+    'detail': '-0.10% (3/8/2021)',
+  },
+];
+
+const NoOfDaysAt = const [
+  {
+    'title': 'Premium',
+    'detail': '37',
+  },
+  {
+    'title': 'NAV',
+    'detail': '6',
+  },
+  {
+    'title': 'Discount',
+    'detail': '17',
+  },
+];
+
+const DaysWithinPercentOfNav = const [
+  {
+    'title': 'Percent of Days ± 0.5% of NAV',
+    'detail': '100%',
+  },
+  {
+    'title': 'Number of Days ± 0.5% of NAV',
+    'detail': '60%',
+  },
+];
+
+const DescriptionForPD = const [
+  'The Premium/Discount chart shows the difference between the daily market price'+
+  'of the Fund’s shares and the Fund’s net asset value (“NAV”). The daily market '+
+  'price is calculated using the mid-point between the highest bid and the lowest '+
+  'offer on the listing exchange, as of the time that the Fund’s NAV is calculated '+
+  '(usually 4:00 pm Eastern time). The vertical axis of the chart shows the premium '+
+  'or discount of the Mid-Point price as a percentage of the NAV. The horizontal'+
+  ' axis shows the number of trading days covered by the chart, and each bar in '+
+  'the chart demonstrates how many days the Fund traded within the given premium/discount '+
+  'range. The data presented in the chart and table above represent past performance '+
+  'and cannot be used to predict future results.'
+];
