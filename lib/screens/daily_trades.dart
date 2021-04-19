@@ -47,12 +47,12 @@ class DailyTrades extends StatelessWidget {
               ),
               DailyTradesCLV(
                 Daily_trades1,
-                295,
+                320,
                 'ARKG - GENOMIC REVOLUTION ETF',
               ),
               DailyTradesCLV(
                 Daily_trades2,
-                365,
+                390,
                 'ARKQ - AUTONOMOUS TECHNOLOGY & ROBOTICS ETF*',
               ),
             ],

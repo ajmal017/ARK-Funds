@@ -103,7 +103,7 @@ class _LabelOneState extends State<LabelOne> {
                           bottomRight: Radius.circular(12),
                         ),
                       ),
-                      child: CustomListView(DUMMY_CATEGORIES1, 335),
+                      child: CustomListView(DUMMY_CATEGORIES1, 375),
                     ),
                     SizedBox(
                       height: 20,
