@@ -66,8 +66,8 @@ class DailyTradesCLV extends StatelessWidget {
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
-                                  //maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  // overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                               Text(
