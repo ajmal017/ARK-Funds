@@ -12,8 +12,9 @@ class NavAndMarketPrice extends StatefulWidget {
 }
 
 class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
-  DateTime _fromSelectedDate;
-  DateTime _toSelectedDate;
+  DateTime _fromSelectedDate = DateTime(
+      DateTime.now().year, DateTime.now().month - 1, DateTime.now().day);
+  DateTime _toSelectedDate = DateTime.now();
   void _presentDatePicker(BuildContext context, String dateType) {
     showDatePicker(
       context: context,
@@ -25,7 +26,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         return;
       }
       setState(() {
-        if(dateType == "from") {
+        if (dateType == "from") {
           _fromSelectedDate = pickedDate;
         } else {
           _toSelectedDate = pickedDate;
@@ -33,6 +34,22 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       });
     });
     print(_fromSelectedDate);
+  }
+
+  void _setDateForOneMonth() {
+    setState(() {
+      _toSelectedDate = DateTime.now();
+      _fromSelectedDate = DateTime(
+          DateTime.now().year, DateTime.now().month - 1, DateTime.now().day);
+    });
+  }
+
+  void _setDateForThreeMonth() {
+    setState(() {
+      _toSelectedDate = DateTime.now();
+      _fromSelectedDate = DateTime(
+          DateTime.now().year, DateTime.now().month - 3, DateTime.now().day);
+    });
   }
 
   @override
@@ -107,7 +124,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
               child: Row(
                 children: [
                   FlatButton(
-                    onPressed: () => _presentDatePicker(context,"from"),
+                    onPressed: () => _presentDatePicker(context, "from"),
                     child: Text(
                       _fromSelectedDate == null
                           ? 'from'
@@ -116,7 +133,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                   ),
                   Icon(Icons.arrow_forward),
                   FlatButton(
-                    onPressed: () => _presentDatePicker(context,"to"),
+                    onPressed: () => _presentDatePicker(context, "to"),
                     child: Text(
                       _toSelectedDate == null
                           ? 'to'
@@ -135,7 +152,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                   ButtonTheme(
                     minWidth: 15,
                     child: RaisedButton(
-                      onPressed: null,
+                      onPressed: _setDateForOneMonth,
                       child: Text('1m'),
                       color: Color(0xFFF2F2F7),
                     ),
@@ -143,7 +160,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                   ButtonTheme(
                     minWidth: 15,
                     child: RaisedButton(
-                      onPressed: null,
+                      onPressed: _setDateForThreeMonth,
                       child: Text('3m'),
                       color: Color(0xFFF2F2F7),
                     ),
