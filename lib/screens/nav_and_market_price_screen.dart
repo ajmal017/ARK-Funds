@@ -52,6 +52,36 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
     });
   }
 
+  void _setDateForSixMonth() {
+    setState(() {
+      _toSelectedDate = DateTime.now();
+      _fromSelectedDate = DateTime(
+          DateTime.now().year, DateTime.now().month - 6, DateTime.now().day);
+    });
+  }
+
+  void _setDateForYTD() {
+    setState(() {
+      _toSelectedDate = DateTime.now();
+      _fromSelectedDate = DateTime(DateTime.now().year, 1, 1);
+    });
+  }
+
+  void _setDateForOneYear() {
+    setState(() {
+      _toSelectedDate = DateTime.now();
+      _fromSelectedDate = DateTime(
+          DateTime.now().year - 1, DateTime.now().month, DateTime.now().day);
+    });
+  }
+
+  void _setDateForAll() {
+    setState(() {
+      _toSelectedDate = DateTime.now();
+      _fromSelectedDate = DateTime(2014, 10, 27);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final etfDetails =
@@ -128,7 +158,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     child: Text(
                       _fromSelectedDate == null
                           ? 'from'
-                          : "from : ${DateFormat.yMd().format(_fromSelectedDate).toString()}",
+                          : "from : ${DateFormat.yMMMd().format(_fromSelectedDate).toString()}",
                     ),
                   ),
                   Icon(Icons.arrow_forward),
@@ -137,7 +167,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     child: Text(
                       _toSelectedDate == null
                           ? 'to'
-                          : "to : ${DateFormat.yMd().format(_toSelectedDate).toString()}",
+                          : "to : ${DateFormat.yMMMd().format(_toSelectedDate).toString()}",
                     ),
                   ),
                 ],
@@ -168,7 +198,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                   ButtonTheme(
                     minWidth: 15,
                     child: RaisedButton(
-                      onPressed: null,
+                      onPressed: _setDateForSixMonth,
                       child: Text('6m'),
                       color: Color(0xFFF2F2F7),
                     ),
@@ -176,7 +206,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                   ButtonTheme(
                     minWidth: 15,
                     child: RaisedButton(
-                      onPressed: null,
+                      onPressed: _setDateForYTD,
                       child: Text('YTD'),
                       color: Color(0xFFF2F2F7),
                     ),
@@ -184,7 +214,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                   ButtonTheme(
                     minWidth: 15,
                     child: RaisedButton(
-                      onPressed: null,
+                      onPressed: _setDateForOneYear,
                       child: Text('1y'),
                       color: Color(0xFFF2F2F7),
                     ),
@@ -192,7 +222,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                   ButtonTheme(
                     minWidth: 15,
                     child: RaisedButton(
-                      onPressed: null,
+                      onPressed: _setDateForAll,
                       child: Text('All'),
                       color: Color(0xFFF2F2F7),
                     ),
