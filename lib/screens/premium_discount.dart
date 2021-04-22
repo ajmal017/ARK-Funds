@@ -195,7 +195,9 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
               width: MediaQuery.of(context).size.width,
               height: 320,
               padding: EdgeInsets.all(15),
-              child: PremiumDiscountChart(
+              child:
+                  // PremiumDiscountChart(),
+                  PremiumDiscountChart(
                 PremiumDiscount._createSampleData(),
                 // Disable animations for image tests.
                 animate: false,

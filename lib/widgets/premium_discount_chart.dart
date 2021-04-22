@@ -1,6 +1,18 @@
+// import 'package:arkfundsapp/dummy_data.dart';
+// import 'package:intl/intl.dart';
+// import 'package:syncfusion_flutter_charts/charts.dart';
+// 
 import 'package:charts_flutter/flutter.dart' as charts;
-
 import 'package:flutter/material.dart';
+
+
+/// Sample time series data type.
+class PremiumDiscountModel {
+  final DateTime date;
+  final double value;
+
+  PremiumDiscountModel(this.date, this.value);
+}
 
 class PremiumDiscountChart extends StatelessWidget {
   final List<charts.Series> seriesList;
@@ -49,10 +61,62 @@ class PremiumDiscountChart extends StatelessWidget {
   }
 }
 
-/// Sample time series data type.
-class PremiumDiscountModel {
-  final DateTime date;
-  final double value;
+// class PremiumDiscountChart extends StatefulWidget {
+//   @override
+//   _PremiumDiscountChartState createState() => _PremiumDiscountChartState();
+// }
 
-  PremiumDiscountModel(this.date, this.value);
-}
+// class _PremiumDiscountChartState extends State<PremiumDiscountChart> {
+//   List<PremiumDiscountModel> _chartData;
+//   TooltipBehavior _tooltipBehavior;
+
+//   @override
+//   void initState() {
+//     _chartData = getChartData();
+//     _tooltipBehavior = TooltipBehavior(enable: true);
+//     super.initState();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Scaffold(
+//         body: SfCartesianChart(
+//           // title: ChartTitle(text: 'Yearly sales analysis'),
+//           // legend: Legend(isVisible: true),
+//           tooltipBehavior: _tooltipBehavior,
+//           series: <ChartSeries>[
+//             LineSeries<PremiumDiscountModel, int>(
+//               // name: 'Sales',
+//               dataSource: _chartData,
+//               xValueMapper: (PremiumDiscountModel sales, _) => DateFormat.Md().format(sales.date).toString(),
+//               yValueMapper: (PremiumDiscountModel sales, _) => sales.value,
+//               dataLabelSettings: DataLabelSettings(isVisible: false),
+//               enableTooltip: true,
+//             )
+//           ],
+//           primaryXAxis: DateTimeAxis(
+//             edgeLabelPlacement: EdgeLabelPlacement.shift,
+//           ),
+//           primaryYAxis: NumericAxis(
+//             labelFormat: '{value}%',
+//             minimum: -2,
+//             maximum: 2,
+//             interval: 0.5,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   List<PremiumDiscountModel> getChartData() {
+//     List<PremiumDiscountModel> data1 = [];
+//     var index = 0;
+//     for (var item in PremiumDiscountChartData) {
+//       data1.insert(index++, PremiumDiscountModel(item['date'], item['value']));
+//     }
+//     return data1;
+//   }
+// }
+
+

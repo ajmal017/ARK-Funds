@@ -10,7 +10,7 @@ class Introduction extends StatelessWidget {
     return Container(
       height: flexInput,
       width: double.infinity,
-      decoration: BoxDecoration(color: Color(0xff1b7da7)),
+      decoration: BoxDecoration(color: Color(0xFF6951CC)),
       padding: const EdgeInsets.symmetric(vertical: 15),
       child: Center(
         child: Column(
@@ -51,7 +51,8 @@ class Introduction extends StatelessWidget {
               height: 40,
             ),
             InkWell(
-              onTap: () => Navigator.of(context).pushNamed(DailyTrades.routeName),
+              onTap: () =>
+                  Navigator.of(context).pushNamed(DailyTrades.routeName),
               child: Container(
                 padding: EdgeInsets.only(
                   left: 10,
@@ -60,7 +61,7 @@ class Introduction extends StatelessWidget {
                 ),
                 width: MediaQuery.of(context).size.width * 0.85,
                 decoration: BoxDecoration(
-                    color: Color(0xFF6CBABD),
+                    color: Color(0xFF30169F),
                     borderRadius: BorderRadius.circular(12)),
                 child: Row(
                   children: [

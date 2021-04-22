@@ -329,7 +329,7 @@ const HoldingDataAttributes = const [
   },
 ];
 
-final DataMarket = {
+final DataMarket = [
   {
     'date': DateTime.parse('2021-03-15'),
     'market': 128.88,
@@ -445,7 +445,7 @@ final DataMarket = {
     'market': 126.62,
     'NAV': 126.54,
   },
-};
+];
 
 const PremiumDiscountData = const [
   {

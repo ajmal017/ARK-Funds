@@ -280,6 +280,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         domainFn: (TimeSeriesSales sales, _) => sales.time,
         measureFn: (TimeSeriesSales sales, _) => sales.sales,
         data: data1,
+        
       ),
       new charts.Series<TimeSeriesSales, DateTime>(
         id: 'Sales2',
