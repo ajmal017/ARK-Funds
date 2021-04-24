@@ -60,7 +60,7 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
   }
 
   Widget buildContainer(String text1, String text2, List<Category> dummyList,
-      double flexInput, int index) {
+    int index) {
     return Column(
       children: [
         Container(
@@ -81,7 +81,7 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
                   text1,
                   text2,
                 ),
-              CustomListView(dummyList, flexInput),
+              CustomListView(dummyList),
             ],
           ),
         ),
@@ -97,14 +97,12 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
     List<Widget> buildContainers = [];
     int i = 0;
     List dummyList = [DUMMY_CATEGORIES1, DUMMY_CATEGORIES2];
-    List<double> sizes = [350, 137];
     for (i = 0; i < funds.length; i++) {
       buildContainers.add(
         buildContainer(
           funds[i].name,
           funds[i].description,
           dummyList[i],
-          sizes[i],
           i,
         ),
       );

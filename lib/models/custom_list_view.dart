@@ -4,9 +4,8 @@ import 'category.dart';
 
 class CustomListView extends StatelessWidget {
   final List<Category> dummyList;
-  final double flexInput;
 
-  CustomListView(this.dummyList, this.flexInput);
+  CustomListView(this.dummyList);
 
   void selectEtf(BuildContext context, String id) {
     Navigator.of(context).pushNamed(EtfDetailScreen.routeName, arguments: id);
@@ -14,23 +13,21 @@ class CustomListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: flexInput,
+    return Container(
+      padding: EdgeInsets.only(right: 12),
       child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (ctx, index) {
           return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               InkWell(
                 onTap: () => selectEtf(context, dummyList[index].id),
                 child: Container(
-                  margin: EdgeInsets.zero,
                   width: MediaQuery.of(context).size.width * 0.9,
                   padding: EdgeInsets.only(
                     left: 12,
-                    right: 8,
                     top: 8,
                     bottom: 12,
                   ),
@@ -64,6 +61,7 @@ class CustomListView extends StatelessWidget {
                           ),
                         ],
                       ),
+                      Spacer(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
