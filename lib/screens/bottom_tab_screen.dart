@@ -1,4 +1,4 @@
-import '../screens/label1.dart';
+import 'fund_group_screen.dart';
 import '../screens/label2.dart';
 import '../screens/label3.dart';
 import '../screens/label4.dart';
@@ -23,7 +23,7 @@ class _BottomTabBarState extends State<BottomTabBar> {
   @override
   void initState() {
     _pages = [
-      {'page': LabelOne(), 'title': 'ARK - Funds'},
+      {'page': FundGroupsScreen(), 'title': 'ARK - Funds'},
       {'page': LabelTwo(), 'title': 'Label 2'},
       {'page': LabelThree(), 'title': 'Label 3'},
       {'page': LabelFour(), 'title': 'Label 4'},
