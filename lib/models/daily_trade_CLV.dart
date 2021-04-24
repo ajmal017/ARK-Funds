@@ -10,8 +10,7 @@ class DailyTradesCLV extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: flexInput,
+    return Container(
       child: Column(
         children: [
           Container(

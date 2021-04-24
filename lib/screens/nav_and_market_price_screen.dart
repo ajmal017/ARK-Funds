@@ -114,8 +114,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.54,
+            Container(
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -280,7 +279,6 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         domainFn: (TimeSeriesSales sales, _) => sales.time,
         measureFn: (TimeSeriesSales sales, _) => sales.sales,
         data: data1,
-        
       ),
       new charts.Series<TimeSeriesSales, DateTime>(
         id: 'Sales2',

@@ -20,8 +20,7 @@ class HoldingsModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.width,
+    return Container(
       child: Column(
         children: [
           ListView.builder(
