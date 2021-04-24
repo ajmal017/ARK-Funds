@@ -141,10 +141,7 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
               thickness: 0.5,
               color: Colors.grey,
             ),
-            SizedBox(
-              height: 305,
-              child: listViewBulder(PremiumDiscountData),
-            ),
+            listViewBulder(PremiumDiscountData),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
@@ -204,22 +201,12 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
               ),
             ),
             buildContainer('HISTORICAL DATA'),
-            SizedBox(
-              height: 112,
-              child: listViewBulder(HistoricalData),
-            ),
+            listViewBulder(HistoricalData),
             buildContainer('NUMBER OF DAYS AT'),
-            SizedBox(
-              height: 168,
-              child: listViewBulder(NoOfDaysAt),
-            ),
+            listViewBulder(NoOfDaysAt),
             buildContainer('DAYS WITHIN PERCENT OF NAV'),
-            SizedBox(
-              height: 112,
-              child: listViewBulder(DaysWithinPercentOfNav),
-            ),
+            listViewBulder(DaysWithinPercentOfNav),
             Container(
-              height: 300,
               padding: EdgeInsets.all(20),
               color: Color(0xfff2f2f7),
               child: Text(

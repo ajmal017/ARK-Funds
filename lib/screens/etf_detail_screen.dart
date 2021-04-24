@@ -15,7 +15,8 @@ class _EtfDetailScreenState extends State<EtfDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final etfId = ModalRoute.of(context).settings.arguments as String;
-    final selectedEtf = (DUMMY_CATEGORIES1 + DUMMY_CATEGORIES2).firstWhere((etf) => etf.id == etfId);
+    final selectedEtf = (DUMMY_CATEGORIES1 + DUMMY_CATEGORIES2)
+        .firstWhere((etf) => etf.id == etfId);
     return Scaffold(
       appBar: AppBar(
         title: Text(selectedEtf.title),
@@ -24,16 +25,10 @@ class _EtfDetailScreenState extends State<EtfDetailScreen> {
       body: Container(
         child: Column(
           children: [
-            SizedBox(
-              height: 186,
-              child: FundDescription(
-                etfTitle: selectedEtf.title,
-              ),
+            FundDescription(
+              etfTitle: selectedEtf.title,
             ),
-            SizedBox(
-              height: 400,
-              child: CustomListViewEtf(selectedEtf.id,selectedEtf.subtitle),
-            ),
+            CustomListViewEtf(selectedEtf.id, selectedEtf.subtitle),
           ],
         ),
       ),

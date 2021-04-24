@@ -34,6 +34,8 @@ class CustomListViewEtf extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         itemBuilder: (ctx, index) => InkWell(
           onTap: () => Navigator.of(context).pushNamed(navigators[index],
               arguments: {'id': id, 'title': DUMMY_CATEGORIES3[index]}),
