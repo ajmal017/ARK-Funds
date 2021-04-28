@@ -1,6 +1,7 @@
 import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/screens/daily_trade_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 class DailyTradesCLV extends StatelessWidget {
   final List<Category> dummyList;
@@ -82,7 +83,7 @@ class DailyTradesCLV extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
-                                '\$' + dummyList[index].amount,
+                                FlutterMoneyFormatter(amount: dummyList[index].amount).output.compactSymbolOnLeft,
                                 style: TextStyle(fontSize: 17),
                               ),
                               Icon(Icons.arrow_forward_ios),

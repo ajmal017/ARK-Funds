@@ -1,3 +1,5 @@
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
+
 import '../screens/etf_detail_screen.dart';
 import 'package:flutter/material.dart';
 import '../providers/category.dart';
@@ -7,8 +9,8 @@ class CustomListView extends StatelessWidget {
 
   CustomListView(this.dummyList);
 
-  void selectEtf(BuildContext context, String id) {
-    Navigator.of(context).pushNamed(EtfDetailScreen.routeName, arguments: id);
+  void selectEtf(BuildContext context, Category listItem) {
+    Navigator.of(context).pushNamed(EtfDetailScreen.routeName, arguments: listItem);
   }
 
   @override
@@ -23,7 +25,7 @@ class CustomListView extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               InkWell(
-                onTap: () => selectEtf(context, dummyList[index].id),
+                onTap: () => selectEtf(context, dummyList[index]),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.9,
                   padding: EdgeInsets.only(
@@ -65,7 +67,7 @@ class CustomListView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            '\$' + dummyList[index].amount,
+                             FlutterMoneyFormatter(amount: dummyList[index].amount).output.compactSymbolOnLeft,
                             style: TextStyle(fontSize: 17),
                           ),
                           Icon(

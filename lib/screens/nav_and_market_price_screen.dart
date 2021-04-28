@@ -1,3 +1,4 @@
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/widgets/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -100,12 +101,9 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
   @override
   Widget build(BuildContext context) {
     final etfDetails =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
-    final etfId = etfDetails['id'];
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
-    final selectedEtf = (DUMMY_CATEGORIES1 + DUMMY_CATEGORIES2)
-        .firstWhere((etf) => etf.id == etfId);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(fundTitle),

@@ -1,3 +1,5 @@
+import 'package:arkfundsapp/providers/category.dart';
+
 import '../dummy_data.dart';
 
 import '../widgets/fund_description.dart';
@@ -14,21 +16,19 @@ class EtfDetailScreen extends StatefulWidget {
 class _EtfDetailScreenState extends State<EtfDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final etfId = ModalRoute.of(context).settings.arguments as String;
-    final selectedEtf = (DUMMY_CATEGORIES1 + DUMMY_CATEGORIES2)
-        .firstWhere((etf) => etf.id == etfId);
+    final etfListItem = ModalRoute.of(context).settings.arguments as Category;
     return Scaffold(
       appBar: AppBar(
-        title: Text(selectedEtf.title),
+        title: Text(etfListItem.title),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: Container(
         child: Column(
           children: [
             FundDescription(
-              etfTitle: selectedEtf.title,
+              etfTitle: etfListItem.title,
             ),
-            CustomListViewEtf(selectedEtf.id, selectedEtf.subtitle),
+            CustomListViewEtf(etfListItem, etfListItem.subtitle),
           ],
         ),
       ),

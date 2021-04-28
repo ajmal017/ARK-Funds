@@ -1,4 +1,5 @@
 import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/intro.dart';
 
 import '../providers/fund_groups.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +95,6 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
   List<Widget> _getBuildContainer() {
     final funds = Provider.of<FundGroups>(context).funds;
     final groups = Provider.of<FundProductGroup>(context).groups;
-    print(groups);
     List<Widget> buildContainers = [];
     int i = 0;
     for (i = 0; i < funds.length; i++) {
@@ -112,11 +112,12 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
 
   var _isLoading = false;
   Future<void> fetch() async {
+    await Provider.of<Intro>(context,listen: false).fetchIntro();
     await Provider.of<FundGroups>(context, listen: false).fetchFunds();
-    await Provider.of<FundProductGroup>(context, listen: false)
-        .fetchProducts(1);
-    await Provider.of<FundProductGroup>(context, listen: false)
-        .fetchProducts(2);
+    for(int i=1;i<=2;i++){
+      await Provider.of<FundProductGroup>(context, listen: false)
+        .fetchProducts(i);
+    }
   }
 
   @override

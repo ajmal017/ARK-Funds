@@ -1,3 +1,4 @@
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/screens/performance.dart';
 import 'package:arkfundsapp/screens/fund_details_screen.dart';
 import 'package:arkfundsapp/screens/fund_documents.dart';
@@ -8,9 +9,9 @@ import 'package:arkfundsapp/screens/premium_discount.dart';
 import 'package:flutter/material.dart';
 
 class CustomListViewEtf extends StatelessWidget {
-  final String id;
+  final Category listItem;
   final String ticker;
-  CustomListViewEtf(this.id, this.ticker);
+  CustomListViewEtf(this.listItem, this.ticker);
 
   final navigators = [
     FundDetailsScreen.routeName,
@@ -38,7 +39,7 @@ class CustomListViewEtf extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (ctx, index) => InkWell(
           onTap: () => Navigator.of(context).pushNamed(navigators[index],
-              arguments: {'id': id, 'title': DUMMY_CATEGORIES3[index]}),
+              arguments: {'listItem': listItem, 'title': DUMMY_CATEGORIES3[index]}),
           child: Container(
             padding: EdgeInsets.only(
               top: 16,
