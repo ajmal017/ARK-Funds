@@ -1,6 +1,6 @@
 import 'package:arkfundsapp/screens/holdings_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'category.dart';
+import '../providers/category.dart';
 
 class HoldingsModel extends StatelessWidget {
   final List<Category> dummyList;

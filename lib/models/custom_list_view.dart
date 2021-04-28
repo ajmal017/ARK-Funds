@@ -1,6 +1,6 @@
 import '../screens/etf_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'category.dart';
+import '../providers/category.dart';
 
 class CustomListView extends StatelessWidget {
   final List<Category> dummyList;
@@ -44,7 +44,7 @@ class CustomListView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.5,
+                            width: MediaQuery.of(context).size.width * 0.57,
                             child: Text(
                               dummyList[index].title,
                               style: TextStyle(
@@ -52,7 +52,6 @@ class CustomListView extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                               maxLines: 2,
-                              // overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           Text(

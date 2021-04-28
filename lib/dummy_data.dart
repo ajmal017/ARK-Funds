@@ -1,4 +1,4 @@
-import './models/category.dart';
+import 'providers/category.dart';
 
 final Daily_trades1 = [
   Category(

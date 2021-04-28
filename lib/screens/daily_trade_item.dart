@@ -1,4 +1,4 @@
-import 'package:arkfundsapp/models/category.dart';
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../dummy_data.dart';

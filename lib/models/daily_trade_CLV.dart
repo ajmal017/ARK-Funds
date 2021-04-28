@@ -1,4 +1,4 @@
-import 'package:arkfundsapp/models/category.dart';
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/screens/daily_trade_item.dart';
 import 'package:flutter/material.dart';
 
