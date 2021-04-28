@@ -8,7 +8,7 @@ class HoldingsModel extends StatelessWidget {
 
   HoldingsModel(this.dummyList, this.date);
 
-  void selectHolding(BuildContext context, String id) {
+  void selectHolding(BuildContext context, int id) {
     Navigator.of(context).pushNamed(
       HoldingsDetailScreen.routeName,
       arguments: {

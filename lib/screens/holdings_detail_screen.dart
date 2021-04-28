@@ -11,7 +11,7 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final holding =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     final holdingId = holding['id'];
     final holdingDate = holding['date'];
     final selectedHolding =

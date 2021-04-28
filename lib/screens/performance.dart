@@ -1,3 +1,4 @@
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:flutter/material.dart';
 
 import '../dummy_data.dart';
@@ -153,11 +154,9 @@ class ArkkPerformance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final etfDetails =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
-    final etfId = etfDetails['id'];
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
-    final selectedEtf = (DUMMY_CATEGORIES1 + DUMMY_CATEGORIES2)
-        .firstWhere((etf) => etf.id == etfId);
     return Scaffold(
       appBar: AppBar(
         title: Text(fundTitle),
@@ -178,10 +177,15 @@ class ArkkPerformance extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
-                  Text(
-                    selectedEtf.title,
-                    style: TextStyle(
-                      fontSize: 17,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      etfListItem.title,
+                      style: TextStyle(
+                        fontSize: 17,
+                      ),
+                      maxLines: 2,
+                      textAlign: TextAlign.right,
                     ),
                   ),
                 ],

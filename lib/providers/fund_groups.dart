@@ -25,7 +25,6 @@ class FundGroups with ChangeNotifier {
       if (extractedData == null) {
         return;
       }
-      print(extractedData);
       final fundGroups = extractedData['fundGroups'] as List;
       _funds = fundGroups.map((fundGroup) {
         return Funds(

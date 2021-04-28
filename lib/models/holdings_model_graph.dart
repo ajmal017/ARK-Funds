@@ -8,7 +8,7 @@ class HoldingsModelGraph extends StatelessWidget {
 
   HoldingsModelGraph(this.dummyList, this.date);
 
-  void selectHolding(BuildContext context, String id) {
+  void selectHolding(BuildContext context, int id) {
     Navigator.of(context).pushNamed(
       HoldingsDetailScreen.routeName,
       arguments: {
@@ -68,7 +68,7 @@ class HoldingsModelGraph extends StatelessWidget {
                             height: 15,
                             width: MediaQuery.of(context).size.width *
                                 0.35 *
-                                (double.parse(dummyList[index].amount) / 100),
+                                (dummyList[index].amount / 100),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.blue,

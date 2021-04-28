@@ -1,3 +1,4 @@
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/widgets/premium_discount_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -15,7 +16,6 @@ class PremiumDiscount extends StatefulWidget {
     for (var item in PremiumDiscountChartData) {
       data1.insert(index++, PremiumDiscountModel(item['date'], item['value']));
     }
-    print(data1);
     return [
       new charts.Series<PremiumDiscountModel, DateTime>(
         id: 'Sales1',
@@ -103,11 +103,9 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
   @override
   Widget build(BuildContext context) {
     final etfDetails =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
-    final etfId = etfDetails['id'];
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
-    final selectedEtf = (DUMMY_CATEGORIES1 + DUMMY_CATEGORIES2)
-        .firstWhere((etf) => etf.id == etfId);
     return Scaffold(
       appBar: AppBar(
         title: Text(fundTitle),
@@ -128,10 +126,15 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                     ),
                   ),
                   Spacer(),
-                  Text(
-                    selectedEtf.title,
-                    style: TextStyle(
-                      fontSize: 17,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      etfListItem.title,
+                      style: TextStyle(
+                        fontSize: 17,
+                      ),
+                      maxLines: 2,
+                      textAlign: TextAlign.right,
                     ),
                   ),
                 ],

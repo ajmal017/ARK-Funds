@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 class Category {
-  final String id;
+  final int id;
   final String title;
   final String subtitle;
-  final String amount;
+  final double amount;
 
   Category({
     @required this.id,
@@ -34,32 +34,15 @@ class FundProductGroup with ChangeNotifier {
       final groupProducts = json.decode(response.body) as List;
       if (groupProducts == null) {
         return;
-      }
-      print(groupProducts);
-      _products = groupProducts.map((groupProduct) {
-        print(groupProduct);
-        FlutterMoneyFormatter fmf = FlutterMoneyFormatter(
-            amount: groupProduct['fundDetail']['netAssets'].toDouble());
+      }_products = groupProducts.map((groupProduct) {
         return Category(
-          id: groupProduct['id'].toString(),
+          id: groupProduct['id'],
           title: groupProduct['name'],
           subtitle: groupProduct['fundDetail']['ticker'],
-          amount: (fmf.output.compactSymbolOnLeft).toString(),
+          amount: groupProduct['fundDetail']['netAssets'].toDouble(),
         );
       }).toList();
-      // List<Category> products = [];
-      // for (int i = 0; i < groupProducts.length; i++) {
-      //   FlutterMoneyFormatter fmf = FlutterMoneyFormatter(
-      //       amount: groupProducts[i]['fundDetail']['netAssests']);
-      //   products.add(Category(
-      //     id: groupProducts[i]['id'].toString(),
-      //     title: groupProducts[i]['name'],
-      //     subtitle: groupProducts[i]['fundDetail']['ticker'],
-      //     amount: (fmf.output.compactSymbolOnLeft).toString(),
-      //   ));
-      // }
-      // print(products);
-      groups.insert(groupIndex - 1, _products);
+      _groups.insert(groupIndex - 1, _products);
       notifyListeners();
     } catch (error) {
       throw error;
