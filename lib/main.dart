@@ -1,3 +1,5 @@
+import 'package:arkfundsapp/providers/category.dart';
+
 import './providers/fund_groups.dart';
 import './screens/daily_trade_item.dart';
 import './screens/daily_trades.dart';
@@ -43,16 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context)=>FundGroups()),
+        ChangeNotifierProvider(create: (context)=>FundProductGroup()),
       ],
           child: MaterialApp(
-        title: 'ARK - Funds',
-        // home: Scaffold(
-        //   appBar: AppBar(
-        //     title: Text('ARK - Funds'),
-        //     actions: [IconButton(icon: Icon(Icons.search), onPressed: null)],
-        //   ),
-        // ),
-        debugShowCheckedModeBanner: false,
+        title: 'ARK - Funds',debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.grey,
         ),
