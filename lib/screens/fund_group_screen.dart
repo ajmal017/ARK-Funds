@@ -1,11 +1,10 @@
 import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/providers/fund_total_market_value.dart';
-
-import '../providers/fund_groups.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/custom_list_view.dart';
+import '../providers/fund_groups.dart';
 import '../widgets/intoduction.dart';
 
 class FundGroupsScreen extends StatefulWidget {
@@ -39,14 +38,16 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
                 style: TextStyle(
                   fontSize: 22,
                   color: Colors.black,
+                  fontFamily: 'SF-Pro-Rounded',
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 subtitle,
                 style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                ),
+                    fontSize: 15,
+                    color: Colors.black,
+                    fontFamily: 'SF-Pro-Rounded'),
               ),
             ],
           ),
