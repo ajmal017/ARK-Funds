@@ -3,11 +3,8 @@ import 'package:arkfundsapp/screens/daily_trades.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 import 'package:provider/provider.dart';
-
-
 
 class Introduction extends StatefulWidget {
   final double flexInput;
@@ -33,16 +30,16 @@ class _IntroductionState extends State<Introduction> {
             Text(
               '${DateFormat.yMMMd().format(data.date).toString()}',
               style: TextStyle(
-                fontSize: 12,
-                color: Colors.white,
-              ),
+                  fontSize: 12,
+                  color: Colors.white,
+                  fontFamily: 'SF-Pro-Display'),
             ),
             Text(
               'Total Market Value',
               style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
+                  fontSize: 20,
+                  color: Colors.white,
+                  fontFamily: 'SF-Pro-Display'),
             ),
             SizedBox(
               height: 15,
@@ -52,9 +49,9 @@ class _IntroductionState extends State<Introduction> {
                   .output
                   .compactSymbolOnLeft,
               style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-              ),
+                  fontSize: 30,
+                  color: Colors.white,
+                  fontFamily: 'SF-Pro-Display'),
             ),
             Text(
               data.currentValue - data.previousValue > 0
@@ -76,9 +73,9 @@ class _IntroductionState extends State<Introduction> {
               //         color: Colors.red,
               //       ),
               style: TextStyle(
-                fontSize: 14,
-                color: Colors.white,
-              ),
+                  fontSize: 14,
+                  color: Colors.white,
+                  fontFamily: 'SF-Pro-Display'),
             ),
             SizedBox(
               height: 40,
@@ -103,6 +100,7 @@ class _IntroductionState extends State<Introduction> {
                       style: TextStyle(
                         fontSize: 17,
                         color: Colors.white,
+                        fontFamily: 'SF-Pro-Text',
                       ),
                     ),
                     Spacer(),
@@ -113,6 +111,7 @@ class _IntroductionState extends State<Introduction> {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 17,
+                            fontFamily: 'SF-Pro-Rounded',
                           ),
                         ),
                         IconButton(
