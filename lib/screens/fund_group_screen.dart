@@ -39,6 +39,8 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
                 style: TextStyle(
                   fontSize: 22,
                   color: Colors.black,
+                  fontFamily: 'SF-Pro-Rounded-Bold',
+                  fontWeight: FontWeight.w700,
                 ),
               ),
               Text(
@@ -46,6 +48,7 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.black,
+                  fontFamily: 'SF-Pro-Text',
                 ),
               ),
             ],

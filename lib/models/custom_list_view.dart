@@ -58,7 +58,10 @@ class CustomListView extends StatelessWidget {
                           ),
                           Text(
                             dummyList[index].subtitle,
-                            style: TextStyle(fontSize: 13),
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Color(0xFF4D4D4D),
+                            ),
                           ),
                         ],
                       ),
