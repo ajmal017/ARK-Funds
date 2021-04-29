@@ -45,14 +45,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=>FundGroups()),
-        ChangeNotifierProvider(create: (context)=>FundProductGroup()),
-        ChangeNotifierProvider(create: (context)=>Intro()),
+        ChangeNotifierProvider(create: (context) => FundGroups()),
+        ChangeNotifierProvider(create: (context) => FundProductGroup()),
+        ChangeNotifierProvider(create: (context) => Intro()),
       ],
-          child: MaterialApp(
-        title: 'ARK - Funds',debugShowCheckedModeBanner: false,
+      child: MaterialApp(
+        title: 'ARK - Funds',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.grey,
+          fontFamily: 'SF-Pro-Display',
         ),
         initialRoute: '/',
         routes: {
