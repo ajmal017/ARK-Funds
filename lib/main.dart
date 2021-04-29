@@ -1,3 +1,6 @@
+import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/fund_total_market_value.dart';
+
 import './providers/fund_groups.dart';
 import './screens/daily_trade_item.dart';
 import './screens/daily_trades.dart';
@@ -42,19 +45,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=>FundGroups()),
+        ChangeNotifierProvider(create: (context) => FundGroups()),
+        ChangeNotifierProvider(create: (context) => FundProductGroup()),
+        ChangeNotifierProvider(create: (context) => FundTotalMarketValue()),
       ],
-          child: MaterialApp(
+      child: MaterialApp(
         title: 'ARK - Funds',
-        // home: Scaffold(
-        //   appBar: AppBar(
-        //     title: Text('ARK - Funds'),
-        //     actions: [IconButton(icon: Icon(Icons.search), onPressed: null)],
-        //   ),
-        // ),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.grey,
+          fontFamily: 'SF-Pro-Display',
         ),
         initialRoute: '/',
         routes: {

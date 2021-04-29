@@ -1,3 +1,4 @@
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/widgets/premium_discount_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -15,7 +16,6 @@ class PremiumDiscount extends StatefulWidget {
     for (var item in PremiumDiscountChartData) {
       data1.insert(index++, PremiumDiscountModel(item['date'], item['value']));
     }
-    print(data1);
     return [
       new charts.Series<PremiumDiscountModel, DateTime>(
         id: 'Sales1',
@@ -57,7 +57,7 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'SF-Pro-Text',
                   ),
                 ),
                 Spacer(),
@@ -65,7 +65,8 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                   dummyList[index]['detail'],
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.black,
+                    fontFamily: 'SF-Pro-Text',
+                    color: Color.fromRGBO(0, 0, 0, 0.4),
                   ),
                 ),
               ],
@@ -94,6 +95,7 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
         text,
         style: TextStyle(
           fontSize: 13,
+          fontFamily: 'SF-Pro-Text',
           color: Color.fromRGBO(0, 0, 0, 0.4),
         ),
       ),
@@ -103,14 +105,18 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
   @override
   Widget build(BuildContext context) {
     final etfDetails =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
-    final etfId = etfDetails['id'];
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
-    final selectedEtf = (DUMMY_CATEGORIES1 + DUMMY_CATEGORIES2)
-        .firstWhere((etf) => etf.id == etfId);
     return Scaffold(
       appBar: AppBar(
-        title: Text(fundTitle),
+        title: Text(
+          fundTitle,
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: SingleChildScrollView(
@@ -124,14 +130,21 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                     'Fund Name',
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SF-Pro-Text',
                     ),
                   ),
                   Spacer(),
-                  Text(
-                    selectedEtf.title,
-                    style: TextStyle(
-                      fontSize: 17,
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      etfListItem.title,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontFamily: 'SF-Pro-Text',
+                        color: Color.fromRGBO(0, 0, 0, 0.4),
+                      ),
+                      maxLines: 2,
+                      textAlign: TextAlign.right,
                     ),
                   ),
                 ],
@@ -161,7 +174,12 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Select Time Period'),
+                      Text(
+                        'Select Time Period',
+                        style: TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                        ),
+                      ),
                       DropdownButton(
                         value: _selectedValue,
                         items: [
@@ -172,9 +190,15 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                           '1Q 2021',
                           '2Q 2021'
                         ].map((String value) {
-                          return new DropdownMenuItem<String>(
+                          return DropdownMenuItem<String>(
                             value: value,
-                            child: new Text(value),
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                fontFamily: 'SF-Pro-Text',
+                                color: Color.fromRGBO(0, 0, 0, 0.4),
+                              ),
+                            ),
                           );
                         }).toList(),
                         onChanged: (newValue) {
@@ -212,7 +236,10 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
               child: Text(
                 DescriptionForPD[0],
                 textAlign: TextAlign.left,
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'SF-Pro-Text',
+                ),
               ),
             ),
           ],

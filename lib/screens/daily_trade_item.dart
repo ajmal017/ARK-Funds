@@ -1,4 +1,4 @@
-import 'package:arkfundsapp/models/category.dart';
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../dummy_data.dart';
@@ -35,6 +35,7 @@ class DailyTradeItem extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.black38,
                       fontSize: 18,
+                      fontFamily: 'SF-Pro-Text',
                     ),
                   ),
                 ],
@@ -55,7 +56,8 @@ class DailyTradeItem extends StatelessWidget {
                     dummyList.title,
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'SF-Pro-Text',
                     ),
                   ),
                   Text(
@@ -97,7 +99,8 @@ class DailyTradeItem extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'SF-Pro-Text',
                               ),
                             ),
                             Spacer(),
@@ -106,6 +109,7 @@ class DailyTradeItem extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.black,
+                                fontFamily: 'SF-Pro-Text',
                               ),
                             ),
                           ],

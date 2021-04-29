@@ -1,6 +1,6 @@
 import 'package:arkfundsapp/screens/holdings_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'category.dart';
+import '../providers/category.dart';
 
 class HoldingsModelGraph extends StatelessWidget {
   final List<Category> dummyList;
@@ -8,7 +8,7 @@ class HoldingsModelGraph extends StatelessWidget {
 
   HoldingsModelGraph(this.dummyList, this.date);
 
-  void selectHolding(BuildContext context, String id) {
+  void selectHolding(BuildContext context, int id) {
     Navigator.of(context).pushNamed(
       HoldingsDetailScreen.routeName,
       arguments: {
@@ -46,7 +46,8 @@ class HoldingsModelGraph extends StatelessWidget {
                         dummyList[index].title,
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'SF-Pro-Text',
                         ),
                         maxLines: 2,
                       ),
@@ -68,7 +69,7 @@ class HoldingsModelGraph extends StatelessWidget {
                             height: 15,
                             width: MediaQuery.of(context).size.width *
                                 0.35 *
-                                (double.parse(dummyList[index].amount) / 100),
+                                (dummyList[index].amount / 100),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.blue,

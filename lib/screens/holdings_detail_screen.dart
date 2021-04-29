@@ -11,7 +11,7 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final holding =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     final holdingId = holding['id'];
     final holdingDate = holding['date'];
     final selectedHolding =
@@ -30,6 +30,10 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
             child: Text(
               'AS OF DATE - ' + holdingDate,
               textAlign: TextAlign.left,
+              style: TextStyle(
+                fontFamily: 'SF-Pro-Text',
+                color: Color.fromRGBO(0, 0, 0, 0.4),
+              ),
             ),
           ),
           Container(
@@ -48,7 +52,8 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'SF-Pro-Text',
                   ),
                 ),
                 Text(
@@ -81,12 +86,19 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
                           Text(
                             HoldingDataAttributes[index]['title'],
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'SF-Pro-Text',
                               fontSize: 18,
                             ),
                           ),
                           Spacer(),
-                          Text(HoldingDataAttributes[index]['value']),
+                          Text(
+                            HoldingDataAttributes[index]['value'],
+                            style: TextStyle(
+                              fontFamily: 'SF-Pro-Text',
+                              color: Color.fromRGBO(0, 0, 0, 0.4),
+                            ),
+                          ),
                         ],
                       ),
                       Divider(

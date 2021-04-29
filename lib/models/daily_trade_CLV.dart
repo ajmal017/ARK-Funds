@@ -1,12 +1,12 @@
-import 'package:arkfundsapp/models/category.dart';
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/screens/daily_trade_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 class DailyTradesCLV extends StatelessWidget {
   final List<Category> dummyList;
-  final double flexInput;
   final String dummyTitle;
-  DailyTradesCLV(this.dummyList, this.flexInput, this.dummyTitle);
+  DailyTradesCLV(this.dummyList, this.dummyTitle);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,10 @@ class DailyTradesCLV extends StatelessWidget {
               bottom: 15,
             ),
             color: Color(0xFFF2F2F7),
-            child: Text(dummyTitle),
+            child: Text(
+              dummyTitle,
+              style: TextStyle(fontFamily: 'SF-Pro-Text'),
+            ),
           ),
           ListView.builder(
             shrinkWrap: true,
@@ -32,7 +35,9 @@ class DailyTradesCLV extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   InkWell(
-                    onTap: () => Navigator.of(context).pushNamed(DailyTradeItem.routeName,arguments: dummyList[index]),
+                    onTap: () => Navigator.of(context).pushNamed(
+                        DailyTradeItem.routeName,
+                        arguments: dummyList[index]),
                     child: Container(
                       color: Colors.white,
                       padding: EdgeInsets.only(
@@ -62,9 +67,9 @@ class DailyTradesCLV extends StatelessWidget {
                                 child: Text(
                                   dummyList[index].title,
                                   style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'SF-Pro-Text'),
                                   maxLines: 2,
                                   // overflow: TextOverflow.ellipsis,
                                 ),
@@ -82,8 +87,14 @@ class DailyTradesCLV extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
-                                '\$' + dummyList[index].amount,
-                                style: TextStyle(fontSize: 17),
+                                FlutterMoneyFormatter(
+                                        amount: dummyList[index].amount)
+                                    .output
+                                    .compactSymbolOnLeft,
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontFamily: 'SF-Pro-Text',
+                                ),
                               ),
                               Icon(Icons.arrow_forward_ios),
                             ],

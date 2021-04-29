@@ -1,4 +1,5 @@
-import 'package:arkfundsapp/models/category.dart';
+import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/fund_total_market_value.dart';
 
 import '../providers/fund_groups.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import '../models/custom_list_view.dart';
 import '../widgets/intoduction.dart';
-import '../dummy_data.dart';
 
 class FundGroupsScreen extends StatefulWidget {
   @override
@@ -59,8 +59,8 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
     );
   }
 
-  Widget buildContainer(String text1, String text2, List<Category> dummyList,
-    int index) {
+  Widget buildContainer(
+      String text1, String text2, List<Category> dummyList, int index) {
     return Column(
       children: [
         Container(
@@ -94,15 +94,15 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
 
   List<Widget> _getBuildContainer() {
     final funds = Provider.of<FundGroups>(context).funds;
+    final groups = Provider.of<FundProductGroup>(context).groups;
     List<Widget> buildContainers = [];
     int i = 0;
-    List dummyList = [DUMMY_CATEGORIES1, DUMMY_CATEGORIES2];
     for (i = 0; i < funds.length; i++) {
       buildContainers.add(
         buildContainer(
           funds[i].name,
           funds[i].description,
-          dummyList[i],
+          groups[i],
           i,
         ),
       );
@@ -111,14 +111,27 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
   }
 
   var _isLoading = false;
+  Future<void> fetch() async {
+    await Provider.of<FundTotalMarketValue>(context, listen: false)
+        .fetchIntro();
+    await Provider.of<FundGroups>(context, listen: false).fetchFunds();
+
+    final funds = Provider.of<FundGroups>(context, listen: false).funds;
+    for (int i = 0; i < funds.length; i++) {
+      await Provider.of<FundProductGroup>(context, listen: false)
+          .fetchProducts(funds[i].id);
+    }
+  }
+
   @override
   void initState() {
     _isLoading = true;
-    Provider.of<FundGroups>(context, listen: false).fetchFunds().then((_) {
+    fetch().then((_) {
       setState(() {
         _isLoading = false;
       });
     });
+
     super.initState();
   }
 
@@ -127,7 +140,13 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
     final funds = Provider.of<FundGroups>(context).funds;
     return Scaffold(
       appBar: AppBar(
-        title: Text('ARK - Funds'),
+        title: Text(
+          'ARK - Funds',
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         actions: [
           IconButton(icon: Icon(Icons.search), onPressed: null),
         ],

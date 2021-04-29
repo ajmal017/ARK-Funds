@@ -26,12 +26,12 @@ class FundDescription extends StatelessWidget {
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 18,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'SF-Pro-Text'
               ),
             ),
           ),
           Container(
-            //margin: EdgeInsets.all(8),
             padding: EdgeInsets.all(8),
             child: Text(
               FUND_DESCRIPTION[0],
@@ -40,6 +40,7 @@ class FundDescription extends StatelessWidget {
               maxLines: 4,
               style: TextStyle(
                 fontSize: 18,
+                fontFamily: 'SF-Pro-Text'
               ),
             ),
           ),
