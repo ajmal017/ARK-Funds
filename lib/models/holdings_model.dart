@@ -53,7 +53,8 @@ class HoldingsModel extends StatelessWidget {
                                   dummyList[index].title,
                                   style: TextStyle(
                                     fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'SF-Pro-Text',
                                   ),
                                   maxLines: 2,
                                 ),
@@ -69,7 +70,11 @@ class HoldingsModel extends StatelessWidget {
                             children: [
                               Text(
                                 '${dummyList[index].amount}%',
-                                style: TextStyle(fontSize: 17),
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontFamily: 'SF-Pro-Text',
+                                  color: Color.fromRGBO(0, 0, 0, 0.4),
+                                ),
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,

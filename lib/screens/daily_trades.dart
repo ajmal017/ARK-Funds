@@ -9,7 +9,13 @@ class DailyTrades extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Daily Trades'),
+        title: Text(
+          'Daily Trades',
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: SingleChildScrollView(
@@ -29,6 +35,7 @@ class DailyTrades extends StatelessWidget {
                           color: Colors.black,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'SF-Pro-Text',
                         ),
                       ),
                       Spacer(),
@@ -38,7 +45,8 @@ class DailyTrades extends StatelessWidget {
                             .toString(),
                         style: TextStyle(
                           color: Colors.black38,
-                          fontSize: 18,
+                          fontSize: 17,
+                          fontFamily: 'SF-Pro-Text',
                         ),
                       ),
                     ],
@@ -47,12 +55,10 @@ class DailyTrades extends StatelessWidget {
               ),
               DailyTradesCLV(
                 Daily_trades1,
-                320,
                 'ARKG - GENOMIC REVOLUTION ETF',
               ),
               DailyTradesCLV(
                 Daily_trades2,
-                390,
                 'ARKQ - AUTONOMOUS TECHNOLOGY & ROBOTICS ETF*',
               ),
             ],

@@ -14,7 +14,13 @@ class FundDetailsScreen extends StatelessWidget {
     final fundTitle = etfDetails['title'];
     return Scaffold(
       appBar: AppBar(
-        title: Text(fundTitle),
+        title: Text(
+          fundTitle,
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: ListView.builder(
@@ -39,15 +45,16 @@ class FundDetailsScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SF-Pro-Text',
                     ),
                   ),
                   Spacer(),
                   Text(
                     Dummy_fund_details[index]['detail'],
                     style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
+                      fontSize: 17,
+                      color: Color.fromRGBO(0, 0, 0, 0.4),
+                      fontFamily: 'SF-Pro-Text',
                     ),
                   ),
                 ],

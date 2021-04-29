@@ -112,11 +112,11 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
 
   var _isLoading = false;
   Future<void> fetch() async {
-    await Provider.of<Intro>(context,listen: false).fetchIntro();
+    await Provider.of<Intro>(context, listen: false).fetchIntro();
     await Provider.of<FundGroups>(context, listen: false).fetchFunds();
-    for(int i=1;i<=2;i++){
+    for (int i = 1; i <= 2; i++) {
       await Provider.of<FundProductGroup>(context, listen: false)
-        .fetchProducts(i);
+          .fetchProducts(i);
     }
   }
 
@@ -137,7 +137,13 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
     final funds = Provider.of<FundGroups>(context).funds;
     return Scaffold(
       appBar: AppBar(
-        title: Text('ARK - Funds'),
+        title: Text(
+          'ARK - Funds',
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         actions: [
           IconButton(icon: Icon(Icons.search), onPressed: null),
         ],

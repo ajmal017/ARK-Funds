@@ -46,7 +46,8 @@ class HoldingsModelGraph extends StatelessWidget {
                         dummyList[index].title,
                         style: TextStyle(
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'SF-Pro-Text',
                         ),
                         maxLines: 2,
                       ),

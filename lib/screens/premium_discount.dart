@@ -57,7 +57,7 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
+                    fontFamily: 'SF-Pro-Text',
                   ),
                 ),
                 Spacer(),
@@ -65,7 +65,8 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                   dummyList[index]['detail'],
                   style: TextStyle(
                     fontSize: 18,
-                    color: Colors.black,
+                    fontFamily: 'SF-Pro-Text',
+                    color: Color.fromRGBO(0, 0, 0, 0.4),
                   ),
                 ),
               ],
@@ -94,6 +95,7 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
         text,
         style: TextStyle(
           fontSize: 13,
+          fontFamily: 'SF-Pro-Text',
           color: Color.fromRGBO(0, 0, 0, 0.4),
         ),
       ),
@@ -108,7 +110,13 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
     final fundTitle = etfDetails['title'];
     return Scaffold(
       appBar: AppBar(
-        title: Text(fundTitle),
+        title: Text(
+          fundTitle,
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: SingleChildScrollView(
@@ -122,7 +130,7 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                     'Fund Name',
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SF-Pro-Text',
                     ),
                   ),
                   Spacer(),
@@ -132,6 +140,8 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                       etfListItem.title,
                       style: TextStyle(
                         fontSize: 17,
+                        fontFamily: 'SF-Pro-Text',
+                        color: Color.fromRGBO(0, 0, 0, 0.4),
                       ),
                       maxLines: 2,
                       textAlign: TextAlign.right,
@@ -164,7 +174,12 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Select Time Period'),
+                      Text(
+                        'Select Time Period',
+                        style: TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                        ),
+                      ),
                       DropdownButton(
                         value: _selectedValue,
                         items: [
@@ -175,9 +190,15 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                           '1Q 2021',
                           '2Q 2021'
                         ].map((String value) {
-                          return new DropdownMenuItem<String>(
+                          return DropdownMenuItem<String>(
                             value: value,
-                            child: new Text(value),
+                            child: Text(
+                              value,
+                              style: TextStyle(
+                                fontFamily: 'SF-Pro-Text',
+                                color: Color.fromRGBO(0, 0, 0, 0.4),
+                              ),
+                            ),
                           );
                         }).toList(),
                         onChanged: (newValue) {
@@ -215,7 +236,10 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
               child: Text(
                 DescriptionForPD[0],
                 textAlign: TextAlign.left,
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'SF-Pro-Text',
+                ),
               ),
             ),
           ],

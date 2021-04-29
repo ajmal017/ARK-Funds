@@ -25,7 +25,13 @@ class FundDocuments extends StatelessWidget {
     final fundTitle = etfDetails['title'];
     return Scaffold(
       appBar: AppBar(
-        title: Text(fundTitle),
+        title: Text(
+          fundTitle,
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: InkWell(
@@ -54,7 +60,7 @@ class FundDocuments extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'SF-Pro-Text',
                       ),
                     ),
                     Spacer(),

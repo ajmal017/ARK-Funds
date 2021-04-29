@@ -10,7 +10,8 @@ class CustomListView extends StatelessWidget {
   CustomListView(this.dummyList);
 
   void selectEtf(BuildContext context, Category listItem) {
-    Navigator.of(context).pushNamed(EtfDetailScreen.routeName, arguments: listItem);
+    Navigator.of(context)
+        .pushNamed(EtfDetailScreen.routeName, arguments: listItem);
   }
 
   @override
@@ -22,7 +23,6 @@ class CustomListView extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (ctx, index) {
           return Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               InkWell(
                 onTap: () => selectEtf(context, dummyList[index]),
@@ -51,7 +51,7 @@ class CustomListView extends StatelessWidget {
                               dummyList[index].title,
                               style: TextStyle(
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                fontFamily: 'SF-Pro-Rounded',
                               ),
                               maxLines: 2,
                             ),
@@ -67,8 +67,14 @@ class CustomListView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                             FlutterMoneyFormatter(amount: dummyList[index].amount).output.compactSymbolOnLeft,
-                            style: TextStyle(fontSize: 17),
+                            FlutterMoneyFormatter(
+                              amount: dummyList[index].amount,
+                            ).output.compactSymbolOnLeft,
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontFamily: 'SF-Pro-Rounded',
+                              color: Color.fromRGBO(0, 0, 0, 0.4),
+                            ),
                           ),
                           Icon(
                             Icons.arrow_forward_ios,

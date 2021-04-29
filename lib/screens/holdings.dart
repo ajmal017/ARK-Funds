@@ -21,13 +21,21 @@ class Holdings extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(fundTitle),
+          title: Text(
+            fundTitle,
+            style: TextStyle(
+              fontFamily: 'SF-Pro-Text',
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           backgroundColor: Color.fromRGBO(247, 247, 247, 1),
           bottom: TabBar(
             unselectedLabelColor: Colors.black38,
             tabs: [
               Tab(
-                child: Text('List view'),
+                child: Text(
+                  'List view',
+                ),
               ),
               Tab(
                 child: Text('Graph View'),
@@ -44,6 +52,10 @@ class Holdings extends StatelessWidget {
               child: Text(
                 'AS OF DATE - ' + date,
                 textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontFamily: 'Sf-Pro-Text',
+                  color: Color.fromRGBO(0, 0, 0, 0.4),
+                ),
               ),
             ),
             SizedBox(

@@ -19,7 +19,13 @@ class _EtfDetailScreenState extends State<EtfDetailScreen> {
     final etfListItem = ModalRoute.of(context).settings.arguments as Category;
     return Scaffold(
       appBar: AppBar(
-        title: Text(etfListItem.title),
+        title: Text(
+          etfListItem.title,
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: Container(

@@ -17,12 +17,19 @@ class ArkkPerformance extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'SF-Pro-Text'),
           ),
           Spacer(),
-          Text(value),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 17,
+              color: Color.fromRGBO(0, 0, 0, 0.4),
+              fontFamily: 'SF-Pro-Text',
+            ),
+          ),
         ],
       ),
     );
@@ -42,7 +49,8 @@ class ArkkPerformance extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: 13,
-          color: Colors.black,
+          color: Color.fromRGBO(0, 0, 0, 0.4),
+          fontFamily: 'SF-Pro-Text',
         ),
       ),
     );
@@ -112,6 +120,8 @@ class ArkkPerformance extends StatelessWidget {
                           '*Annualized',
                           style: TextStyle(
                             fontSize: 17,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'SF-Pro-Text',
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -123,6 +133,8 @@ class ArkkPerformance extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 17,
                               color: Colors.blue,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'SF-Pro-Text',
                             ),
                           ),
                         ),
@@ -141,7 +153,10 @@ class ArkkPerformance extends StatelessWidget {
                 ),
                 child: Text(
                   Annualized[0],
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'SF-Pro-Text',
+                  ),
                 ),
               ),
             ],
@@ -159,7 +174,13 @@ class ArkkPerformance extends StatelessWidget {
     final fundTitle = etfDetails['title'];
     return Scaffold(
       appBar: AppBar(
-        title: Text(fundTitle),
+        title: Text(
+          fundTitle,
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: SingleChildScrollView(
@@ -173,7 +194,7 @@ class ArkkPerformance extends StatelessWidget {
                     'Fund Name',
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SF-Pro-Text',
                     ),
                   ),
                   Spacer(),
@@ -183,6 +204,7 @@ class ArkkPerformance extends StatelessWidget {
                       etfListItem.title,
                       style: TextStyle(
                         fontSize: 17,
+                        fontFamily: 'SF-Pro-Text',
                       ),
                       maxLines: 2,
                       textAlign: TextAlign.right,

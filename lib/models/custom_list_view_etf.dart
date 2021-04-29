@@ -59,7 +59,8 @@ class CustomListViewEtf extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'SF-Pro-Text',
                       ),
                     ),
                     Spacer(),
