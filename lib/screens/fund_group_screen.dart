@@ -38,21 +38,17 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
                 style: TextStyle(
                   fontSize: 22,
                   color: Colors.black,
-
-                  fontFamily: 'SF-Pro-Rounded-Bold',
+                  fontFamily: 'SF-Pro-Rounded',
                   fontWeight: FontWeight.w700,
-
                 ),
               ),
               Text(
                 subtitle,
                 style: TextStyle(
-
                   fontSize: 15,
                   color: Colors.black,
                   fontFamily: 'SF-Pro-Text',
                 ),
-
               ),
             ],
           ),
