@@ -1,4 +1,4 @@
-import 'package:arkfundsapp/providers/intro.dart';
+import 'package:arkfundsapp/providers/fund_total_market_value.dart';
 import 'package:arkfundsapp/screens/daily_trades.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -17,7 +17,7 @@ class Introduction extends StatefulWidget {
 class _IntroductionState extends State<Introduction> {
   @override
   Widget build(BuildContext context) {
-    final data = Provider.of<Intro>(context);
+    final data = Provider.of<FundTotalMarketValue>(context);
     return Container(
       height: widget.flexInput,
       width: double.infinity,

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
-class Intro with ChangeNotifier {
+class FundTotalMarketValue with ChangeNotifier {
   DateTime date;
   double currentValue;
   double previousValue;
