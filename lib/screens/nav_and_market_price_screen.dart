@@ -1,3 +1,4 @@
+import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/widgets/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -100,22 +101,24 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
   @override
   Widget build(BuildContext context) {
     final etfDetails =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
-    final etfId = etfDetails['id'];
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
-    final selectedEtf = (DUMMY_CATEGORIES1 + DUMMY_CATEGORIES2)
-        .firstWhere((etf) => etf.id == etfId);
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(fundTitle),
+        title: Text(
+          fundTitle,
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.54,
+            Container(
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -139,17 +142,17 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                           Text(
                             Nav_And_Market_Price[index]['title'],
                             style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontFamily: 'SF-Pro-Text'),
                           ),
                           Spacer(),
                           Text(
                             Nav_And_Market_Price[index]['detail'],
                             style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
+                              fontSize: 17,
+                              color: Color.fromRGBO(0, 0, 0, 0.4),
+                              fontFamily: 'SF-Pro-Text',
                             ),
                           ),
                         ],
@@ -183,6 +186,9 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                       _toSelectedDate == null
                           ? 'to'
                           : "${DateFormat.yMMMd().format(_toSelectedDate).toString()}",
+                      style: TextStyle(
+                        fontFamily: 'SF-Pro-Text',
+                      ),
                     ),
                   ),
                 ],
@@ -198,7 +204,12 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     minWidth: 15,
                     child: RaisedButton(
                       onPressed: _setDateForOneMonth,
-                      child: Text('1m'),
+                      child: Text(
+                        '1m',
+                        style: TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                        ),
+                      ),
                       color: Color(0xFFF2F2F7),
                     ),
                   ),
@@ -206,7 +217,12 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     minWidth: 15,
                     child: RaisedButton(
                       onPressed: _setDateForThreeMonth,
-                      child: Text('3m'),
+                      child: Text(
+                        '3m',
+                        style: TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                        ),
+                      ),
                       color: Color(0xFFF2F2F7),
                     ),
                   ),
@@ -214,7 +230,12 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     minWidth: 15,
                     child: RaisedButton(
                       onPressed: _setDateForSixMonth,
-                      child: Text('6m'),
+                      child: Text(
+                        '6m',
+                        style: TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                        ),
+                      ),
                       color: Color(0xFFF2F2F7),
                     ),
                   ),
@@ -222,7 +243,12 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     minWidth: 15,
                     child: RaisedButton(
                       onPressed: _setDateForYTD,
-                      child: Text('YTD'),
+                      child: Text(
+                        'YTD',
+                        style: TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                        ),
+                      ),
                       color: Color(0xFFF2F2F7),
                     ),
                   ),
@@ -230,7 +256,12 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     minWidth: 15,
                     child: RaisedButton(
                       onPressed: _setDateForOneYear,
-                      child: Text('1y'),
+                      child: Text(
+                        '1y',
+                        style: TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                        ),
+                      ),
                       color: Color(0xFFF2F2F7),
                     ),
                   ),
@@ -238,7 +269,12 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     minWidth: 15,
                     child: RaisedButton(
                       onPressed: _setDateForAll,
-                      child: Text('All'),
+                      child: Text(
+                        'All',
+                        style: TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                        ),
+                      ),
                       color: Color(0xFFF2F2F7),
                     ),
                   ),
@@ -280,7 +316,6 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         domainFn: (TimeSeriesSales sales, _) => sales.time,
         measureFn: (TimeSeriesSales sales, _) => sales.sales,
         data: data1,
-        
       ),
       new charts.Series<TimeSeriesSales, DateTime>(
         id: 'Sales2',

@@ -1,6 +1,6 @@
 import 'package:arkfundsapp/screens/holdings_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'category.dart';
+import '../providers/category.dart';
 
 class HoldingsModel extends StatelessWidget {
   final List<Category> dummyList;
@@ -8,7 +8,7 @@ class HoldingsModel extends StatelessWidget {
 
   HoldingsModel(this.dummyList, this.date);
 
-  void selectHolding(BuildContext context, String id) {
+  void selectHolding(BuildContext context, int id) {
     Navigator.of(context).pushNamed(
       HoldingsDetailScreen.routeName,
       arguments: {
@@ -20,8 +20,7 @@ class HoldingsModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.width,
+    return Container(
       child: Column(
         children: [
           ListView.builder(
@@ -54,7 +53,8 @@ class HoldingsModel extends StatelessWidget {
                                   dummyList[index].title,
                                   style: TextStyle(
                                     fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'SF-Pro-Text',
                                   ),
                                   maxLines: 2,
                                 ),
@@ -70,7 +70,11 @@ class HoldingsModel extends StatelessWidget {
                             children: [
                               Text(
                                 '${dummyList[index].amount}%',
-                                style: TextStyle(fontSize: 17),
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontFamily: 'SF-Pro-Text',
+                                  color: Color.fromRGBO(0, 0, 0, 0.4),
+                                ),
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,

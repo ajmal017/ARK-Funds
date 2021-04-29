@@ -1,41 +1,43 @@
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
+
 import '../screens/etf_detail_screen.dart';
 import 'package:flutter/material.dart';
-import 'category.dart';
+import '../providers/category.dart';
 
 class CustomListView extends StatelessWidget {
   final List<Category> dummyList;
-  final double flexInput;
 
-  CustomListView(this.dummyList, this.flexInput);
+  CustomListView(this.dummyList);
 
-  void selectEtf(BuildContext context, String id) {
-    Navigator.of(context).pushNamed(EtfDetailScreen.routeName, arguments: id);
+  void selectEtf(BuildContext context, Category listItem) {
+    Navigator.of(context)
+        .pushNamed(EtfDetailScreen.routeName, arguments: listItem);
   }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: flexInput,
+    return Container(
+      padding: EdgeInsets.only(right: 12),
       child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (ctx, index) {
           return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               InkWell(
-                onTap: () => selectEtf(context, dummyList[index].id),
+                onTap: () => selectEtf(context, dummyList[index]),
                 child: Container(
-                  margin: EdgeInsets.zero,
                   width: MediaQuery.of(context).size.width * 0.9,
                   padding: EdgeInsets.only(
                     left: 12,
-                    right: 8,
                     top: 8,
                     bottom: 12,
                   ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(12),
+                      bottomRight: Radius.circular(12),
+                    ),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,15 +46,14 @@ class CustomListView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.5,
+                            width: MediaQuery.of(context).size.width * 0.57,
                             child: Text(
                               dummyList[index].title,
                               style: TextStyle(
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                fontFamily: 'SF-Pro-Rounded',
                               ),
                               maxLines: 2,
-                              // overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           Text(
@@ -61,12 +62,19 @@ class CustomListView extends StatelessWidget {
                           ),
                         ],
                       ),
+                      Spacer(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            '\$' + dummyList[index].amount,
-                            style: TextStyle(fontSize: 17),
+                            FlutterMoneyFormatter(
+                              amount: dummyList[index].amount,
+                            ).output.compactSymbolOnLeft,
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontFamily: 'SF-Pro-Rounded',
+                              color: Color.fromRGBO(0, 0, 0, 0.4),
+                            ),
                           ),
                           Icon(
                             Icons.arrow_forward_ios,

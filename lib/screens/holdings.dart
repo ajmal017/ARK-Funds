@@ -1,3 +1,5 @@
+import 'package:arkfundsapp/providers/category.dart';
+
 import '../models/holdings_model.dart';
 import '../models/holdings_model_graph.dart';
 import '../screens/search_bar.dart';
@@ -12,22 +14,28 @@ class Holdings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final etfDetails =
-        ModalRoute.of(context).settings.arguments as Map<String, String>;
-    final etfId = etfDetails['id'];
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
-    final selectedEtf = (DUMMY_CATEGORIES1 + DUMMY_CATEGORIES2)
-        .firstWhere((etf) => etf.id == etfId);
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(fundTitle),
+          title: Text(
+            fundTitle,
+            style: TextStyle(
+              fontFamily: 'SF-Pro-Text',
+              fontWeight: FontWeight.w600,
+            ),
+          ),
           backgroundColor: Color.fromRGBO(247, 247, 247, 1),
           bottom: TabBar(
             unselectedLabelColor: Colors.black38,
             tabs: [
               Tab(
-                child: Text('List view'),
+                child: Text(
+                  'List view',
+                ),
               ),
               Tab(
                 child: Text('Graph View'),
@@ -44,6 +52,10 @@ class Holdings extends StatelessWidget {
               child: Text(
                 'AS OF DATE - ' + date,
                 textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontFamily: 'Sf-Pro-Text',
+                  color: Color.fromRGBO(0, 0, 0, 0.4),
+                ),
               ),
             ),
             SizedBox(

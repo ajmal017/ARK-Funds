@@ -1,50 +1,50 @@
-import './models/category.dart';
+import 'providers/category.dart';
 
 final Daily_trades1 = [
   Category(
-    id: 'd1',
+    id: 1,
     title: 'ACCOLADE INC',
     subtitle: 'ACCD',
-    amount: '2,626',
+    amount: 2626,
   ),
   Category(
-    id: 'd2',
+    id: 2,
     title: 'CODEXIS INC',
     subtitle: 'CDXS',
-    amount: '44,373',
+    amount: 44373,
   ),
   Category(
-    id: 'd3',
+    id: 3,
     title: 'IONIS PHARMACEUTICAL',
     subtitle: 'IONS',
-    amount: '46,225',
+    amount: 46225,
   ),
 ];
 
 final Daily_trades2 = [
   Category(
-    id: 'd4',
+    id: 4,
     title: '3D SYSTEMS CORP',
     subtitle: 'DDD',
-    amount: '141,254',
+    amount: 141254,
   ),
   Category(
-    id: 'd5',
+    id: 5,
     title: 'UNITY SOFTWARE INC',
     subtitle: 'U',
-    amount: '187,300',
+    amount: 187300,
   ),
   Category(
-    id: 'd6',
+    id: 6,
     title: 'IONIS PHARMACEUTICAL ',
     subtitle: 'IONS',
-    amount: '46,225',
+    amount: 46225,
   ),
   Category(
-    id: 'd7',
+    id: 7,
     title: 'ONE',
     subtitle: 'AONE',
-    amount: '17,570',
+    amount: 17570,
   ),
 ];
 
@@ -71,53 +71,53 @@ const DailyTradeItemList = const [
   },
 ];
 
-final DUMMY_CATEGORIES1 = [
-  Category(
-    id: 'c1',
-    title: 'ARK Innovation ETF',
-    subtitle: 'ARKK',
-    amount: '17.68 B',
-  ),
-  Category(
-    id: 'c2',
-    title: 'Autonomous Technology ETF',
-    subtitle: 'ARKQ',
-    amount: '1.70 B',
-  ),
-  Category(
-    id: 'c3',
-    title: 'Next generation Internet ETF',
-    subtitle: 'ARKW',
-    amount: '5.27 B',
-  ),
-  Category(
-    id: 'c4',
-    title: 'Genomic Revolution ETF',
-    subtitle: 'ARKG',
-    amount: '7.67 B',
-  ),
-  Category(
-    id: 'c5',
-    title: 'Fintech Innovation ETF',
-    subtitle: 'ARKF',
-    amount: '1.56 B',
-  ),
-];
+// final DUMMY_CATEGORIES1 = [
+//   Category(
+//     id: 'c1',
+//     title: 'ARK Innovation ETF',
+//     subtitle: 'ARKK',
+//     amount: '17.68 B',
+//   ),
+//   Category(
+//     id: 'c2',
+//     title: 'Autonomous Technology ETF',
+//     subtitle: 'ARKQ',
+//     amount: '1.70 B',
+//   ),
+//   Category(
+//     id: 'c3',
+//     title: 'Next generation Internet ETF',
+//     subtitle: 'ARKW',
+//     amount: '5.27 B',
+//   ),
+//   Category(
+//     id: 'c4',
+//     title: 'Genomic Revolution ETF',
+//     subtitle: 'ARKG',
+//     amount: '7.67 B',
+//   ),
+//   Category(
+//     id: 'c5',
+//     title: 'Fintech Innovation ETF',
+//     subtitle: 'ARKF',
+//     amount: '1.56 B',
+//   ),
+// ];
 
-final DUMMY_CATEGORIES2 = [
-  Category(
-    id: 'c6',
-    title: 'The 3D Printing ETF',
-    subtitle: 'PRINT',
-    amount: '132 M',
-  ),
-  Category(
-    id: 'c7',
-    title: 'Israel Innovation Technology ETF',
-    subtitle: 'IZRL',
-    amount: '76 M',
-  ),
-];
+// final DUMMY_CATEGORIES2 = [
+//   Category(
+//     id: 'c6',
+//     title: 'The 3D Printing ETF',
+//     subtitle: 'PRINT',
+//     amount: '132 M',
+//   ),
+//   Category(
+//     id: 'c7',
+//     title: 'Israel Innovation Technology ETF',
+//     subtitle: 'IZRL',
+//     amount: '76 M',
+//   ),
+// ];
 
 const FUND_DESCRIPTION = const [
   'ARK defines \"disruptive innovation\" as the introduction of a technologically' +
@@ -279,34 +279,34 @@ const Annualized = const [
 
 final HoldingsData = [
   Category(
-    id: 'h1',
+    id: 1,
     title: 'TESLA INC',
     subtitle: 'TSLA',
-    amount: '10.90',
+    amount: 10.90,
   ),
   Category(
-    id: 'h2',
+    id: 2,
     title: 'SQUARE INC - A',
     subtitle: 'SQ',
-    amount: '6.17',
+    amount: 6.17,
   ),
   Category(
-    id: 'h3',
+    id: 3,
     title: 'TELADOC HEALTH INC',
     subtitle: 'TDOC',
-    amount: '6.15',
+    amount: 6.15,
   ),
   Category(
-    id: 'h4',
+    id: 4,
     title: 'ROKU INC',
     subtitle: 'ROKU',
-    amount: '5.46',
+    amount: 5.46,
   ),
   Category(
-    id: 'h5',
+    id: 5,
     title: 'ZILLOW GROUP INC - C',
     subtitle: 'Z',
-    amount: '3.64',
+    amount: 3.64,
   ),
 ];
 
