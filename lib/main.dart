@@ -1,5 +1,4 @@
 import 'package:arkfundsapp/providers/category.dart';
-import 'package:arkfundsapp/providers/fund_details_provider.dart';
 import 'package:arkfundsapp/providers/fund_total_market_value.dart';
 
 import './providers/fund_groups.dart';
@@ -49,7 +48,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ChangeNotifierProvider(create: (context) => FundGroups()),
         ChangeNotifierProvider(create: (context) => FundProductGroup()),
         ChangeNotifierProvider(create: (context) => FundTotalMarketValue()),
-        ChangeNotifierProvider(create: (context) => FundDetailsProvider()),
       ],
       child: MaterialApp(
         title: 'ARK - Funds',

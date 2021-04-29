@@ -1,37 +1,10 @@
 import 'package:arkfundsapp/providers/category.dart';
-import 'package:arkfundsapp/providers/fund_details_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:provider/provider.dart';
 import '../dummy_data.dart';
 
-class FundDetailsScreen extends StatefulWidget {
+class FundDetailsScreen extends StatelessWidget {
   static const routeName = '/fund-detail-screen';
-
-  @override
-  _FundDetailsScreenState createState() => _FundDetailsScreenState();
-}
-
-class _FundDetailsScreenState extends State<FundDetailsScreen> {
-  var _isLoading = false;
-  Future<void> fetch() async {
-    final groups = Provider.of<FundProductGroup>(context).groups;
-    for (int i = 0; i < groups.length; i++) {
-      await Provider.of<FundProductGroup>(context, listen: false)
-          .fetchProducts(groups[i].id);
-    }
-  }
-
-  @override
-  void initState() {
-    _isLoading = true;
-    fetch().then((_) {
-      setState(() {
-        _isLoading = false;
-      });
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +12,6 @@ class _FundDetailsScreenState extends State<FundDetailsScreen> {
         ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
-    final fundDetails = Provider.of<FundDetailsProvider>(context).fundDetails;
-    final selectedFundDetail =
-        fundDetails.firstWhere((fund) => fund.id == etfListItem.id);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -71,7 +41,7 @@ class _FundDetailsScreenState extends State<FundDetailsScreen> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    selectedFundDetail.fundDetails[index]['title'],
+                    Dummy_fund_details[index]['title'],
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.black,
@@ -80,7 +50,7 @@ class _FundDetailsScreenState extends State<FundDetailsScreen> {
                   ),
                   Spacer(),
                   Text(
-                    selectedFundDetail.fundDetails[index]['detail'],
+                    Dummy_fund_details[index]['detail'],
                     style: TextStyle(
                       fontSize: 17,
                       color: Color.fromRGBO(0, 0, 0, 0.4),
@@ -96,7 +66,7 @@ class _FundDetailsScreenState extends State<FundDetailsScreen> {
             ],
           ),
         ),
-        itemCount: selectedFundDetail.fundDetails.length,
+        itemCount: Dummy_fund_details.length,
       ),
     );
   }
