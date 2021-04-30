@@ -1,5 +1,9 @@
 import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/fund_details_provider.dart';
 import 'package:arkfundsapp/providers/fund_total_market_value.dart';
+import 'package:arkfundsapp/providers/holdings_provider.dart';
+import 'package:arkfundsapp/providers/navMarketPrice_provider.dart';
+import 'package:arkfundsapp/providers/performance_provider.dart';
 
 import './providers/fund_groups.dart';
 import './screens/daily_trade_item.dart';
@@ -48,6 +52,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ChangeNotifierProvider(create: (context) => FundGroups()),
         ChangeNotifierProvider(create: (context) => FundProductGroup()),
         ChangeNotifierProvider(create: (context) => FundTotalMarketValue()),
+        ChangeNotifierProvider(create: (context) => FundDetailsProvider()),
+        ChangeNotifierProvider(create: (context) => NavMarketPriceProvider()),
+        ChangeNotifierProvider(create: (context) => PerformanceProvider()),
+        ChangeNotifierProvider(create: (context) => HoldingsProvider()),
       ],
       child: MaterialApp(
         title: 'ARK - Funds',
