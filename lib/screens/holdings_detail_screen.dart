@@ -105,7 +105,7 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
                   ),
                 );
               },
-              itemCount: HoldingDataAttributes.length,
+              itemCount: holding.length,
             ),
           ),
         ],
