@@ -39,7 +39,7 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
                   fontSize: 22,
                   color: Colors.black,
                   fontFamily: 'SF-Pro-Rounded',
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
