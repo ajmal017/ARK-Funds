@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 class Category {
   final int id;
@@ -34,7 +33,8 @@ class FundProductGroup with ChangeNotifier {
       final groupProducts = json.decode(response.body) as List;
       if (groupProducts == null) {
         return;
-      }_products = groupProducts.map((groupProduct) {
+      }
+      _products = groupProducts.map((groupProduct) {
         return Category(
           id: groupProduct['id'],
           title: groupProduct['name'],
