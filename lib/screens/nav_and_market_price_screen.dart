@@ -1,8 +1,10 @@
 import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/navMarketPrice_provider.dart';
 import 'package:arkfundsapp/widgets/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../dummy_data.dart';
 
@@ -98,12 +100,57 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
     });
   }
 
+  Widget myButton(String buttonText, Function reference) {
+    return ButtonTheme(
+      minWidth: 15,
+      child: RaisedButton(
+        onPressed: reference,
+        child: Text(
+          buttonText,
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+          ),
+        ),
+        color: Color(0xFFF2F2F7),
+      ),
+    );
+  }
+
+  var _isLoading = false;
+
+  Future<void> fetch() async {
+    final productGroups =
+        Provider.of<FundProductGroup>(context, listen: false).groups;
+    List<Category> groups = [];
+    for (int i = 0; i < productGroups.length; i++) {
+      groups += productGroups[i];
+    }
+    for (int i = 0; i < groups.length; i++) {
+      await Provider.of<NavMarketPriceProvider>(context, listen: false)
+          .fetchMarketDetails(groups[i].id);
+    }
+  }
+
+  @override
+  void initState() {
+    _isLoading = true;
+    fetch().then((_) {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final etfDetails =
         ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
+    final marketDetails = Provider.of<NavMarketPriceProvider>(context).navMarketPriceList;
+    final navMarketPrice =
+        marketDetails.firstWhere((fund) => fund.id == etfListItem.id, orElse: () => null);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -115,185 +162,114 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (ctx, index) => Container(
-                  margin: EdgeInsets.only(
-                    top: 12,
-                    left: 12,
-                    right: 12,
+      body: _isLoading
+          ? Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (ctx, index) => Container(
+                        margin: EdgeInsets.only(
+                          top: 12,
+                          left: 12,
+                          right: 12,
+                        ),
+                        padding: EdgeInsets.only(
+                          top: 12,
+                          left: 10,
+                          right: 10,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  navMarketPrice.marketDetails[index]['title'],
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.black,
+                                      fontFamily: 'SF-Pro-Text'),
+                                ),
+                                Spacer(),
+                                Text(
+                                  navMarketPrice.marketDetails[index]['detail'],
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    color: Color.fromRGBO(0, 0, 0, 0.4),
+                                    fontFamily: 'SF-Pro-Text',
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Divider(
+                              thickness: 0.5,
+                              color: Colors.grey,
+                            ),
+                          ],
+                        ),
+                      ),
+                      itemCount: navMarketPrice.marketDetails.length,
+                    ),
                   ),
-                  padding: EdgeInsets.only(
-                    top: 12,
-                    left: 10,
-                    right: 10,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Text(
-                            Nav_And_Market_Price[index]['title'],
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontFamily: 'SF-Pro-Text'),
+                  Container(
+                    color: Color(0xFFF2F2F7),
+                    child: Row(
+                      children: [
+                        FlatButton(
+                          onPressed: () => _presentDatePicker(context, "from"),
+                          child: Text(
+                            _fromSelectedDate == null
+                                ? 'from'
+                                : "${DateFormat.yMMMd().format(_fromSelectedDate).toString()}",
                           ),
-                          Spacer(),
-                          Text(
-                            Nav_And_Market_Price[index]['detail'],
+                        ),
+                        Icon(Icons.arrow_forward),
+                        FlatButton(
+                          onPressed: () => _presentDatePicker(context, "to"),
+                          child: Text(
+                            _toSelectedDate == null
+                                ? 'to'
+                                : "${DateFormat.yMMMd().format(_toSelectedDate).toString()}",
                             style: TextStyle(
-                              fontSize: 17,
-                              color: Color.fromRGBO(0, 0, 0, 0.4),
                               fontFamily: 'SF-Pro-Text',
                             ),
                           ),
-                        ],
-                      ),
-                      Divider(
-                        thickness: 0.5,
-                        color: Colors.grey,
-                      ),
-                    ],
-                  ),
-                ),
-                itemCount: Nav_And_Market_Price.length,
-              ),
-            ),
-            Container(
-              color: Color(0xFFF2F2F7),
-              child: Row(
-                children: [
-                  FlatButton(
-                    onPressed: () => _presentDatePicker(context, "from"),
-                    child: Text(
-                      _fromSelectedDate == null
-                          ? 'from'
-                          : "${DateFormat.yMMMd().format(_fromSelectedDate).toString()}",
+                        ),
+                      ],
                     ),
                   ),
-                  Icon(Icons.arrow_forward),
-                  FlatButton(
-                    onPressed: () => _presentDatePicker(context, "to"),
-                    child: Text(
-                      _toSelectedDate == null
-                          ? 'to'
-                          : "${DateFormat.yMMMd().format(_toSelectedDate).toString()}",
-                      style: TextStyle(
-                        fontFamily: 'SF-Pro-Text',
-                      ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        myButton('1m', _setDateForOneMonth),
+                        myButton('3m', _setDateForThreeMonth),
+                        myButton('6m', _setDateForSixMonth),
+                        myButton('YTD', _setDateForYTD),
+                        myButton('1y', _setDateForOneYear),
+                        myButton('All', _setDateForAll),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 300,
+                    padding: EdgeInsets.all(15),
+                    child: SimpleTimeSeriesChart(
+                      _createSampleData(),
+                      animate: false,
                     ),
                   ),
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(10),
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ButtonTheme(
-                    minWidth: 15,
-                    child: RaisedButton(
-                      onPressed: _setDateForOneMonth,
-                      child: Text(
-                        '1m',
-                        style: TextStyle(
-                          fontFamily: 'SF-Pro-Text',
-                        ),
-                      ),
-                      color: Color(0xFFF2F2F7),
-                    ),
-                  ),
-                  ButtonTheme(
-                    minWidth: 15,
-                    child: RaisedButton(
-                      onPressed: _setDateForThreeMonth,
-                      child: Text(
-                        '3m',
-                        style: TextStyle(
-                          fontFamily: 'SF-Pro-Text',
-                        ),
-                      ),
-                      color: Color(0xFFF2F2F7),
-                    ),
-                  ),
-                  ButtonTheme(
-                    minWidth: 15,
-                    child: RaisedButton(
-                      onPressed: _setDateForSixMonth,
-                      child: Text(
-                        '6m',
-                        style: TextStyle(
-                          fontFamily: 'SF-Pro-Text',
-                        ),
-                      ),
-                      color: Color(0xFFF2F2F7),
-                    ),
-                  ),
-                  ButtonTheme(
-                    minWidth: 15,
-                    child: RaisedButton(
-                      onPressed: _setDateForYTD,
-                      child: Text(
-                        'YTD',
-                        style: TextStyle(
-                          fontFamily: 'SF-Pro-Text',
-                        ),
-                      ),
-                      color: Color(0xFFF2F2F7),
-                    ),
-                  ),
-                  ButtonTheme(
-                    minWidth: 15,
-                    child: RaisedButton(
-                      onPressed: _setDateForOneYear,
-                      child: Text(
-                        '1y',
-                        style: TextStyle(
-                          fontFamily: 'SF-Pro-Text',
-                        ),
-                      ),
-                      color: Color(0xFFF2F2F7),
-                    ),
-                  ),
-                  ButtonTheme(
-                    minWidth: 15,
-                    child: RaisedButton(
-                      onPressed: _setDateForAll,
-                      child: Text(
-                        'All',
-                        style: TextStyle(
-                          fontFamily: 'SF-Pro-Text',
-                        ),
-                      ),
-                      color: Color(0xFFF2F2F7),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 300,
-              padding: EdgeInsets.all(15),
-              child: SimpleTimeSeriesChart(
-                _createSampleData(),
-                // Disable animations for image tests.
-                animate: false,
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 
@@ -308,7 +284,6 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
     for (var item in DataMarket) {
       data2.insert(index++, TimeSeriesSales(item['date'], item['NAV']));
     }
-    print(data1);
     return [
       new charts.Series<TimeSeriesSales, DateTime>(
         id: 'Sales1',
