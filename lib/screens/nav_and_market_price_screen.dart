@@ -1,12 +1,12 @@
 import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/marketPrice_chartProvider.dart';
 import 'package:arkfundsapp/providers/navMarketPrice_provider.dart';
+import 'package:arkfundsapp/providers/navPrice_chartProvider.dart';
 import 'package:arkfundsapp/widgets/chart.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
-import '../dummy_data.dart';
 
 class NavAndMarketPrice extends StatefulWidget {
   static const routeName = '/nav-and-market-price';
@@ -15,18 +15,29 @@ class NavAndMarketPrice extends StatefulWidget {
 }
 
 class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
+  static List<TimeSeriesSales> _navData = [];
+  static List<TimeSeriesSales> _marketData = [];
+  static List<TimeSeriesSales> _navChartData = _navData.sublist(0, 31);
+  static List<TimeSeriesSales> _marketChartData = _marketData.sublist(0, 31);
+
+  List<NavMarketPriceObject> _marketDetails;
+  NavMarketPriceObject _navMarketPrice;
+  List<dynamic> _navDataList;
+  List<dynamic> _marketDataList;
+
   DateTime _fromSelectedDate = DateTime(
     DateTime.now().year,
     DateTime.now().month - 1,
     DateTime.now().day,
   );
   DateTime _toSelectedDate = DateTime.now();
+
   void _presentDatePicker(BuildContext context, String dateType) {
     showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: _fromSelectedDate,
       firstDate: DateTime(2000),
-      lastDate: DateTime.now(),
+      lastDate: _toSelectedDate,
     ).then((pickedDate) {
       if (pickedDate == null) {
         return;
@@ -37,9 +48,21 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         } else {
           _toSelectedDate = pickedDate;
         }
+        final difference = _toSelectedDate.difference(_fromSelectedDate).inDays;
+        _navChartData = _navData.sublist(0, difference);
+        var lastIndex;
+        for (int i = _navChartData.length - 1; i >= 0; i--) {
+          if (_toSelectedDate.difference(_navChartData[i].time).inDays >=
+              difference + 1) {
+            lastIndex = i;
+          } else {
+            break;
+          }
+        }
+        _navChartData = _navData.sublist(0, lastIndex);
+        _marketChartData = _marketData.sublist(0, lastIndex);
       });
     });
-    print(_fromSelectedDate);
   }
 
   void _setDateForOneMonth() {
@@ -50,6 +73,19 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         DateTime.now().month - 1,
         DateTime.now().day,
       );
+      final difference = _toSelectedDate.difference(_fromSelectedDate).inDays;
+      _navChartData = _navData.sublist(0, difference);
+      var index;
+      for (int i = _navChartData.length - 1; i >= 0; i--) {
+        if (_toSelectedDate.difference(_navChartData[i].time).inDays >=
+            difference + 5) {
+          index = i;
+        } else {
+          break;
+        }
+      }
+      _navChartData = _navData.sublist(0, index);
+      _marketChartData = _marketData.sublist(0, index);
     });
   }
 
@@ -61,6 +97,19 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         DateTime.now().month - 3,
         DateTime.now().day,
       );
+      final difference = _toSelectedDate.difference(_fromSelectedDate).inDays;
+      _navChartData = _navData.sublist(0, difference);
+      var index;
+      for (int i = _navChartData.length - 1; i >= 0; i--) {
+        if (_toSelectedDate.difference(_navChartData[i].time).inDays >=
+            difference + 5) {
+          index = i;
+        } else {
+          break;
+        }
+      }
+      _navChartData = _navData.sublist(0, index);
+      _marketChartData = _marketData.sublist(0, index);
     });
   }
 
@@ -72,6 +121,19 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         DateTime.now().month - 6,
         DateTime.now().day,
       );
+      final difference = _toSelectedDate.difference(_fromSelectedDate).inDays;
+      _navChartData = _navData.sublist(0, difference);
+      var index;
+      for (int i = _navChartData.length - 1; i >= 0; i--) {
+        if (_toSelectedDate.difference(_navChartData[i].time).inDays >=
+            difference + 5) {
+          index = i;
+        } else {
+          break;
+        }
+      }
+      _navChartData = _navData.sublist(0, index);
+      _marketChartData = _marketData.sublist(0, index);
     });
   }
 
@@ -79,6 +141,19 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
     setState(() {
       _toSelectedDate = DateTime.now();
       _fromSelectedDate = DateTime(DateTime.now().year, 1, 1);
+      final difference = _toSelectedDate.difference(_fromSelectedDate).inDays;
+      _navChartData = _navData.sublist(0, difference);
+      var index;
+      for (int i = _navChartData.length - 1; i >= 0; i--) {
+        if (_toSelectedDate.difference(_navChartData[i].time).inDays >=
+            difference) {
+          index = i;
+        } else {
+          break;
+        }
+      }
+      _navChartData = _navData.sublist(0, index);
+      _marketChartData = _marketData.sublist(0, index);
     });
   }
 
@@ -90,6 +165,19 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         DateTime.now().month,
         DateTime.now().day,
       );
+      final difference = _toSelectedDate.difference(_fromSelectedDate).inDays;
+      _navChartData = _navData.sublist(0, difference);
+      var index;
+      for (int i = _navChartData.length - 1; i >= 0; i--) {
+        if (_toSelectedDate.difference(_navChartData[i].time).inDays >=
+            difference + 5) {
+          index = i;
+        } else {
+          break;
+        }
+      }
+      _navChartData = _navData.sublist(0, index);
+      _marketChartData = _marketData.sublist(0, index);
     });
   }
 
@@ -97,6 +185,8 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
     setState(() {
       _toSelectedDate = DateTime.now();
       _fromSelectedDate = DateTime(2014, 10, 27);
+      _navChartData = _navData;
+      _marketChartData = _marketData;
     });
   }
 
@@ -129,6 +219,20 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       await Provider.of<NavMarketPriceProvider>(context, listen: false)
           .fetchMarketDetails(groups[i].id);
     }
+    for (int i = 0; i < groups.length; i++) {
+      await Provider.of<NavPriceChartProvider>(context, listen: false)
+          .fetchNav(groups[i].id);
+    }
+    for (int i = 0; i < groups.length; i++) {
+      await Provider.of<MarketPriceChartProvider>(context, listen: false)
+          .fetchMarket(groups[i].id);
+    }
+    // await Provider.of<NavMarketPriceProvider>(context, listen: false)
+    //     .fetchMarketDetails(1);
+    // await Provider.of<NavPriceChartProvider>(context, listen: false)
+    //     .fetchNav(1);
+    // await Provider.of<MarketPriceChartProvider>(context, listen: false)
+    //     .fetchMarket(1);
   }
 
   @override
@@ -148,9 +252,20 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
-    final marketDetails = Provider.of<NavMarketPriceProvider>(context).navMarketPriceList;
-    final navMarketPrice =
-        marketDetails.firstWhere((fund) => fund.id == etfListItem.id, orElse: () => null);
+    if (!_isLoading) {
+      _marketDetails =
+          Provider.of<NavMarketPriceProvider>(context).navMarketPriceList;
+      _navMarketPrice = _marketDetails
+          .firstWhere((fund) => fund.id == etfListItem.id, orElse: () => null);
+
+      _navDataList = Provider.of<NavPriceChartProvider>(context,listen: false).chartList;
+      _navData = _navDataList[etfListItem.id - 1].reversed.toList();
+
+      _marketDataList =
+          Provider.of<MarketPriceChartProvider>(context,listen: false).chartList;
+      _marketData = _marketDataList[etfListItem.id - 1].reversed.toList();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -189,21 +304,41 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  navMarketPrice.marketDetails[index]['title'],
+                                  _navMarketPrice.marketDetails[index]['title'],
                                   style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.black,
                                       fontFamily: 'SF-Pro-Text'),
                                 ),
                                 Spacer(),
-                                Text(
-                                  navMarketPrice.marketDetails[index]['detail'],
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    color: Color.fromRGBO(0, 0, 0, 0.4),
-                                    fontFamily: 'SF-Pro-Text',
-                                  ),
-                                ),
+                                _navMarketPrice.marketDetails[index]['title'] ==
+                                        'Fund Name'
+                                    ? SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
+                                        child: Text(
+                                          _navMarketPrice.marketDetails[index]
+                                              ['detail'],
+                                          style: TextStyle(
+                                            fontSize: 17,
+                                            color: Color.fromRGBO(0, 0, 0, 0.4),
+                                            fontFamily: 'SF-Pro-Text',
+                                          ),
+                                          textAlign: TextAlign.right,
+                                          maxLines: 2,
+                                        ),
+                                      )
+                                    : Text(
+                                        _navMarketPrice.marketDetails[index]
+                                            ['detail'],
+                                        style: TextStyle(
+                                          fontSize: 17,
+                                          color: Color.fromRGBO(0, 0, 0, 0.4),
+                                          fontFamily: 'SF-Pro-Text',
+                                        ),
+                                        textAlign: TextAlign.right,
+                                      ),
                               ],
                             ),
                             Divider(
@@ -213,7 +348,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                           ],
                         ),
                       ),
-                      itemCount: navMarketPrice.marketDetails.length,
+                      itemCount: _navMarketPrice.marketDetails.length,
                     ),
                   ),
                   Container(
@@ -258,13 +393,16 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                       ],
                     ),
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 300,
-                    padding: EdgeInsets.all(15),
-                    child: SimpleTimeSeriesChart(
-                      _createSampleData(),
-                      animate: false,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 1.5,
+                      height: 300,
+                      padding: EdgeInsets.all(15),
+                      child: SimpleTimeSeriesChart(
+                        _createSampleData(),
+                        animate: false,
+                      ),
                     ),
                   ),
                 ],
@@ -274,30 +412,20 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
   }
 
   static List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData() {
-    List<TimeSeriesSales> data1 = [];
-    List<TimeSeriesSales> data2 = [];
-    var index = 0;
-    for (var item in DataMarket) {
-      data1.insert(index++, TimeSeriesSales(item['date'], item['market']));
-    }
-    index = 0;
-    for (var item in DataMarket) {
-      data2.insert(index++, TimeSeriesSales(item['date'], item['NAV']));
-    }
     return [
       new charts.Series<TimeSeriesSales, DateTime>(
         id: 'Sales1',
         colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
         domainFn: (TimeSeriesSales sales, _) => sales.time,
         measureFn: (TimeSeriesSales sales, _) => sales.sales,
-        data: data1,
+        data: _navChartData,
       ),
       new charts.Series<TimeSeriesSales, DateTime>(
         id: 'Sales2',
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
         domainFn: (TimeSeriesSales sales, _) => sales.time,
         measureFn: (TimeSeriesSales sales, _) => sales.sales,
-        data: data2,
+        data: _marketChartData,
       )
     ];
   }

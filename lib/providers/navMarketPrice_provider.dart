@@ -30,7 +30,6 @@ class NavMarketPriceProvider with ChangeNotifier {
       if (extractedData == null) {
         return;
       }
-      print(extractedData);
       _navMarketPriceList.add(
         NavMarketPriceObject(
           id: extractedData['id'],
