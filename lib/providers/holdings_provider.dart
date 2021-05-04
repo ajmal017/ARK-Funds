@@ -23,7 +23,7 @@ class HoldingsProvider with ChangeNotifier {
     return [..._holdingsList];
   }
 
-  Future<void> fetchPerformace(int id) async {
+  Future<void> fetchHoldings(int id) async {
     final url =
         Uri.parse('https://api-fundmanager.kiranum.com/products/$id/holdings');
     try {
@@ -32,12 +32,17 @@ class HoldingsProvider with ChangeNotifier {
       if (extractedData == null) {
         return;
       }
-      _holdingsList.add(HoldingsObject(
-        id: extractedData['id'],
-        name: extractedData['name'],
-        date: DateFormat('dd-MM-yyyy').format(DateTime.parse(extractedData['refreshDate'])).toString(),
-        holdings:extractedData['holdings'],
-      ));
+     
+      _holdingsList.add(
+        HoldingsObject(
+          id: extractedData['id'],
+          name: extractedData['name'],
+          date: DateFormat('dd-MM-yyyy')
+              .format(DateTime.parse(extractedData['refreshDate']))
+              .toString(),
+          holdings: extractedData['holdings'],
+        ),
+      );
       notifyListeners();
     } catch (error) {
       throw error;

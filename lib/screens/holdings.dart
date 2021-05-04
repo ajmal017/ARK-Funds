@@ -25,12 +25,10 @@ class _HoldingsState extends State<Holdings> {
     for (int i = 0; i < productGroups.length; i++) {
       groups += productGroups[i];
     }
-    // for (int i = 0; i < groups.length; i++) {
-    //   await Provider.of<HoldingsProvider>(context, listen: false)
-    //       .fetchPerformace(groups[i].id);
-    // }
-    await Provider.of<HoldingsProvider>(context, listen: false)
-          .fetchPerformace(1);
+    for (int i = 0; i < groups.length; i++) {
+      await Provider.of<HoldingsProvider>(context, listen: false)
+          .fetchHoldings(groups[i].id);
+    }
   }
 
   @override
@@ -44,15 +42,21 @@ class _HoldingsState extends State<Holdings> {
     super.initState();
   }
 
+  List<HoldingsObject> _holdingsDetails;
+  HoldingsObject _holdingsObj;
   @override
   Widget build(BuildContext context) {
     final etfDetails =
         ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
-    final holdingsDetails = Provider.of<HoldingsProvider>(context).holdingsList;
-    final holdingsObj = holdingsDetails
-        .firstWhere((fund) => fund.id == etfListItem.id, orElse: () => null);
+    if (!_isLoading) {
+      _holdingsDetails =
+          Provider.of<HoldingsProvider>(context,listen: false).holdingsList;
+      _holdingsObj = _holdingsDetails
+          .firstWhere((fund) => fund.id == etfListItem.id, orElse: () => null);
+    }
+    
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -86,7 +90,7 @@ class _HoldingsState extends State<Holdings> {
                     padding: EdgeInsets.all(20),
                     width: double.infinity,
                     child: Text(
-                      'AS OF DATE - ' + holdingsObj.date,
+                      'AS OF DATE - ' + _holdingsObj.date,
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontFamily: 'Sf-Pro-Text',
@@ -98,8 +102,8 @@ class _HoldingsState extends State<Holdings> {
                     height: MediaQuery.of(context).size.height * 0.75,
                     child: TabBarView(
                       children: [
-                        HoldingsModel(holdingsObj),
-                        HoldingsModelGraph(holdingsObj),
+                        HoldingsModel(_holdingsObj),
+                        HoldingsModelGraph(_holdingsObj),
                       ],
                     ),
                   ),
