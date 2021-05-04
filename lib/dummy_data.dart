@@ -134,130 +134,130 @@ const FUND_DESCRIPTION = const [
       'theme of disruptive innovation.'
 ];
 
-const Dummy_fund_details = const [
-  {
-    'title': 'Fund Name',
-    'detail': 'ARK Innovation ETF',
-  },
-  {
-    'title': 'Ticker',
-    'detail': 'ARKK',
-  },
-  {
-    'title': 'Fund Type',
-    'detail': 'Active Equity ETF',
-  },
-  {
-    'title': 'CUSIP',
-    'detail': '00214Q 104',
-  },
-  {
-    'title': 'ISIN',
-    'detail': 'US00214Q1040',
-  },
-  {
-    'title': 'Primary Exchange',
-    'detail': 'NYSE Arca',
-  },
-  {
-    'title': 'Inception Date',
-    'detail': '10/31/2014',
-  },
-  {
-    'title': 'Net Assets',
-    'detail': '\$ 17.68 B',
-  },
-  {
-    'title': 'Expense Ratio',
-    'detail': '0.75%',
-  },
-  {
-    'title': 'Indicative Value',
-    'detail': 'ARKK.IV',
-  },
-  {
-    'title': 'Net Asset Value(NAV)',
-    'detail': 'ARKK.NV',
-  },
-  {
-    'title': 'Typical # of Holdings',
-    'detail': '35-55',
-  },
-  {
-    'title': 'Weighted Avg Market CAP',
-    'detail': '\$ 122 B',
-  },
-  {
-    'title': 'Median Market CAP',
-    'detail': '\$ 11 B',
-  },
-  {
-    'title': 'Portfolio Managers',
-    'detail': 'Catherine D. Wood',
-  },
-];
+// const Dummy_fund_details = const [
+//   {
+//     'title': 'Fund Name',
+//     'detail': 'ARK Innovation ETF',
+//   },
+//   {
+//     'title': 'Ticker',
+//     'detail': 'ARKK',
+//   },
+//   {
+//     'title': 'Fund Type',
+//     'detail': 'Active Equity ETF',
+//   },
+//   {
+//     'title': 'CUSIP',
+//     'detail': '00214Q 104',
+//   },
+//   {
+//     'title': 'ISIN',
+//     'detail': 'US00214Q1040',
+//   },
+//   {
+//     'title': 'Primary Exchange',
+//     'detail': 'NYSE Arca',
+//   },
+//   {
+//     'title': 'Inception Date',
+//     'detail': '10/31/2014',
+//   },
+//   {
+//     'title': 'Net Assets',
+//     'detail': '\$ 17.68 B',
+//   },
+//   {
+//     'title': 'Expense Ratio',
+//     'detail': '0.75%',
+//   },
+//   {
+//     'title': 'Indicative Value',
+//     'detail': 'ARKK.IV',
+//   },
+//   {
+//     'title': 'Net Asset Value(NAV)',
+//     'detail': 'ARKK.NV',
+//   },
+//   {
+//     'title': 'Typical # of Holdings',
+//     'detail': '35-55',
+//   },
+//   {
+//     'title': 'Weighted Avg Market CAP',
+//     'detail': '\$ 122 B',
+//   },
+//   {
+//     'title': 'Median Market CAP',
+//     'detail': '\$ 11 B',
+//   },
+//   {
+//     'title': 'Portfolio Managers',
+//     'detail': 'Catherine D. Wood',
+//   },
+// ];
 
-const Nav_And_Market_Price = const [
-  {
-    'title': 'Fund Name',
-    'detail': 'ARK Innovation ETF',
-  },
-  {
-    'title': 'As of Date',
-    'detail': '3/24/2021',
-  },
-  {
-    'title': 'NAV',
-    'detail': '\$ 114.84',
-  },
-  {
-    'title': 'NAV Change',
-    'detail': '\$-6.91 | -5.67%',
-  },
-  {
-    'title': 'Market Price',
-    'detail': '\$ 114.78',
-  },
-  {
-    'title': 'Market Price Change',
-    'detail': '\$-6.92 | -5.69%',
-  },
-  {
-    'title': 'Median Bid/Ask Spread(30 day)',
-    'detail': '0.03%',
-  },
-  {
-    'title': 'Day\'s Trading Volume',
-    'detail': '18,523,895 shares',
-  },
-];
+// const Nav_And_Market_Price = const [
+//   {
+//     'title': 'Fund Name',
+//     'detail': 'ARK Innovation ETF',
+//   },
+//   {
+//     'title': 'As of Date',
+//     'detail': '3/24/2021',
+//   },
+//   {
+//     'title': 'NAV',
+//     'detail': '\$ 114.84',
+//   },
+//   {
+//     'title': 'NAV Change',
+//     'detail': '\$-6.91 | -5.67%',
+//   },
+//   {
+//     'title': 'Market Price',
+//     'detail': '\$ 114.78',
+//   },
+//   {
+//     'title': 'Market Price Change',
+//     'detail': '\$-6.92 | -5.69%',
+//   },
+//   {
+//     'title': 'Median Bid/Ask Spread(30 day)',
+//     'detail': '0.03%',
+//   },
+//   {
+//     'title': 'Day\'s Trading Volume',
+//     'detail': '18,523,895 shares',
+//   },
+// ];
 
-const Performance = const [
-  {
-    'title': '3 MONTHS',
-    'values': ['37.44%', '37.55%']
-  },
-  {
-    'title': 'YTD',
-    'values': ['152.51%', '152.83%']
-  },
-  {
-    'title': '1 YEAR*',
-    'values': ['152.51%', '152.83%']
-  },
-  {
-    'title': '3 YEARS*',
-    'values': ['52.36%', '52.34%']
-  },
-  {
-    'title': '5 YEARS*',
-    'values': ['45.40%', '46.03%']
-  },
-  {
-    'title': 'SINCE INCEPTION',
-    'values': ['36.39%', '36.42%']
-  },
-];
+// const Performance = const [
+//   {
+//     'title': '3 MONTHS',
+//     'values': ['37.44%', '37.55%']
+//   },
+//   {
+//     'title': 'YTD',
+//     'values': ['152.51%', '152.83%']
+//   },
+//   {
+//     'title': '1 YEAR*',
+//     'values': ['152.51%', '152.83%']
+//   },
+//   {
+//     'title': '3 YEARS*',
+//     'values': ['52.36%', '52.34%']
+//   },
+//   {
+//     'title': '5 YEARS*',
+//     'values': ['45.40%', '46.03%']
+//   },
+//   {
+//     'title': 'SINCE INCEPTION',
+//     'values': ['36.39%', '36.42%']
+//   },
+// ];
 
 const Annualized = const [
   'Past performance does not guarantee future results. The performance data quoted' +
@@ -277,57 +277,57 @@ const Annualized = const [
       'price of the ETF’s shares may differ significantly from their NAV during periods of market volatility.'
 ];
 
-final HoldingsData = [
-  Category(
-    id: 1,
-    title: 'TESLA INC',
-    subtitle: 'TSLA',
-    amount: 10.90,
-  ),
-  Category(
-    id: 2,
-    title: 'SQUARE INC - A',
-    subtitle: 'SQ',
-    amount: 6.17,
-  ),
-  Category(
-    id: 3,
-    title: 'TELADOC HEALTH INC',
-    subtitle: 'TDOC',
-    amount: 6.15,
-  ),
-  Category(
-    id: 4,
-    title: 'ROKU INC',
-    subtitle: 'ROKU',
-    amount: 5.46,
-  ),
-  Category(
-    id: 5,
-    title: 'ZILLOW GROUP INC - C',
-    subtitle: 'Z',
-    amount: 3.64,
-  ),
-];
+// final HoldingsData = [
+//   Category(
+//     id: 1,
+//     title: 'TESLA INC',
+//     subtitle: 'TSLA',
+//     amount: 10.90,
+//   ),
+//   Category(
+//     id: 2,
+//     title: 'SQUARE INC - A',
+//     subtitle: 'SQ',
+//     amount: 6.17,
+//   ),
+//   Category(
+//     id: 3,
+//     title: 'TELADOC HEALTH INC',
+//     subtitle: 'TDOC',
+//     amount: 6.15,
+//   ),
+//   Category(
+//     id: 4,
+//     title: 'ROKU INC',
+//     subtitle: 'ROKU',
+//     amount: 5.46,
+//   ),
+//   Category(
+//     id: 5,
+//     title: 'ZILLOW GROUP INC - C',
+//     subtitle: 'Z',
+//     amount: 3.64,
+//   ),
+// ];
 
-const HoldingDataAttributes = const [
-  {
-    'title': 'Weight',
-    'value': '10.90%',
-  },
-  {
-    'title': 'Shares Held',
-    'value': '3,675,965',
-  },
-  {
-    'title': 'Market Price',
-    'value': '\$640.39',
-  },
-  {
-    'title': 'Market Value',
-    'value': '\$2,354,051,226.35',
-  },
-];
+// const HoldingDataAttributes = const [
+//   {
+//     'title': 'Weight',
+//     'value': '10.90%',
+//   },
+//   {
+//     'title': 'Shares Held',
+//     'value': '3,675,965',
+//   },
+//   {
+//     'title': 'Market Price',
+//     'value': '\$640.39',
+//   },
+//   {
+//     'title': 'Market Value',
+//     'value': '\$2,354,051,226.35',
+//   },
+// ];
 
 final DataMarket = [
   {

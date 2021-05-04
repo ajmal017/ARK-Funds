@@ -1,26 +1,26 @@
+import 'package:arkfundsapp/models/holdings_model.dart';
+import 'package:arkfundsapp/providers/holdings_provider.dart';
 import 'package:arkfundsapp/screens/holdings_detail_screen.dart';
 import 'package:flutter/material.dart';
-import '../providers/category.dart';
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
 class HoldingsModelGraph extends StatelessWidget {
-  final List<Category> dummyList;
-  final String date;
+  final HoldingsObject holdingObj;
+  HoldingsModelGraph(this.holdingObj);
 
-  HoldingsModelGraph(this.dummyList, this.date);
+  void selectHolding(BuildContext context, Holding holding) {
+    Navigator.of(context)
+        .pushNamed(HoldingsDetailScreen.routeName, arguments: holding);
+  }
 
-  void selectHolding(BuildContext context, int id) {
-    Navigator.of(context).pushNamed(
-      HoldingsDetailScreen.routeName,
-      arguments: {
-        'id': id,
-        'date': date,
-      },
-    );
+  String moneyFormatter(double amount) {
+    return FlutterMoneyFormatter(amount: amount).output.compactSymbolOnLeft;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    List<dynamic> holdings = holdingObj.holdings;
+    return SingleChildScrollView(
       child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
@@ -29,7 +29,34 @@ class HoldingsModelGraph extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               InkWell(
-                onTap: () => selectHolding(context, dummyList[index].id),
+                onTap: () => selectHolding(
+                  context,
+                  Holding(
+                    company: holdings[index]['company'],
+                    ticker: holdings[index]['ticker'],
+                    date: holdingObj.date,
+                    holding: [
+                      {
+                        'title': 'Weight',
+                        'value': holdings[index]['weight'].toString() + '%',
+                      },
+                      {
+                        'title': 'Shares Held',
+                        'value': holdings[index]['numShares'].toString(),
+                      },
+                      {
+                        'title': 'Market Price',
+                        'value': moneyFormatter(holdings[index]['marketValue'] /
+                            holdings[index]['numShares'])
+                      },
+                      {
+                        'title': 'Market Value',
+                        'value':
+                            '\$ ' + holdings[index]['marketValue'].toString(),
+                      },
+                    ],
+                  ),
+                ),
                 child: Container(
                   margin: EdgeInsets.all(5),
                   width: double.infinity,
@@ -42,14 +69,17 @@ class HoldingsModelGraph extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        dummyList[index].title,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'SF-Pro-Text',
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width*0.55,
+                        child: Text(
+                          holdings[index]['company'],
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'SF-Pro-Text',
+                          ),
+                          maxLines: 2,
                         ),
-                        maxLines: 2,
                       ),
                       Spacer(),
                       SizedBox(
@@ -69,7 +99,7 @@ class HoldingsModelGraph extends StatelessWidget {
                             height: 15,
                             width: MediaQuery.of(context).size.width *
                                 0.35 *
-                                (dummyList[index].amount / 100),
+                                (holdings[index]['weight'] / 100),
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.blue,
@@ -92,7 +122,7 @@ class HoldingsModelGraph extends StatelessWidget {
             ],
           );
         },
-        itemCount: dummyList.length,
+        itemCount: holdings.length,
       ),
     );
   }

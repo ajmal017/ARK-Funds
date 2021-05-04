@@ -16,6 +16,38 @@ class SimpleTimeSeriesChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var minInNavData = seriesList[0]
+        .data
+        .map((e) => e.sales)
+        .toList()
+        .reduce((a, b) => a < b ? a : b);
+
+    var maxInNavData = seriesList[0]
+        .data
+        .map((e) => e.sales)
+        .toList()
+        .reduce((a, b) => a > b ? a : b);
+
+    var minInMarketData = seriesList[1]
+        .data
+        .map((e) => e.sales)
+        .toList()
+        .reduce((a, b) => a < b ? a : b);
+
+    var maxInMarketData = seriesList[1]
+        .data
+        .map((e) => e.sales)
+        .toList()
+        .reduce((a, b) => a > b ? a : b);
+
+    var minValue =
+        minInNavData < minInMarketData ? minInNavData : minInMarketData;
+
+    var maxValue =
+        maxInNavData > maxInMarketData ? maxInNavData : maxInMarketData;
+
+    var step = ((maxValue - minValue) / 10).ceil();
+    minValue = minValue.floor();
     return new charts.TimeSeriesChart(
       seriesList,
       animate: animate,
@@ -40,17 +72,18 @@ class SimpleTimeSeriesChart extends StatelessWidget {
       primaryMeasureAxis: new charts.NumericAxisSpec(
         tickProviderSpec: new charts.StaticNumericTickProviderSpec(
           <charts.TickSpec<num>>[
-            charts.TickSpec<num>(110),
-            charts.TickSpec<num>(112),
-            charts.TickSpec<num>(114),
-            charts.TickSpec<num>(116),
-            charts.TickSpec<num>(118),
-            charts.TickSpec<num>(120),
-            charts.TickSpec<num>(122),
-            charts.TickSpec<num>(124),
-            charts.TickSpec<num>(126),
-            charts.TickSpec<num>(128),
-            charts.TickSpec<num>(130),
+            charts.TickSpec<num>(minValue - 1 * step),
+            charts.TickSpec<num>(minValue),
+            charts.TickSpec<num>(minValue + 1 * step),
+            charts.TickSpec<num>(minValue + 2 * step),
+            charts.TickSpec<num>(minValue + 3 * step),
+            charts.TickSpec<num>(minValue + 4 * step),
+            charts.TickSpec<num>(minValue + 5 * step),
+            charts.TickSpec<num>(minValue + 6 * step),
+            charts.TickSpec<num>(minValue + 7 * step),
+            charts.TickSpec<num>(minValue + 8 * step),
+            charts.TickSpec<num>(minValue + 9 * step),
+            charts.TickSpec<num>(minValue + 10 * step),
           ],
         ),
       ),

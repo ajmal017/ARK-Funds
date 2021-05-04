@@ -1,4 +1,5 @@
 import 'package:arkfundsapp/dummy_data.dart';
+import 'package:arkfundsapp/models/holdings_model.dart';
 import 'package:flutter/material.dart';
 
 class HoldingsDetailScreen extends StatefulWidget {
@@ -10,15 +11,11 @@ class HoldingsDetailScreen extends StatefulWidget {
 class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final holding =
-        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
-    final holdingId = holding['id'];
-    final holdingDate = holding['date'];
-    final selectedHolding =
-        (HoldingsData).firstWhere((holding) => holding.id == holdingId);
+    final holdingObj = ModalRoute.of(context).settings.arguments as Holding;
+    List<dynamic> holding = holdingObj.holding;
     return Scaffold(
       appBar: AppBar(
-        title: Text(selectedHolding.title),
+        title: Text(holdingObj.company),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: Column(
@@ -28,7 +25,7 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
             padding: EdgeInsets.all(20),
             width: double.infinity,
             child: Text(
-              'AS OF DATE - ' + holdingDate,
+              'AS OF DATE - ' + holdingObj.date,
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontFamily: 'SF-Pro-Text',
@@ -48,7 +45,7 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  selectedHolding.title,
+                  holdingObj.company,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 18,
@@ -57,7 +54,7 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
                   ),
                 ),
                 Text(
-                  selectedHolding.subtitle,
+                  holdingObj.ticker,
                   textAlign: TextAlign.left,
                   style: TextStyle(fontSize: 13),
                 ),
@@ -84,7 +81,7 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            HoldingDataAttributes[index]['title'],
+                            holding[index]['title'],
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontFamily: 'SF-Pro-Text',
@@ -93,7 +90,7 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
                           ),
                           Spacer(),
                           Text(
-                            HoldingDataAttributes[index]['value'],
+                            holding[index]['value'],
                             style: TextStyle(
                               fontFamily: 'SF-Pro-Text',
                               color: Color.fromRGBO(0, 0, 0, 0.4),
@@ -108,7 +105,7 @@ class _HoldingsDetailScreenState extends State<HoldingsDetailScreen> {
                   ),
                 );
               },
-              itemCount: HoldingDataAttributes.length,
+              itemCount: holding.length,
             ),
           ),
         ],

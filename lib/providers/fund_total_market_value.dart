@@ -18,7 +18,6 @@ class FundTotalMarketValue with ChangeNotifier {
       date = DateTime.parse(data['refreshDate']);
       currentValue = data['current'];
       previousValue = data['previous'];
-      print(date);
       notifyListeners();
     } catch (error) {
       throw error;

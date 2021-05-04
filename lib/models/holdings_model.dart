@@ -1,26 +1,35 @@
+import 'package:arkfundsapp/providers/holdings_provider.dart';
 import 'package:arkfundsapp/screens/holdings_detail_screen.dart';
 import 'package:flutter/material.dart';
-import '../providers/category.dart';
+import 'package:flutter_money_formatter/flutter_money_formatter.dart';
+
+class Holding {
+  final String company;
+  final String ticker;
+  final String date;
+  final List<dynamic> holding;
+
+  Holding({this.company, this.ticker, this.date, this.holding});
+}
 
 class HoldingsModel extends StatelessWidget {
-  final List<Category> dummyList;
-  final String date;
-
-  HoldingsModel(this.dummyList, this.date);
-
-  void selectHolding(BuildContext context, int id) {
+  final HoldingsObject holdingObj;
+  HoldingsModel(this.holdingObj);
+  void selectHolding(BuildContext context, Holding holding) {
     Navigator.of(context).pushNamed(
       HoldingsDetailScreen.routeName,
-      arguments: {
-        'id': id,
-        'date': date,
-      },
+      arguments: holding,
     );
+  }
+
+  String moneyFormatter(double amount) {
+    return FlutterMoneyFormatter(amount: amount).output.compactSymbolOnLeft;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    List<dynamic> holdings = holdingObj.holdings;
+    return SingleChildScrollView(
       child: Column(
         children: [
           ListView.builder(
@@ -31,7 +40,35 @@ class HoldingsModel extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   InkWell(
-                    onTap: () => selectHolding(context, dummyList[index].id),
+                    onTap: () => selectHolding(
+                      context,
+                      Holding(
+                        company: holdings[index]['company'],
+                        ticker: holdings[index]['ticker'],
+                        date: holdingObj.date,
+                        holding: [
+                          {
+                            'title': 'Weight',
+                            'value': holdings[index]['weight'].toString() + '%',
+                          },
+                          {
+                            'title': 'Shares Held',
+                            'value': holdings[index]['numShares'].toString(),
+                          },
+                          {
+                            'title': 'Market Price',
+                            'value': moneyFormatter(holdings[index]
+                                    ['marketValue'] /
+                                holdings[index]['numShares']),
+                          },
+                          {
+                            'title': 'Market Value',
+                            'value': '\$ ' +
+                                holdings[index]['marketValue'].toString(),
+                          },
+                        ],
+                      ),
+                    ),
                     child: Container(
                       margin: EdgeInsets.zero,
                       width: double.infinity,
@@ -50,7 +87,7 @@ class HoldingsModel extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.65,
                                 child: Text(
-                                  dummyList[index].title,
+                                  holdings[index]['company'],
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
@@ -60,7 +97,9 @@ class HoldingsModel extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                dummyList[index].subtitle,
+                                holdings[index]['ticker'] != null
+                                    ? holdings[index]['ticker']
+                                    : '-',
                                 style: TextStyle(fontSize: 13),
                               ),
                             ],
@@ -69,7 +108,7 @@ class HoldingsModel extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Text(
-                                '${dummyList[index].amount}%',
+                                '${holdings[index]['weight']}%',
                                 style: TextStyle(
                                   fontSize: 17,
                                   fontFamily: 'SF-Pro-Text',
@@ -95,7 +134,7 @@ class HoldingsModel extends StatelessWidget {
                 ],
               );
             },
-            itemCount: dummyList.length,
+            itemCount: holdings.length,
           ),
         ],
       ),

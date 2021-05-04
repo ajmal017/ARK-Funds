@@ -24,7 +24,7 @@ class FundDetailsProvider with ChangeNotifier {
     final url = Uri.parse('https://api-fundmanager.kiranum.com/products/$id');
     try {
       final response = await http.get(url);
-      final extractedData = json.decode(response.body) as Map<String, dynamic>;
+      final extractedData = json.decode(response.body);
       if (extractedData == null) {
         return;
       }
@@ -62,7 +62,8 @@ class FundDetailsProvider with ChangeNotifier {
             },
             {
               'title': 'Net Assets',
-              'detail': extractedData['fundDetail']['netAssets'],
+              'detail':
+                  moneyFormatter(extractedData['fundDetail']['netAssets']),
             },
             {
               'title': 'Expense Ratio',
@@ -70,13 +71,13 @@ class FundDetailsProvider with ChangeNotifier {
             },
             {
               'title': 'Indicative Value',
-              'detail': extractedData.containsKey('indicativeValue')
+              'detail': extractedData['fundDetail'].containsKey('indicativeValue')
                   ? extractedData['fundDetail']['indicativeValue']
                   : '-',
             },
             {
               'title': 'Net Asset Value(NAV)',
-              'detail': extractedData.containsKey('nav')
+              'detail': extractedData['fundDetail'].containsKey('nav')
                   ? extractedData['fundDetail']['nav']
                   : '-',
             },
@@ -86,15 +87,17 @@ class FundDetailsProvider with ChangeNotifier {
             },
             {
               'title': 'Weighted Avg Market CAP',
-              'detail': extractedData['fundDetail']['weightedAvgMarketCap'],
+              'detail': moneyFormatter(
+                  extractedData['fundDetail']['weightedAvgMarketCap']),
             },
             {
               'title': 'Median Market CAP',
-              'detail': extractedData['fundDetail']['medianMarketCap'],
+              'detail': moneyFormatter(
+                  extractedData['fundDetail']['medianMarketCap']),
             },
             {
               'title': 'Portfolio Managers',
-              'detail': extractedData.containsKey('portfolioManager')
+              'detail': extractedData['fundDetail'].containsKey('portfolioManager')
                   ? extractedData['fundDetail']['portfolioManager']
                   : '-',
             },
