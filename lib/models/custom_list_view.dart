@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import '../providers/category.dart';
 
 class CustomListView extends StatelessWidget {
-  final List<Category> dummyList;
+  final List<Category> categoryList;
 
-  CustomListView(this.dummyList);
+  CustomListView(this.categoryList);
 
   void selectEtf(BuildContext context, Category listItem) {
     Navigator.of(context)
@@ -25,7 +25,7 @@ class CustomListView extends StatelessWidget {
           return Column(
             children: [
               InkWell(
-                onTap: () => selectEtf(context, dummyList[index]),
+                onTap: () => selectEtf(context, categoryList[index]),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.9,
                   padding: EdgeInsets.only(
@@ -48,7 +48,7 @@ class CustomListView extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.57,
                             child: Text(
-                              dummyList[index].title,
+                              categoryList[index].title,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontFamily: 'SF-Pro-Rounded',
@@ -57,7 +57,7 @@ class CustomListView extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            dummyList[index].subtitle,
+                            categoryList[index].subtitle,
                             style: TextStyle(
                               fontSize: 13,
                               color: Color(0xFF4D4D4D),
@@ -71,7 +71,7 @@ class CustomListView extends StatelessWidget {
                         children: [
                           Text(
                             FlutterMoneyFormatter(
-                              amount: dummyList[index].amount,
+                              amount: categoryList[index].amount,
                             ).output.compactSymbolOnLeft,
                             style: TextStyle(
                               fontSize: 17,
@@ -98,7 +98,7 @@ class CustomListView extends StatelessWidget {
             ],
           );
         },
-        itemCount: dummyList.length,
+        itemCount: categoryList.length,
       ),
     );
   }

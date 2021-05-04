@@ -62,7 +62,7 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
   }
 
   Widget buildContainer(
-      String text1, String text2, List<Category> dummyList, int index) {
+      String text1, String text2, List<Category> categoryList, int index) {
     return Column(
       children: [
         Container(
@@ -83,7 +83,7 @@ class _FundGroupsScreenState extends State<FundGroupsScreen> {
                   text1,
                   text2,
                 ),
-              CustomListView(dummyList),
+              CustomListView(categoryList),
             ],
           ),
         ),
