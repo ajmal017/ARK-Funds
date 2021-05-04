@@ -257,7 +257,7 @@ class _ArkkPerformanceState extends State<ArkkPerformance> {
                     itemBuilder: (ctx, index) => Container(
                       child: buildContainer(performanceObj.performance[index]),
                     ),
-                    itemCount: 6,
+                    itemCount: performanceObj.performance.length
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
