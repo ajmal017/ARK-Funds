@@ -30,8 +30,6 @@ class HoldingsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     List<dynamic> holdings = holdingObj.holdings;
     return ListView.builder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
       itemBuilder: (ctx, index) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
