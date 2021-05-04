@@ -1,8 +1,9 @@
 import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/providers/holdings_provider.dart';
 import 'package:provider/provider.dart';
-import '../models/holdings_model.dart';
-import '../models/holdings_model_graph.dart';
+
+import '../models/holdings_screen_ListView.dart';
+import '../models/holdings_screen_GraphView.dart';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -52,11 +53,11 @@ class _HoldingsState extends State<Holdings> {
     final fundTitle = etfDetails['title'];
     if (!_isLoading) {
       _holdingsDetails =
-          Provider.of<HoldingsProvider>(context,listen: false).holdingsList;
+          Provider.of<HoldingsProvider>(context, listen: false).holdingsList;
       _holdingsObj = _holdingsDetails
           .firstWhere((fund) => fund.id == etfListItem.id, orElse: () => null);
     }
-    
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -102,8 +103,8 @@ class _HoldingsState extends State<Holdings> {
                     height: MediaQuery.of(context).size.height * 0.75,
                     child: TabBarView(
                       children: [
-                        HoldingsModel(_holdingsObj),
-                        HoldingsModelGraph(_holdingsObj),
+                        HoldingsListView(_holdingsObj),
+                        HoldingsGraphView(_holdingsObj),
                       ],
                     ),
                   ),

@@ -1,25 +1,16 @@
+import 'package:arkfundsapp/models/holdings_screen_ListView.dart';
 import 'package:arkfundsapp/providers/holdings_provider.dart';
 import 'package:arkfundsapp/screens/holdings_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
-class Holding {
-  final String company;
-  final String ticker;
-  final String date;
-  final List<dynamic> holding;
-
-  Holding({this.company, this.ticker, this.date, this.holding});
-}
-
-class HoldingsModel extends StatelessWidget {
+class HoldingsGraphView extends StatelessWidget {
   final HoldingsObject holdingObj;
-  HoldingsModel(this.holdingObj);
+  HoldingsGraphView(this.holdingObj);
+
   void selectHolding(BuildContext context, Holding holding) {
-    Navigator.of(context).pushNamed(
-      HoldingsDetailScreen.routeName,
-      arguments: holding,
-    );
+    Navigator.of(context)
+        .pushNamed(HoldingsDetailScreen.routeName, arguments: holding);
   }
 
   String moneyFormatter(double amount) {
@@ -30,8 +21,6 @@ class HoldingsModel extends StatelessWidget {
   Widget build(BuildContext context) {
     List<dynamic> holdings = holdingObj.holdings;
     return ListView.builder(
-      // shrinkWrap: true,
-      // physics: NeverScrollableScrollPhysics(),
       itemBuilder: (ctx, index) {
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -55,7 +44,7 @@ class HoldingsModel extends StatelessWidget {
                     {
                       'title': 'Market Price',
                       'value': moneyFormatter(holdings[index]['marketValue'] /
-                          holdings[index]['numShares']),
+                          holdings[index]['numShares'])
                     },
                     {
                       'title': 'Market Value',
@@ -66,56 +55,56 @@ class HoldingsModel extends StatelessWidget {
                 ),
               ),
               child: Container(
-                margin: EdgeInsets.zero,
+                margin: EdgeInsets.all(5),
                 width: double.infinity,
                 padding: EdgeInsets.only(
-                  left: 20,
-                  right: 16,
-                  top: 8,
+                  left: 16,
+                  right: 12,
+                  top: 12,
                   bottom: 8,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.65,
-                          child: Text(
-                            holdings[index]['company'],
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'SF-Pro-Text',
-                            ),
-                            maxLines: 2,
-                          ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.55,
+                      child: Text(
+                        holdings[index]['company'],
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'SF-Pro-Text',
                         ),
-                        Text(
-                          holdings[index]['ticker'] != null
-                              ? holdings[index]['ticker']
-                              : '-',
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
+                        maxLines: 2,
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          '${holdings[index]['weight']}%',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontFamily: 'SF-Pro-Text',
-                            color: Color.fromRGBO(0, 0, 0, 0.4),
+                    Spacer(),
+                    SizedBox(
+                      height: 15,
+                      width: MediaQuery.of(context).size.width * 0.35,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.grey,
+                            width: 1.0,
+                          ),
+                          color: Color.fromRGBO(220, 220, 220, 1),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        alignment: Alignment.centerLeft,
+                        child: SizedBox(
+                          height: 15,
+                          width: MediaQuery.of(context).size.width *
+                              0.35 *
+                              (holdings[index]['weight'] / 100),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
                           ),
                         ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Color.fromRGBO(0, 0, 0, 0.5),
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),

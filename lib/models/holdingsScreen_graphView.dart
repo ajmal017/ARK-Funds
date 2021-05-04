@@ -1,12 +1,12 @@
-import 'package:arkfundsapp/models/holdings_model.dart';
+import 'package:arkfundsapp/models/holdingsScreen_listView.dart';
 import 'package:arkfundsapp/providers/holdings_provider.dart';
 import 'package:arkfundsapp/screens/holdings_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
-class HoldingsModelGraph extends StatelessWidget {
+class HoldingsGraphView extends StatelessWidget {
   final HoldingsObject holdingObj;
-  HoldingsModelGraph(this.holdingObj);
+  HoldingsGraphView(this.holdingObj);
 
   void selectHolding(BuildContext context, Holding holding) {
     Navigator.of(context)
