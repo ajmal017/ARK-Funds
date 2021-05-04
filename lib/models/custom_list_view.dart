@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
-import '../screens/etf_detail_screen.dart';
-import 'package:flutter/material.dart';
 import '../providers/category.dart';
+import '../screens/etf_detail_screen.dart';
 
 class CustomListView extends StatelessWidget {
   final List<Category> dummyList;
@@ -46,7 +46,7 @@ class CustomListView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.57,
+                            width: MediaQuery.of(context).size.width * 0.5,
                             child: Text(
                               dummyList[index].title,
                               style: TextStyle(
