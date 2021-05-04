@@ -1,5 +1,5 @@
 import 'package:arkfundsapp/dummy_data.dart';
-import 'package:arkfundsapp/models/holdings_model.dart';
+import 'package:arkfundsapp/models/holdingsScreen_listView.dart';
 import 'package:flutter/material.dart';
 
 class HoldingsDetailScreen extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/providers/holdings_provider.dart';
 import 'package:provider/provider.dart';
-import '../models/holdings_model.dart';
-import '../models/holdings_model_graph.dart';
+import '../models/holdingsScreen_listView.dart';
+import '../models/holdingsScreen_graphView.dart';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -102,8 +102,8 @@ class _HoldingsState extends State<Holdings> {
                     height: MediaQuery.of(context).size.height * 0.75,
                     child: TabBarView(
                       children: [
-                        HoldingsModel(_holdingsObj),
-                        HoldingsModelGraph(_holdingsObj),
+                        HoldingsListView(_holdingsObj),
+                        HoldingsGraphView(_holdingsObj),
                       ],
                     ),
                   ),

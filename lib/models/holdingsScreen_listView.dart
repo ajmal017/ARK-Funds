@@ -12,9 +12,9 @@ class Holding {
   Holding({this.company, this.ticker, this.date, this.holding});
 }
 
-class HoldingsModel extends StatelessWidget {
+class HoldingsListView extends StatelessWidget {
   final HoldingsObject holdingObj;
-  HoldingsModel(this.holdingObj);
+  HoldingsListView(this.holdingObj);
   void selectHolding(BuildContext context, Holding holding) {
     Navigator.of(context).pushNamed(
       HoldingsDetailScreen.routeName,
