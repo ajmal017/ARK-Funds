@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../models/custom_list_view.dart';
 import '../providers/fund_groups.dart';
-import '../widgets/intoduction.dart';
+import '../widgets/introduction.dart';
 
 class FundGroupsScreen extends StatefulWidget {
   @override
