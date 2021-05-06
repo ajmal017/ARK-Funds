@@ -3,8 +3,8 @@ import 'package:arkfundsapp/providers/marketPrice_chartProvider.dart';
 import 'package:arkfundsapp/providers/navMarketPrice_provider.dart';
 import 'package:arkfundsapp/providers/navPrice_chartProvider.dart';
 import 'package:arkfundsapp/widgets/chart.dart';
-import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -258,11 +258,13 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       _navMarketPrice = _marketDetails
           .firstWhere((fund) => fund.id == etfListItem.id, orElse: () => null);
 
-      _navDataList = Provider.of<NavPriceChartProvider>(context,listen: false).chartList;
+      _navDataList =
+          Provider.of<NavPriceChartProvider>(context, listen: false).chartList;
       _navData = _navDataList[etfListItem.id - 1].reversed.toList();
 
       _marketDataList =
-          Provider.of<MarketPriceChartProvider>(context,listen: false).chartList;
+          Provider.of<MarketPriceChartProvider>(context, listen: false)
+              .chartList;
       _marketData = _marketDataList[etfListItem.id - 1].reversed.toList();
     }
 

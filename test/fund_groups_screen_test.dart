@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/providers/fund_groups.dart';
 import 'package:arkfundsapp/providers/fund_total_market_value.dart';
+import 'package:arkfundsapp/screens/etf_detail_screen.dart';
 import 'package:arkfundsapp/screens/fund_group_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
@@ -17,9 +18,12 @@ class MockFundTotalMarketValue extends Mock implements FundTotalMarketValue {}
 
 class MockFundProductGroup extends Mock implements FundProductGroup {}
 
+class MockNavigatorObserver extends Mock implements NavigatorObserver {}
+
 FundGroups fundGroups;
 FundTotalMarketValue totalMarketValue;
 FundProductGroup fundProductGroup;
+NavigatorObserver navigatorObserver;
 
 List<Funds> fundsList = [
   Funds(1, "test", "testd"),
@@ -45,6 +49,8 @@ void main() {
     fundProductGroup = MockFundProductGroup();
     when(fundProductGroup.fetchProducts(1)).thenAnswer((_) => Future.value());
     when(fundProductGroup.groups).thenReturn(groups);
+
+    navigatorObserver = MockNavigatorObserver();
   });
 
   Widget makeTestableWidget({Widget child}) {
@@ -62,6 +68,10 @@ void main() {
       ],
       child: MaterialApp(
         home: child,
+        navigatorObservers: [navigatorObserver],
+        routes: {
+          EtfDetailScreen.routeName: (ctx) => EtfDetailScreen(),
+        },
       ),
     );
   }
@@ -73,7 +83,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(
           find.text(
-              DateFormat.yMMMd().format(totalMarketValue.date).toString()),
+            DateFormat.yMMMd().format(totalMarketValue.date).toString(),
+          ),
           findsOneWidget);
       var expectedStr = '';
       if (totalMarketValue.currentValue - totalMarketValue.previousValue > 0) {
@@ -121,6 +132,18 @@ void main() {
         ).output.compactSymbolOnLeft),
         findsOneWidget,
       );
+    });
+
+    testWidgets("Test Fund Details Navigation", (WidgetTester tester) async {
+      FundGroupsScreen fgScreen = FundGroupsScreen();
+      await tester.pumpWidget(makeTestableWidget(child: fgScreen));
+      await tester.pumpAndSettle();
+      var firstElement = find.byType(InkWell).at(1);
+      await tester.tap(firstElement);
+
+      await tester.pumpAndSettle();
+      verify(navigatorObserver.didPush(any, any));
+      expect(find.byType(EtfDetailScreen), findsOneWidget);
     });
   });
 }
