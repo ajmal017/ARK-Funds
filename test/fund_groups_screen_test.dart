@@ -73,7 +73,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(
           find.text(
-              DateFormat.yMMMd().format(totalMarketValue.date).toString()),
+            DateFormat.yMMMd().format(totalMarketValue.date).toString(),
+          ),
           findsOneWidget);
       var expectedStr = '';
       if (totalMarketValue.currentValue - totalMarketValue.previousValue > 0) {
