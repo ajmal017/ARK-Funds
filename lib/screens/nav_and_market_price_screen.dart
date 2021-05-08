@@ -25,6 +25,13 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
   List<dynamic> _navDataList;
   List<dynamic> _marketDataList;
 
+  bool _oneMColor = false;
+  bool _threeMColor = false;
+  bool _sixMColor = false;
+  bool _ytdColor = false;
+  bool _oneYColor = false;
+  bool _allColor = false;
+
   DateTime _fromSelectedDate = DateTime(
     DateTime.now().year,
     DateTime.now().month - 1,
@@ -61,6 +68,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         }
         _navChartData = _navData.sublist(0, lastIndex);
         _marketChartData = _marketData.sublist(0, lastIndex);
+        _oneMColor=_threeMColor=_sixMColor=_ytdColor=_oneYColor=_allColor=false;
       });
     });
   }
@@ -86,6 +94,11 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       }
       _navChartData = _navData.sublist(0, index);
       _marketChartData = _marketData.sublist(0, index);
+
+      _oneMColor = !_oneMColor;
+      if (_oneMColor) {
+        _threeMColor = _sixMColor = _ytdColor = _oneYColor = _allColor = false;
+      }
     });
   }
 
@@ -110,6 +123,11 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       }
       _navChartData = _navData.sublist(0, index);
       _marketChartData = _marketData.sublist(0, index);
+
+      _threeMColor = !_threeMColor;
+      if (_threeMColor) {
+        _oneMColor = _sixMColor = _ytdColor = _oneYColor = _allColor = false;
+      }
     });
   }
 
@@ -134,6 +152,11 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       }
       _navChartData = _navData.sublist(0, index);
       _marketChartData = _marketData.sublist(0, index);
+
+      _sixMColor = !_sixMColor;
+      if (_sixMColor) {
+        _threeMColor = _oneMColor = _ytdColor = _oneYColor = _allColor = false;
+      }
     });
   }
 
@@ -154,6 +177,11 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       }
       _navChartData = _navData.sublist(0, index);
       _marketChartData = _marketData.sublist(0, index);
+
+      _ytdColor = !_ytdColor;
+      if (_ytdColor) {
+        _threeMColor = _sixMColor = _oneMColor = _oneYColor = _allColor = false;
+      }
     });
   }
 
@@ -178,6 +206,11 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       }
       _navChartData = _navData.sublist(0, index);
       _marketChartData = _marketData.sublist(0, index);
+
+      _oneYColor = !_oneYColor;
+      if (_oneYColor) {
+        _threeMColor = _sixMColor = _ytdColor = _oneMColor = _allColor = false;
+      }
     });
   }
 
@@ -187,21 +220,27 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       _fromSelectedDate = DateTime(2014, 10, 27);
       _navChartData = _navData;
       _marketChartData = _marketData;
+
+      _allColor = !_allColor;
+      if (_allColor) {
+        _threeMColor = _sixMColor = _ytdColor = _oneYColor = _oneMColor = false;
+      }
     });
   }
 
-  Widget myButton(String buttonText, Function reference) {
+  Widget myButton(String buttonText, Function reference, Color color) {
     return ButtonTheme(
       minWidth: 15,
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: reference,
         child: Text(
           buttonText,
           style: TextStyle(
             fontFamily: 'SF-Pro-Text',
+            color: color==Color(0xFF6951CC)?Colors.white:Colors.black,
           ),
         ),
-        color: Color(0xFFF2F2F7),
+        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(color),),
       ),
     );
   }
@@ -227,12 +266,6 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       await Provider.of<MarketPriceChartProvider>(context, listen: false)
           .fetchMarket(groups[i].id);
     }
-    // await Provider.of<NavMarketPriceProvider>(context, listen: false)
-    //     .fetchMarketDetails(1);
-    // await Provider.of<NavPriceChartProvider>(context, listen: false)
-    //     .fetchNav(1);
-    // await Provider.of<MarketPriceChartProvider>(context, listen: false)
-    //     .fetchMarket(1);
   }
 
   @override
@@ -258,11 +291,13 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       _navMarketPrice = _marketDetails
           .firstWhere((fund) => fund.id == etfListItem.id, orElse: () => null);
 
-      _navDataList = Provider.of<NavPriceChartProvider>(context,listen: false).chartList;
+      _navDataList =
+          Provider.of<NavPriceChartProvider>(context, listen: false).chartList;
       _navData = _navDataList[etfListItem.id - 1].reversed.toList();
 
       _marketDataList =
-          Provider.of<MarketPriceChartProvider>(context,listen: false).chartList;
+          Provider.of<MarketPriceChartProvider>(context, listen: false)
+              .chartList;
       _marketData = _marketDataList[etfListItem.id - 1].reversed.toList();
     }
 
@@ -355,7 +390,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     color: Color(0xFFF2F2F7),
                     child: Row(
                       children: [
-                        FlatButton(
+                        TextButton(
                           onPressed: () => _presentDatePicker(context, "from"),
                           child: Text(
                             _fromSelectedDate == null
@@ -364,7 +399,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                           ),
                         ),
                         Icon(Icons.arrow_forward),
-                        FlatButton(
+                        TextButton(
                           onPressed: () => _presentDatePicker(context, "to"),
                           child: Text(
                             _toSelectedDate == null
@@ -384,12 +419,33 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        myButton('1m', _setDateForOneMonth),
-                        myButton('3m', _setDateForThreeMonth),
-                        myButton('6m', _setDateForSixMonth),
-                        myButton('YTD', _setDateForYTD),
-                        myButton('1y', _setDateForOneYear),
-                        myButton('All', _setDateForAll),
+                        myButton(
+                          '1m',
+                          _setDateForOneMonth,
+                          _oneMColor ? Color(0xFF6951CC) : Color(0xFFF2F2F7),
+                        ),
+                        myButton(
+                          '3m',
+                          _setDateForThreeMonth,
+                          _threeMColor ? Color(0xFF6951CC) : Color(0xFFF2F2F7),
+                        ),
+                        myButton(
+                          '6m',
+                          _setDateForSixMonth,
+                          _sixMColor ? Color(0xFF6951CC) : Color(0xFFF2F2F7),
+                        ),
+                        myButton(
+                          'YTD',
+                          _setDateForYTD,
+                          _ytdColor ? Color(0xFF6951CC) : Color(0xFFF2F2F7),
+                        ),
+                        myButton(
+                          '1y',
+                          _setDateForOneYear,
+                          _oneYColor ? Color(0xFF6951CC) : Color(0xFFF2F2F7),
+                        ),
+                        myButton('All', _setDateForAll,
+                            _allColor ? Color(0xFF6951CC) : Color(0xFFF2F2F7)),
                       ],
                     ),
                   ),
