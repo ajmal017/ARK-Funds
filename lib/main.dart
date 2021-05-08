@@ -26,21 +26,7 @@ import './screens/detail_fund_description.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(ArkFundsLandingPage());
-
-class ArkFundsLandingPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'ARK - Funds',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
+void main() => runApp(MyHomePage());
 
 class MyHomePage extends StatefulWidget {
   @override
