@@ -66,22 +66,22 @@ class _BottomTabBarState extends State<BottomTabBar> {
           BottomNavigationBarItem(
             backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
             icon: buildContainer(),
-            title: Text(_pages[_selectedPageIndex]['title']),
+            label: _pages[_selectedPageIndex]['title'],
           ),
           BottomNavigationBarItem(
             backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
             icon: buildContainer(),
-            title: Text(_pages[_selectedPageIndex]['title']),
+            label: _pages[_selectedPageIndex]['title'],
           ),
           BottomNavigationBarItem(
             backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
             icon: buildContainer(),
-            title: Text(_pages[_selectedPageIndex]['title']),
+            label: _pages[_selectedPageIndex]['title'],
           ),
           BottomNavigationBarItem(
             backgroundColor: Color.fromRGBO(248, 248, 248, 0.92),
             icon: buildContainer(),
-            title: Text(_pages[_selectedPageIndex]['title']),
+            label: _pages[_selectedPageIndex]['title'],
           ),
         ],
       ),

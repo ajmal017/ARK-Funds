@@ -1,7 +1,4 @@
 import 'package:arkfundsapp/providers/category.dart';
-
-import '../dummy_data.dart';
-
 import '../widgets/fund_description.dart';
 import '../models/custom_list_view_etf.dart';
 

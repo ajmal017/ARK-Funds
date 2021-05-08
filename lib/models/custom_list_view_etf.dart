@@ -22,7 +22,7 @@ class CustomListViewEtf extends StatelessWidget {
     FundDocuments.routeName,
   ];
 
-  final DUMMY_CATEGORIES3 = [
+  final _etfCategories = [
     'Fund Details',
     'NAV and Market Price',
     'Performance',
@@ -39,7 +39,7 @@ class CustomListViewEtf extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (ctx, index) => InkWell(
           onTap: () => Navigator.of(context).pushNamed(navigators[index],
-              arguments: {'listItem': listItem, 'title': DUMMY_CATEGORIES3[index]}),
+              arguments: {'listItem': listItem, 'title': _etfCategories[index]}),
           child: Container(
             padding: EdgeInsets.only(
               top: 16,
@@ -53,9 +53,9 @@ class CustomListViewEtf extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      DUMMY_CATEGORIES3[index] == 'Performance'
+                      _etfCategories[index] == 'Performance'
                           ? ticker + ' Performance'
-                          : DUMMY_CATEGORIES3[index],
+                          : _etfCategories[index],
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -78,7 +78,7 @@ class CustomListViewEtf extends StatelessWidget {
             ),
           ),
         ),
-        itemCount: DUMMY_CATEGORIES3.length,
+        itemCount: _etfCategories.length,
       ),
     );
   }
