@@ -1,3 +1,4 @@
+import 'package:arkfundsapp/providers/navPrice_chartProvider.dart';
 import 'package:arkfundsapp/widgets/chart.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -5,8 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
 class MarketPriceChartProvider with ChangeNotifier {
-  List _chartList = [];
-  List get chartList {
+  List<ChartDataObject> _chartList = [];
+  List<ChartDataObject> get chartList {
     return [..._chartList];
   }
 
@@ -29,7 +30,7 @@ class MarketPriceChartProvider with ChangeNotifier {
           ch[1].toDouble(),
         );
       }).toList();
-      _chartList.add(list);
+      _chartList.add(ChartDataObject(id, list));
       notifyListeners();
     } catch (error) {
       throw error;

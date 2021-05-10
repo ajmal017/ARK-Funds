@@ -22,8 +22,9 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
 
   List<NavMarketPriceObject> _marketDetails;
   NavMarketPriceObject _navMarketPrice;
-  List<dynamic> _navDataList;
-  List<dynamic> _marketDataList;
+  List<ChartDataObject> _navDataList;
+  List<ChartDataObject> _marketDataList;
+  ChartDataObject _navDataObject, _marketDataObject;
 
   bool _oneMColor = false;
   bool _threeMColor = false;
@@ -60,7 +61,7 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         var lastIndex;
         for (int i = _navChartData.length - 1; i >= 0; i--) {
           if (_toSelectedDate.difference(_navChartData[i].time).inDays >=
-              difference + 1) {
+              difference + 5) {
             lastIndex = i;
           } else {
             break;
@@ -68,7 +69,8 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
         }
         _navChartData = _navData.sublist(0, lastIndex);
         _marketChartData = _marketData.sublist(0, lastIndex);
-        _oneMColor=_threeMColor=_sixMColor=_ytdColor=_oneYColor=_allColor=false;
+        _oneMColor = _threeMColor =
+            _sixMColor = _ytdColor = _oneYColor = _allColor = false;
       });
     });
   }
@@ -237,20 +239,22 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
           buttonText,
           style: TextStyle(
             fontFamily: 'SF-Pro-Text',
-            color: color==Color(0xFF6951CC)?Colors.white:Colors.black,
+            color: color == Color(0xFF6951CC) ? Colors.white : Colors.black,
           ),
         ),
-        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(color),),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(color),
+        ),
       ),
     );
   }
 
+  List<Category> groups = [];
   var _isLoading = false;
 
   Future<void> fetch() async {
     final productGroups =
         Provider.of<FundProductGroup>(context, listen: false).groups;
-    List<Category> groups = [];
     for (int i = 0; i < productGroups.length; i++) {
       groups += productGroups[i];
     }
@@ -258,6 +262,10 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
       await Provider.of<NavMarketPriceProvider>(context, listen: false)
           .fetchMarketDetails(groups[i].id);
     }
+  }
+
+  var _isChartDataLoading = false;
+  Future<void> fetchChartData() async {
     for (int i = 0; i < groups.length; i++) {
       await Provider.of<NavPriceChartProvider>(context, listen: false)
           .fetchNav(groups[i].id);
@@ -271,9 +279,16 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
   @override
   void initState() {
     _isLoading = true;
+    _isChartDataLoading = true;
     fetch().then((_) {
       setState(() {
         _isLoading = false;
+        // _isChartDataLoading = true;
+      });
+    });
+    fetchChartData().then((_) {
+      setState(() {
+        _isChartDataLoading = false;
       });
     });
     super.initState();
@@ -290,15 +305,25 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
           Provider.of<NavMarketPriceProvider>(context).navMarketPriceList;
       _navMarketPrice = _marketDetails
           .firstWhere((fund) => fund.id == etfListItem.id, orElse: () => null);
+    }
 
+    if (!_isChartDataLoading) {
       _navDataList =
           Provider.of<NavPriceChartProvider>(context, listen: false).chartList;
-      _navData = _navDataList[etfListItem.id - 1].reversed.toList();
+      _navDataObject = _navDataList.firstWhere(
+        (element) => element.id == etfListItem.id,
+        orElse: () => null,
+      );
+      _navData=_navDataObject.chartList.reversed.toList();
 
       _marketDataList =
           Provider.of<MarketPriceChartProvider>(context, listen: false)
               .chartList;
-      _marketData = _marketDataList[etfListItem.id - 1].reversed.toList();
+      _marketDataObject = _marketDataList.firstWhere(
+        (element) => element.id == etfListItem.id,
+        orElse: () => null,
+      );
+      _marketData=_marketDataObject.chartList.reversed.toList();
     }
 
     return Scaffold(
@@ -455,10 +480,12 @@ class _NavAndMarketPriceState extends State<NavAndMarketPrice> {
                       width: MediaQuery.of(context).size.width * 1.5,
                       height: 300,
                       padding: EdgeInsets.all(15),
-                      child: SimpleTimeSeriesChart(
-                        _createSampleData(),
-                        animate: false,
-                      ),
+                      child: _isChartDataLoading
+                          ? Center(child: CircularProgressIndicator())
+                          : SimpleTimeSeriesChart(
+                              _createSampleData(),
+                              animate: false,
+                            ),
                     ),
                   ),
                 ],
