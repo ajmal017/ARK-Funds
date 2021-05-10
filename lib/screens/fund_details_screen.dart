@@ -1,7 +1,6 @@
 import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/providers/fund_details_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 class FundDetailsScreen extends StatefulWidget {
