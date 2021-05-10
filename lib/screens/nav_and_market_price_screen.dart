@@ -3,8 +3,8 @@ import 'package:arkfundsapp/providers/marketPrice_chartProvider.dart';
 import 'package:arkfundsapp/providers/navMarketPrice_provider.dart';
 import 'package:arkfundsapp/providers/navPrice_chartProvider.dart';
 import 'package:arkfundsapp/widgets/chart.dart';
-import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
