@@ -98,11 +98,7 @@ packages:
       name: built_value
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "8.0.6"
-=======
-    version: "8.0.5"
->>>>>>> main
   characters:
     dependency: transitive
     description:
@@ -475,11 +471,7 @@ packages:
       name: shelf
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "1.1.2"
-=======
-    version: "1.1.1"
->>>>>>> main
   shelf_web_socket:
     dependency: transitive
     description:
