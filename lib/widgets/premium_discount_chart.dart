@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 
 
 /// Sample time series data type.
-class PremiumDiscountModel {
-  final DateTime date;
-  final double value;
+// class PremiumDiscountModel {
+//   final DateTime date;
+//   final double value;
 
-  PremiumDiscountModel(this.date, this.value);
-}
+//   PremiumDiscountModel(this.date, this.value);
+// }
 
 class PremiumDiscountChart extends StatelessWidget {
   final List<charts.Series> seriesList;

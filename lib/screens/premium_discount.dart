@@ -1,35 +1,57 @@
-import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
+import 'package:arkfundsapp/providers/navPrice_chartProvider.dart';
+import 'package:arkfundsapp/providers/premium_discount_chart_provider.dart';
+import 'package:arkfundsapp/widgets/nav_market_price_chart.dart';
 import 'package:arkfundsapp/widgets/premium_discount_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:provider/provider.dart';
 import '../dummy_data.dart';
 
 class PremiumDiscount extends StatefulWidget {
   static const routeName = '/premium-discount';
   @override
   _PremiumDiscountState createState() => _PremiumDiscountState();
-
-  static List<charts.Series<PremiumDiscountModel, DateTime>>
-      _createSampleData() {
-    List<PremiumDiscountModel> data1 = [];
-    var index = 0;
-    for (var item in PremiumDiscountChartData) {
-      data1.insert(index++, PremiumDiscountModel(item['date'], item['value']));
-    }
-    return [
-      new charts.Series<PremiumDiscountModel, DateTime>(
-        id: 'Sales1',
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (PremiumDiscountModel sales, _) => sales.date,
-        measureFn: (PremiumDiscountModel sales, _) => sales.value,
-        data: data1,
-      ),
-    ];
-  }
 }
 
 class _PremiumDiscountState extends State<PremiumDiscount> {
   String _selectedValue;
+  List<String> _items = [
+    '2020 1Y',
+    '2Q 2020',
+    '3Q 2020',
+    '4Q 2020',
+    '1Q 2021',
+    '2Q 2021',
+  ];
+   List<TimeSeriesSales> _premiumData = [];
+  //  List<TimeSeriesSales> _premiumChartData = _premiumData;
+  List<ChartDataObject> _premiumDataList;
+  ChartDataObject _premiumDataObject;
+
+  // void onScreenChart() {
+  //   switch (_selectedValue) {
+  //     case '2020 1Y':
+  //       _premiumChartData = _premiumData.sublist();
+  //       break;
+  //     case '2Q 2020':
+  //     _premiumChartData = _premiumData.sublist();
+  //       break;
+  //     case '3Q 2020':
+  //     _premiumChartData = _premiumData.sublist();
+  //       break;
+  //     case '4Q 2020':
+  //     _premiumChartData = _premiumData.sublist();
+  //       break;
+  //     case '1Q 2021':
+  //     _premiumChartData = _premiumData.sublist();
+  //       break;
+  //     case '2Q 2021':
+  //     _premiumChartData = _premiumData.sublist();
+  //       break;
+  //     default:
+  //   }
+  // }
 
   ListView listViewBulder(List<Map<String, String>> dummyList) {
     return ListView.builder(
@@ -102,12 +124,66 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
     );
   }
 
+  List<Category> groups = [];
+  var _isLoading = false;
+
+  // Future<void> fetch() async {
+  //   final productGroups =
+  //       Provider.of<FundProductGroup>(context, listen: false).groups;
+  //   for (int i = 0; i < productGroups.length; i++) {
+  //     groups += productGroups[i];
+  //   }
+  // }
+
+  var _isChartDataLoading = false;
+  Future<void> fetchChartData() async {
+    final productGroups =
+        Provider.of<FundProductGroup>(context, listen: false).groups;
+    for (int i = 0; i < productGroups.length; i++) {
+      groups += productGroups[i];
+    }
+    for (int i = 0; i < groups.length; i++) {
+      await Provider.of<PremiumDiscountChartProvider>(context, listen: false)
+          .fetchPremiumDiscountData(groups[i].id);
+    }
+  }
+
+  @override
+  void initState() {
+    // _isLoading = true;
+    _isChartDataLoading = true;
+    // fetch().then((_) {
+    //   setState(() {
+    //     _isLoading = false;
+    //     // _isChartDataLoading = true;
+    //   });
+    // });
+    fetchChartData().then((_) {
+      setState(() {
+        _isChartDataLoading = false;
+      });
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final etfDetails =
         ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     final Category etfListItem = etfDetails['listItem'];
     final fundTitle = etfDetails['title'];
+
+    if (!_isChartDataLoading) {
+      _premiumDataList =
+          Provider.of<PremiumDiscountChartProvider>(context, listen: false)
+              .chartList;
+      _premiumDataObject = _premiumDataList.firstWhere(
+        (element) => element.id == etfListItem.id,
+        orElse: () => null,
+      );
+      _premiumData = _premiumDataObject.chartList.reversed.toList();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -182,14 +258,7 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
                       ),
                       DropdownButton(
                         value: _selectedValue,
-                        items: [
-                          '2020 1Y',
-                          '2Q 2020',
-                          '3Q 2020',
-                          '4Q 2020',
-                          '1Q 2021',
-                          '2Q 2021'
-                        ].map((String value) {
+                        items: _items.map((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(
@@ -216,13 +285,14 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
               width: MediaQuery.of(context).size.width,
               height: 320,
               padding: EdgeInsets.all(15),
-              child:
-                  // PremiumDiscountChart(),
-                  PremiumDiscountChart(
-                PremiumDiscount._createSampleData(),
-                // Disable animations for image tests.
-                animate: false,
-              ),
+              child: _isChartDataLoading
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : PremiumDiscountChart(
+                      _createSampleData(),
+                      animate: false,
+                    ),
             ),
             buildContainer('HISTORICAL DATA'),
             listViewBulder(HistoricalData),
@@ -246,5 +316,22 @@ class _PremiumDiscountState extends State<PremiumDiscount> {
         ),
       ),
     );
+  }
+
+   List<charts.Series<TimeSeriesSales, DateTime>> _createSampleData() {
+    // List<PremiumDiscountModel> data1 = [];
+    // var index = 0;
+    // for (var item in PremiumDiscountChartData) {
+    //   data1.insert(index++, PremiumDiscountModel(item['date'], item['value']));
+    // }
+    return [
+      new charts.Series<TimeSeriesSales, DateTime>(
+        id: 'Sales1',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (TimeSeriesSales sales, _) => sales.time,
+        measureFn: (TimeSeriesSales sales, _) => sales.sales,
+        data: _premiumData,
+      ),
+    ];
   }
 }
