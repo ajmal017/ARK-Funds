@@ -1,4 +1,4 @@
-import 'providers/category.dart';
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
 
 final Daily_trades1 = [
   Category(
@@ -90,20 +90,20 @@ const FUND_DESCRIPTION = const [
 
 const Annualized = const [
   'Past performance does not guarantee future results. The performance data quoted' +
-      'represents past performance and current returns may be lower or higher. The ' +
-      'investment return and principal will fluctuate so that an investor’s shares when ' +
-      'redeemed may be worth more or less than the original cost. The Fund’s most recent ' +
-      'month-end performance can be found in the fund material section.\n\nReturns for less ' +
-      'than one year are not annualized. Net asset value (\"NAV\") returns are based on the ' +
-      'dollar value of a single share of the ETF, calculated using the value of the underlying ' +
-      'assets of the ETF minus its liabilities, divided by the number of shares outstanding.' +
-      'The NAV is typically calculated at 4:00 pm Eastern time on each business day the' +
-      'New York Stock Exchange is open for trading. Market returns are based on the trade' +
-      'price at which shares are bought and sold on the NYSE Arca, Inc. using the last' +
-      'share trade. Market performance does not represent the returns you would receive ' +
-      'if you traded shares at other times. Total Return reflects reinvestment of distributions ' +
-      'on ex-date for NAV returns and payment date for Market Price returns. The market ' +
-      'price of the ETF’s shares may differ significantly from their NAV during periods of market volatility.'
+  'represents past performance and current returns may be lower or higher. The ' +
+  'investment return and principal will fluctuate so that an investor’s shares when ' +
+  'redeemed may be worth more or less than the original cost. The Fund’s most recent ' +
+  'month-end performance can be found in the fund material section.\n\nReturns for less ' +
+  'than one year are not annualized. Net asset value (\"NAV\") returns are based on the ' +
+  'dollar value of a single share of the ETF, calculated using the value of the underlying ' +
+  'assets of the ETF minus its liabilities, divided by the number of shares outstanding.' +
+  'The NAV is typically calculated at 4:00 pm Eastern time on each business day the' +
+  'New York Stock Exchange is open for trading. Market returns are based on the trade' +
+  'price at which shares are bought and sold on the NYSE Arca, Inc. using the last' +
+  'share trade. Market performance does not represent the returns you would receive ' +
+  'if you traded shares at other times. Total Return reflects reinvestment of distributions ' +
+  'on ex-date for NAV returns and payment date for Market Price returns. The market ' +
+  'price of the ETF’s shares may differ significantly from their NAV during periods of market volatility.'
 ];
 
 
