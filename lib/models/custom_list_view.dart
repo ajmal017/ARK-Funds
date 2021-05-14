@@ -1,7 +1,7 @@
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
-import '../providers/category.dart';
 import '../screens/etf_detail_screen.dart';
 
 class CustomListView extends StatelessWidget {

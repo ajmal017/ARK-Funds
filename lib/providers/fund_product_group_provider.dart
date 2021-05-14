@@ -8,12 +8,14 @@ class Category {
   final String title;
   final String subtitle;
   final double amount;
+  final String description;
 
   Category({
     @required this.id,
     @required this.title,
     @required this.subtitle,
     @required this.amount,
+    this.description,
   });
 }
 
@@ -35,11 +37,13 @@ class FundProductGroup with ChangeNotifier {
         return;
       }
       _products = groupProducts.map((groupProduct) {
+        // print(groupProduct['description']);
         return Category(
           id: groupProduct['id'],
           title: groupProduct['name'],
           subtitle: groupProduct['fundDetail']['ticker'],
           amount: groupProduct['fundDetail']['netAssets'].toDouble(),
+          description: groupProduct['description'],
         );
       }).toList();
       _groups.insert(groupIndex - 1, _products);

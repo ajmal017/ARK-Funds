@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:arkfundsapp/providers/category.dart';
-import 'package:arkfundsapp/providers/fund_groups.dart';
-import 'package:arkfundsapp/providers/fund_total_market_value.dart';
+import 'package:arkfundsapp/providers/fund_groups_provider.dart';
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
+import 'package:arkfundsapp/providers/fund_total_market_value_provider.dart';
 import 'package:arkfundsapp/screens/etf_detail_screen.dart';
 import 'package:arkfundsapp/screens/fund_group_screen.dart';
 import 'package:flutter/material.dart';
