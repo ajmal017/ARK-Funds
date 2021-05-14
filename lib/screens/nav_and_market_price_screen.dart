@@ -1,8 +1,8 @@
-import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
 import 'package:arkfundsapp/providers/marketPrice_chartProvider.dart';
 import 'package:arkfundsapp/providers/navMarketPrice_provider.dart';
 import 'package:arkfundsapp/providers/navPrice_chartProvider.dart';
-import 'package:arkfundsapp/widgets/chart.dart';
+import 'package:arkfundsapp/widgets/nav_market_price_chart.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
