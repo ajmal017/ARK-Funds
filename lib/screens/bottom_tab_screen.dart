@@ -1,7 +1,7 @@
 import 'fund_group_screen.dart';
-import '../screens/label2.dart';
-import '../screens/label3.dart';
-import '../screens/label4.dart';
+// import '../screens/label2.dart';
+// import '../screens/label3.dart';
+// import '../screens/label4.dart';
 import 'package:flutter/material.dart';
 
 class BottomTabBar extends StatefulWidget {
@@ -24,9 +24,9 @@ class _BottomTabBarState extends State<BottomTabBar> {
   void initState() {
     _pages = [
       {'page': FundGroupsScreen(), 'title': 'ARK - Funds'},
-      {'page': LabelTwo(), 'title': 'Label 2'},
-      {'page': LabelThree(), 'title': 'Label 3'},
-      {'page': LabelFour(), 'title': 'Label 4'},
+      // {'page': LabelTwo(), 'title': 'Label 2'},
+      // {'page': LabelThree(), 'title': 'Label 3'},
+      // {'page': LabelFour(), 'title': 'Label 4'},
     ];
     super.initState();
   }
