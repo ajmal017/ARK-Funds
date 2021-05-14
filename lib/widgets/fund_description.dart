@@ -1,16 +1,15 @@
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
 import '../screens/detail_fund_description.dart';
-import '../dummy_data.dart';
-
 import 'package:flutter/material.dart';
 
 class FundDescription extends StatelessWidget {
-  final String etfTitle;
+  final Category etf;
   FundDescription({
-    @required this.etfTitle,
+    @required this.etf,
   });
-  void fundDescription(BuildContext context, String etfTitle) {
+  void fundDescription(BuildContext context, Category etf) {
     Navigator.of(context)
-        .pushNamed(DetailFundDescription.routeName, arguments: etfTitle);
+        .pushNamed(DetailFundDescription.routeName, arguments: etf);
   }
 
   @override
@@ -34,7 +33,7 @@ class FundDescription extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(8),
             child: Text(
-              FUND_DESCRIPTION[0],
+              etf.description,
               textAlign: TextAlign.left,
               overflow: TextOverflow.ellipsis,
               maxLines: 4,
@@ -45,7 +44,7 @@ class FundDescription extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () => fundDescription(context, etfTitle),
+            onPressed: () => fundDescription(context, etf),
             child: Text(
               'Read more...',
               style: TextStyle(

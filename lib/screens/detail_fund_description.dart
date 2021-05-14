@@ -1,15 +1,20 @@
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
 import 'package:flutter/material.dart';
-
-import '../dummy_data.dart';
 
 class DetailFundDescription extends StatelessWidget {
   static const routeName = '/detail-fund-description';
   @override
   Widget build(BuildContext context) {
-    final etfTitle = ModalRoute.of(context).settings.arguments as String;
+    final etf = ModalRoute.of(context).settings.arguments as Category;
     return Scaffold(
       appBar: AppBar(
-        title: Text(etfTitle),
+        title: Text(
+          etf.title,
+          style: TextStyle(
+            fontFamily: 'SF-Pro-Text',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         backgroundColor: Color.fromRGBO(247, 247, 247, 1),
       ),
       body: Container(
@@ -31,7 +36,7 @@ class DetailFundDescription extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(8),
               child: Text(
-                FUND_DESCRIPTION[0],
+                etf.description,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   fontSize: 18,

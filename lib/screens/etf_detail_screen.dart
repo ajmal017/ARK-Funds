@@ -1,4 +1,4 @@
-import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
 import '../widgets/fund_description.dart';
 import '../models/custom_list_view_etf.dart';
 
@@ -29,7 +29,7 @@ class _EtfDetailScreenState extends State<EtfDetailScreen> {
         child: Column(
           children: [
             FundDescription(
-              etfTitle: etfListItem.title,
+              etf: etfListItem,
             ),
             CustomListViewEtf(etfListItem, etfListItem.subtitle),
           ],
