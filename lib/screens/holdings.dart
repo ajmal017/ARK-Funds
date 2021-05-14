@@ -1,4 +1,4 @@
-import 'package:arkfundsapp/providers/category.dart';
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
 import 'package:arkfundsapp/providers/holdings_provider.dart';
 import 'package:provider/provider.dart';
 
