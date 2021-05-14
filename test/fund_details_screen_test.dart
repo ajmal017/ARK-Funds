@@ -1,5 +1,5 @@
-import 'package:arkfundsapp/providers/category.dart';
 import 'package:arkfundsapp/providers/fund_details_provider.dart';
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
 import 'package:arkfundsapp/screens/fund_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
