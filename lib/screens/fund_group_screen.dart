@@ -1,10 +1,10 @@
-import 'package:arkfundsapp/providers/category.dart';
-import 'package:arkfundsapp/providers/fund_total_market_value.dart';
+import 'package:arkfundsapp/providers/fund_groups_provider.dart';
+import 'package:arkfundsapp/providers/fund_product_group_provider.dart';
+import 'package:arkfundsapp/providers/fund_total_market_value_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/custom_list_view.dart';
-import '../providers/fund_groups.dart';
 import '../widgets/introduction.dart';
 
 class FundGroupsScreen extends StatefulWidget {

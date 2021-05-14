@@ -1,4 +1,4 @@
-import 'package:arkfundsapp/providers/fund_total_market_value.dart';
+import 'package:arkfundsapp/providers/fund_total_market_value_provider.dart';
 import 'package:arkfundsapp/screens/daily_trades.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
